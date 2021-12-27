@@ -33,15 +33,34 @@ public class JorgeTest {
 
         Assertions.assertEquals(entity.getDirection(), Jorge.Direction.LEFT);
 
-        entity.move();
-
+        // UP direction
         entity.setDirection(Jorge.Direction.UP);
 
         Assertions.assertEquals(entity.getDirection(), Jorge.Direction.UP);
 
         entity.move();
 
-        Assertions.assertEquals(entity.getX(), 3);
+        Assertions.assertEquals(entity.getX(), 4);
         Assertions.assertEquals(entity.getY(), 4);
+
+        // DOWN direction
+        entity.setDirection(Jorge.Direction.DOWN);
+
+        Assertions.assertEquals(entity.getDirection(), Jorge.Direction.DOWN);
+
+        entity.move();
+
+        Assertions.assertEquals(entity.getX(), 4);
+        Assertions.assertEquals(entity.getY(), 5);
+
+        // RIGHT
+        entity.setDirection(Jorge.Direction.RIGHT);
+
+        Assertions.assertEquals(entity.getDirection(), Jorge.Direction.RIGHT);
+
+        entity.move();
+
+        Assertions.assertEquals(entity.getX(), 5);
+        Assertions.assertEquals(entity.getY(), 5);
     }
 }
