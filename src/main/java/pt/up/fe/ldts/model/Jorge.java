@@ -30,7 +30,6 @@ public class Jorge extends Entity{
             case DOWN -> this.changePos(this.getX(), this.getY()+1);
             case RIGHT -> this.changePos(this.getX()+1, this.getY());
             case LEFT -> this.changePos(this.getX()-1, this.getY());
-            default -> throw new IllegalStateException("Unexpected value: " + direction);
         }
     }
 
