@@ -35,7 +35,7 @@ public class EmployeeTest {
 
         employee = new Employee(4, 5, testAI);
 
-        employee.cervejaPicked();
+        employee.changeDirection();
 
         Mockito.verify(testAI, Mockito.times(1)).chooseTargetLocation();
         Assertions.assertEquals(1, test.get());
