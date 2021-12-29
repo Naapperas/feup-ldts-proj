@@ -5,7 +5,7 @@ package pt.up.fe.ldts.model;
  */
 public abstract class Entity extends Element{
 
-    enum Direction{
+    public enum Direction{
         UP,
         DOWN,
         RIGHT,

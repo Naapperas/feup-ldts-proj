@@ -10,5 +10,5 @@ public interface EmployeeAI {
     /**
      * Chooses the next location for this Employee
      */
-    void chooseTargetLocation();
+    Entity.Direction chooseTargetLocation();
 }

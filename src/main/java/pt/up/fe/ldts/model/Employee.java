@@ -21,6 +21,10 @@ public class Employee extends Entity implements CervejaListener {
         this.ai = ai;
     }
 
+    public EmployeeState getCurrentState() {
+        return this.state;
+    }
+
     @Override
     public void cervejaPicked() {
 
