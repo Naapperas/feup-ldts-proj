@@ -24,6 +24,6 @@ public class Cerveja extends Collectible {
     public void notifyCollected() {
 
         //TODO: when that is implemented, add score to Jorge
-
+        this.listeners.forEach(CervejaListener::cervejaPicked);
     }
 }
