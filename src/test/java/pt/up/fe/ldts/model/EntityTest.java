@@ -13,8 +13,8 @@ public class EntityTest {
             public void move() {}
         };
 
-        Assertions.assertEquals(entity.getX(), 4);
-        Assertions.assertEquals(entity.getY(), 5);
+        Assertions.assertEquals(4, entity.getX());
+        Assertions.assertEquals(5, entity.getY());
     }
 
     @Test
@@ -25,13 +25,13 @@ public class EntityTest {
             public void move() {}
         };
 
-        Assertions.assertEquals(entity.getX(), 4);
-        Assertions.assertEquals(entity.getY(), 5);
+        Assertions.assertEquals(4, entity.getX());
+        Assertions.assertEquals(5, entity.getY());
 
         entity.changePos(10, 9);
 
-        Assertions.assertEquals(entity.getX(), 10);
-        Assertions.assertEquals(entity.getY(), 9);
+        Assertions.assertEquals(10, entity.getX());
+        Assertions.assertEquals(9, entity.getY());
     }
 
 }
