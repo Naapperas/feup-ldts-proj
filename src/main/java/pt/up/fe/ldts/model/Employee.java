@@ -7,7 +7,7 @@ public class Employee extends Entity implements CervejaListener {
 
     private static int SCORE_WHEN_EATEN = 20;
 
-    enum EmployeeState {
+    public enum EmployeeState {
         SCATTER,
         FRIGHTENED,
         CHASING,
@@ -44,6 +44,6 @@ public class Employee extends Entity implements CervejaListener {
 
     @Override
     public void changeDirection() {
-        this.setDirection(this.ai.chooseTargetDirection());
+        this.setDirection(this.ai.chooseTargetDirection(this.getCurrentState()));
     }
 }

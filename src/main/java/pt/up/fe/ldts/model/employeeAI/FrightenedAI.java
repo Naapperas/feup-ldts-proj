@@ -1,5 +1,6 @@
 package pt.up.fe.ldts.model.employeeAI;
 
+import pt.up.fe.ldts.model.Employee;
 import pt.up.fe.ldts.model.Entity;
 
 public class FrightenedAI implements EmployeeAI {
@@ -9,7 +10,7 @@ public class FrightenedAI implements EmployeeAI {
     public static FrightenedAI singleton = new FrightenedAI();
 
     @Override
-    public Entity.Direction chooseTargetDirection() {
+    public Entity.Direction chooseTargetDirection(Employee.EmployeeState state) {
         return null;
     }
 }
