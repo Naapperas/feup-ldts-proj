@@ -1,6 +1,7 @@
 package pt.up.fe.ldts.model;
 
 import pt.up.fe.ldts.model.employeeAI.EmployeeAI;
+import pt.up.fe.ldts.model.employeeAI.FrightenedAI;
 
 public class Employee extends Entity implements CervejaListener {
 
@@ -34,7 +35,7 @@ public class Employee extends Entity implements CervejaListener {
         this.setCurrentState(EmployeeState.FRIGHTENED);
 
         var currentAi = this.ai;
-        this.ai = null;
+        this.ai = FrightenedAI.singleton;
 
         //TODO: implement timer
 
