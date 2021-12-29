@@ -10,6 +10,6 @@ public class TremocoTest {
         Element tremoco = new Tremoco(4,5);
 
         Assertions.assertEquals(4, tremoco.getX());
-        Assertions.assertEquals(5,tremoco.getY());
+        Assertions.assertEquals(5, tremoco.getY());
     }
 }
