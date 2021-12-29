@@ -9,7 +9,7 @@ public class FrightenedAI implements EmployeeAI {
     public static FrightenedAI singleton = new FrightenedAI();
 
     @Override
-    public Entity.Direction chooseTargetLocation() {
+    public Entity.Direction chooseTargetDirection() {
         return null;
     }
 }

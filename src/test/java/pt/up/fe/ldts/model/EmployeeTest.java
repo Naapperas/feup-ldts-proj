@@ -28,16 +28,16 @@ public class EmployeeTest {
         AtomicInteger test = new AtomicInteger(0);
 
         EmployeeAI testAI = Mockito.mock(EmployeeAI.class);
-        Mockito.when(testAI.chooseTargetLocation()).thenAnswer(invocation -> {
+        Mockito.when(testAI.chooseTargetDirection()).thenAnswer(invocation -> {
             test.set(1);
-            return null;
-        }).thenReturn(Entity.Direction.LEFT);
+            return Entity.Direction.LEFT;
+        });
 
         employee = new Employee(4, 5, testAI);
 
         employee.changeDirection();
 
-        Mockito.verify(testAI, Mockito.times(1)).chooseTargetLocation();
+        Mockito.verify(testAI, Mockito.times(1)).chooseTargetDirection();
         Assertions.assertEquals(1, test.get());
         Assertions.assertEquals(Entity.Direction.LEFT, employee.getDirection());
     }

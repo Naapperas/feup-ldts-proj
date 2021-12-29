@@ -44,6 +44,6 @@ public class Employee extends Entity implements CervejaListener {
 
     @Override
     public void changeDirection() {
-        this.setDirection(this.ai.chooseTargetLocation());
+        this.setDirection(this.ai.chooseTargetDirection());
     }
 }
