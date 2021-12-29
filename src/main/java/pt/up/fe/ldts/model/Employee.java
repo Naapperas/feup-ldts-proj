@@ -25,13 +25,24 @@ public class Employee extends Entity implements CervejaListener {
         return this.state;
     }
 
+    public void setCurrentState(EmployeeState newState) {
+        this.state = newState;
+    }
+
     @Override
     public void cervejaPicked() {
+        this.setCurrentState(EmployeeState.FRIGHTENED);
 
+        var currentAi = this.ai;
+        this.ai = null;
+
+        //TODO: implement timer
+
+        this.ai = currentAi;
     }
 
     @Override
     public void changeDirection() {
-
+        this.setDirection(this.ai.chooseTargetLocation());
     }
 }
