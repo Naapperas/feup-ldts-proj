@@ -6,20 +6,15 @@ import org.junit.jupiter.api.Test;
 
 public class JorgeTest {
 
-    private  Jorge entity;
-
     @BeforeEach
     public void setup(){
-        entity = new Jorge(4,5);
+        Jorge.singleton.changePos(4, 5);
     }
 
     @Test
     public void testCoords() {
 
-        Assertions.assertEquals(4, entity.getX());
-        Assertions.assertEquals(5, entity.getY());
+        Assertions.assertEquals(4, Jorge.singleton.getX());
+        Assertions.assertEquals(5, Jorge.singleton.getY());
     }
-
-
-
 }
