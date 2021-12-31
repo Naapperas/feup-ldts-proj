@@ -16,11 +16,11 @@ public class Position {
         return this.y;
     }
 
-    protected void setX(int newX) {
+    public void setX(int newX) {
         this.x = newX;
     }
 
-    protected void setY(int newY) {
+    public void setY(int newY) {
         this.y = newY;
     }
 

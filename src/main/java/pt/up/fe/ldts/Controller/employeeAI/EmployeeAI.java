@@ -1,5 +1,6 @@
 package pt.up.fe.ldts.Controller.employeeAI;
 
+import pt.up.fe.ldts.model.Employee;
 import pt.up.fe.ldts.model.Entity;
 import pt.up.fe.ldts.model.Position;
 
@@ -11,12 +12,5 @@ public interface EmployeeAI {
     /**
      * Chooses the next location for this Employee
      */
-    Entity.Direction scatter(Entity.Direction direction, Position position);
-
-    Entity.Direction frightened(Entity.Direction direction, Position position);
-
-    Entity.Direction chase(Entity.Direction direction, Position position);
-
-    Entity.Direction dead(Entity.Direction direction, Position position);
+    Entity.Direction chooseTargetDirection(Employee.EmployeeState state, Position position, Entity.Direction direction);
 }
-
