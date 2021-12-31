@@ -2,9 +2,8 @@ package pt.up.fe.ldts.model;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import pt.up.fe.ldts.model.employeeAI.EmployeeAI;
+import pt.up.fe.ldts.Controller.employeeAI.EmployeeAI;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

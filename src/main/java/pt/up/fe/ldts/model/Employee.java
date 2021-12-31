@@ -1,7 +1,6 @@
 package pt.up.fe.ldts.model;
 
-import pt.up.fe.ldts.model.employeeAI.EmployeeAI;
-import pt.up.fe.ldts.model.employeeAI.FrightenedAI;
+import pt.up.fe.ldts.Controller.employeeAI.EmployeeAI;
 
 public class Employee extends Entity implements CervejaListener {
 
