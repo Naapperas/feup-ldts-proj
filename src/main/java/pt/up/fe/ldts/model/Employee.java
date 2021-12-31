@@ -1,7 +1,6 @@
 package pt.up.fe.ldts.model;
 
-import pt.up.fe.ldts.model.employeeAI.EmployeeAI;
-import pt.up.fe.ldts.model.employeeAI.FrightenedAI;
+import pt.up.fe.ldts.Controller.employeeAI.EmployeeAI;
 
 public class Employee extends Entity implements CervejaListener {
 
@@ -35,7 +34,7 @@ public class Employee extends Entity implements CervejaListener {
         this.setCurrentState(EmployeeState.FRIGHTENED);
 
         var currentAi = this.ai;
-        this.ai = FrightenedAI.singleton;
+        // this.ai = FrightenedAI.singleton;
 
         //TODO: implement timer
 
@@ -44,6 +43,6 @@ public class Employee extends Entity implements CervejaListener {
 
     @Override
     public void changeDirection() {
-        this.setDirection(this.ai.chooseTargetDirection(this.getCurrentState()));
+        // this.setDirection(this.ai.chooseTargetDirection(this.getCurrentState()));
     }
 }
