@@ -31,18 +31,18 @@ public class Employee extends Entity implements CervejaListener {
 
     @Override
     public void cervejaPicked() {
-        this.setCurrentState(EmployeeState.FRIGHTENED);
 
-        var currentAi = this.ai;
-        // this.ai = FrightenedAI.singleton;
+        var currState = this.getCurrentState();
+        this.setCurrentState(EmployeeState.FRIGHTENED);
 
         //TODO: implement timer
 
-        this.ai = currentAi;
+        this.setCurrentState(currState);
     }
 
     @Override
     public void changeDirection() {
-        // this.setDirection(this.ai.chooseTargetDirection(this.getCurrentState()));
+
+        this.setDirection(this.ai.chooseTargetDirection(this.getCurrentState(), this.getPosition(), this.getDirection()));
     }
 }
