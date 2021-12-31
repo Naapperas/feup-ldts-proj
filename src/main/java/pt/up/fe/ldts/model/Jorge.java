@@ -2,7 +2,9 @@ package pt.up.fe.ldts.model;
 
 public class Jorge extends Entity{
 
-    public Jorge(int x, int y) {
+    public static Jorge singleton = new Jorge(4, 5); // to be changed later
+
+    private Jorge(int x, int y) {
         super(x, y);
     }
 
