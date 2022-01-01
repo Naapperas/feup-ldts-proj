@@ -9,8 +9,8 @@ public class VectorTest {
     public void testCoords() {
         Vector v = new Vector(4, 5);
 
-        Assertions.assertEquals(4, v.getX());
-        Assertions.assertEquals(5, v.getY());
+        Assertions.assertEquals(4, v.x());
+        Assertions.assertEquals(5, v.y());
     }
 
     @Test

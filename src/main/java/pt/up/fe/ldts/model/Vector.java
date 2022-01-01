@@ -14,20 +14,12 @@ public record Vector(int x, int y) {
         return Math.sqrt(x*x + y*y);
     }
 
-    public int getX() {
-        return this.x();
-    }
-
-    public int getY() {
-        return this.y();
-    }
-
     public Vector multiply(int i) {
         return switch (i) {
             case 0 -> Vector.NULL;
             case -1 -> new Vector(-x, -y);
             case 1 -> this;
-            default -> new Vector(i * this.getX(), i * this.getY());
+            default -> new Vector(i * this.x(), i * this.y());
         };
     }
 

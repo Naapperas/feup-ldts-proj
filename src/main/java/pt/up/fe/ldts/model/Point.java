@@ -27,7 +27,7 @@ public class Point {
     }
 
     public Point addVector(Vector v) {
-        return new Point(this.getX() + v.getX(), this.getY() + v.getY());
+        return new Point(this.getX() + v.x(), this.getY() + v.y());
     }
 
     @Override
