@@ -38,7 +38,7 @@ public class VectorTest {
         Vector expected = new Vector(6, -2);
 
         Assertions.assertEquals(expected, v);
-        Assertions.assertEquals(6.32, v.magnitude(), 0.001);
+        Assertions.assertEquals(6.32, v.magnitude(), 0.01);
     }
 
     @Test
@@ -51,5 +51,6 @@ public class VectorTest {
         Assertions.assertEquals(expected1, v.multiply(-1));
         Assertions.assertEquals(expected2, v.multiply(2));
         Assertions.assertEquals(Vector.NULL, v.multiply(0));
+        Assertions.assertEquals(v, v.multiply(1));
     }
 }

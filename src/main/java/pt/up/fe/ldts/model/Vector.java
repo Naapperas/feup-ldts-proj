@@ -11,7 +11,7 @@ public record Vector(int x, int y) {
     public static Vector DOWN = new Vector(0, -1);
 
     public double magnitude() {
-        return 0.0;
+        return Math.sqrt(x*x + y*y);
     }
 
     public int getX() {
@@ -23,11 +23,16 @@ public record Vector(int x, int y) {
     }
 
     public Vector multiply(int i) {
-        return null;
+        return switch (i) {
+            case 0 -> Vector.NULL;
+            case -1 -> new Vector(-x, -y);
+            case 1 -> this;
+            default -> new Vector(i * this.getX(), i * this.getY());
+        };
     }
 
     public static Vector from(Point a, Point b) {
-        return null;
+        return new Vector(b.getX() - a.getX(), b.getY() - a.getY());
     }
 
     @Override
