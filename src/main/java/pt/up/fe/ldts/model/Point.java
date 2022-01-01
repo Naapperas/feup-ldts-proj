@@ -24,6 +24,10 @@ public class Point {
         this.y = newY;
     }
 
+    public Point addVector(Vector v) {
+        return null;
+    }
+
     public String toString() {
         return "Pos[ x =" + this.x + ", y =" + this.y + "]";
     }
