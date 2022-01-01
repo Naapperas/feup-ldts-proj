@@ -39,12 +39,12 @@ public class EntityTest {
     @Test
     public void testDirection() {
 
-        Assertions.assertEquals(Entity.Direction.LEFT, entity.getDirection());
+        Assertions.assertEquals(Vector.UP, entity.getDirection());
 
         // UP direction
-        entity.setDirection(Entity.Direction.UP);
+        entity.setDirection(Vector.UP);
 
-        Assertions.assertEquals(Entity.Direction.UP, entity.getDirection());
+        Assertions.assertEquals(Vector.UP, entity.getDirection());
 
         entity.move();
 
@@ -52,9 +52,9 @@ public class EntityTest {
         Assertions.assertEquals(4, entity.getY());
 
         // DOWN direction
-        entity.setDirection(Entity.Direction.DOWN);
+        entity.setDirection(Vector.DOWN);
 
-        Assertions.assertEquals(Entity.Direction.DOWN, entity.getDirection());
+        Assertions.assertEquals(Vector.DOWN, entity.getDirection());
 
         entity.move();
 
@@ -62,9 +62,9 @@ public class EntityTest {
         Assertions.assertEquals(5, entity.getY());
 
         // RIGHT
-        entity.setDirection(Entity.Direction.RIGHT);
+        entity.setDirection(Vector.RIGHT);
 
-        Assertions.assertEquals(Entity.Direction.RIGHT, entity.getDirection());
+        Assertions.assertEquals(Vector.RIGHT, entity.getDirection());
 
         entity.move();
 
@@ -75,11 +75,11 @@ public class EntityTest {
     @Test
     public void testMove() {
 
-        Assertions.assertEquals(Entity.Direction.LEFT, entity.getDirection());
+        Assertions.assertEquals(Vector.UP, entity.getDirection());
 
         entity.move();
 
-        Assertions.assertEquals(3, entity.getX());
-        Assertions.assertEquals(5, entity.getY());
+        Assertions.assertEquals(4, entity.getX());
+        Assertions.assertEquals(4, entity.getY());
     }
 }
