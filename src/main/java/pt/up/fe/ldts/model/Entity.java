@@ -19,15 +19,11 @@ public abstract class Entity extends Element{
     }
 
     public void move(){
-        if (Vector.UP.equals(direction)) {
-            this.changePos(this.getX(), this.getY() - 1);
-        } else if (Vector.DOWN.equals(direction)) {
-            this.changePos(this.getX(), this.getY() + 1);
-        } else if (Vector.RIGHT.equals(direction)) {
-            this.changePos(this.getX() + 1, this.getY());
-        } else if (Vector.LEFT.equals(direction)) {
-            this.changePos(this.getX() - 1, this.getY());
-        }
+        if (!(this.direction.equals(Vector.UP) || this.direction.equals(Vector.DOWN) || this.direction.equals(Vector.LEFT)|| this.direction.equals(Vector.RIGHT) || this.direction.equals(Vector.NULL)))
+            return; // unknown direction
+        var newPos = this.getPosition().addVector(this.direction);
+
+        this.changePos(newPos.getX(), newPos.getY());
     }
 
 
