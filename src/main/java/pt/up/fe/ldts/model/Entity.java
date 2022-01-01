@@ -5,18 +5,11 @@ package pt.up.fe.ldts.model;
  */
 public abstract class Entity extends Element{
 
-    public enum Direction{
-        UP,
-        DOWN,
-        RIGHT,
-        LEFT
-    }
-
-    protected Direction direction;
+    protected Vector direction;
 
     public Entity(int x, int y) {
         super(x, y);
-        direction = Direction.LEFT;
+        direction = Vector.UP;
     }
 
     public void changePos(int x, int y) {
@@ -26,20 +19,23 @@ public abstract class Entity extends Element{
     }
 
     public void move(){
-        switch (direction) {
-            case UP -> this.changePos(this.getX(), this.getY()-1);
-            case DOWN -> this.changePos(this.getX(), this.getY()+1);
-            case RIGHT -> this.changePos(this.getX()+1, this.getY());
-            case LEFT -> this.changePos(this.getX()-1, this.getY());
+        if (Vector.UP.equals(direction)) {
+            this.changePos(this.getX(), this.getY() - 1);
+        } else if (Vector.DOWN.equals(direction)) {
+            this.changePos(this.getX(), this.getY() + 1);
+        } else if (Vector.RIGHT.equals(direction)) {
+            this.changePos(this.getX() + 1, this.getY());
+        } else if (Vector.LEFT.equals(direction)) {
+            this.changePos(this.getX() - 1, this.getY());
         }
     }
 
 
-    public Direction getDirection() {
+    public Vector getDirection() {
         return direction;
     }
 
-    public void setDirection(Direction direction) {
+    public void setDirection(Vector direction) {
         this.direction = direction;
     }
 

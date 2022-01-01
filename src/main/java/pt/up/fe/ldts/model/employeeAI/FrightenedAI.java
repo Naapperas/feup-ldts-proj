@@ -1,7 +1,7 @@
 package pt.up.fe.ldts.model.employeeAI;
 
 import pt.up.fe.ldts.model.Employee;
-import pt.up.fe.ldts.model.Entity;
+import pt.up.fe.ldts.model.Vector;
 
 public class FrightenedAI implements EmployeeAI {
 
@@ -10,7 +10,7 @@ public class FrightenedAI implements EmployeeAI {
     public static FrightenedAI singleton = new FrightenedAI();
 
     @Override
-    public Entity.Direction chooseTargetDirection(Employee.EmployeeState state) {
+    public Vector chooseTargetDirection(Employee.EmployeeState state) {
         return null;
     }
 }
