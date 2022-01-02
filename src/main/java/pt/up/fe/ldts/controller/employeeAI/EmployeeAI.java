@@ -1,4 +1,4 @@
-package pt.up.fe.ldts.Controller.employeeAI;
+package pt.up.fe.ldts.controller.employeeAI;
 
 import pt.up.fe.ldts.model.Employee;
 import pt.up.fe.ldts.model.Entity;
@@ -11,9 +11,8 @@ import pt.up.fe.ldts.model.Vector;
 public interface EmployeeAI {
 
     /**
-     * Chooses the next location for this Employee
+     * Chooses the next direction for this Employee
      */
-
-    Vector chooseTargetDirection(Employee.EmployeeState state, Point position, Vector direction);
+    Point chooseTargetPosition(Employee.EmployeeState state, Point position);
 
 }
