@@ -42,14 +42,14 @@ public class EntityTest {
         Assertions.assertEquals(Vector.UP, entity.getDirection());
 
         // UP direction
-        entity.setDirection(Vector.UP);
+        entity.setDirection(Vector.LEFT);
 
-        Assertions.assertEquals(Vector.UP, entity.getDirection());
+        Assertions.assertEquals(Vector.LEFT, entity.getDirection());
 
         entity.move();
 
-        Assertions.assertEquals(4, entity.getX());
-        Assertions.assertEquals(4, entity.getY());
+        Assertions.assertEquals(3, entity.getX());
+        Assertions.assertEquals(5, entity.getY());
 
         // DOWN direction
         entity.setDirection(Vector.DOWN);
@@ -58,8 +58,8 @@ public class EntityTest {
 
         entity.move();
 
-        Assertions.assertEquals(4, entity.getX());
-        Assertions.assertEquals(5, entity.getY());
+        Assertions.assertEquals(3, entity.getX());
+        Assertions.assertEquals(6, entity.getY());
 
         // RIGHT
         entity.setDirection(Vector.RIGHT);
@@ -68,8 +68,8 @@ public class EntityTest {
 
         entity.move();
 
-        Assertions.assertEquals(5, entity.getX());
-        Assertions.assertEquals(5, entity.getY());
+        Assertions.assertEquals(4, entity.getX());
+        Assertions.assertEquals(6, entity.getY());
     }
 
     @Test
