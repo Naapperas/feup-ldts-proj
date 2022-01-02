@@ -16,6 +16,7 @@ public class AITest {
     public void setup(){
         pos = new Point(5,6);
         Jorge.singleton.setDirection(Vector.UP);
+        Jorge.singleton.changePos(4, 5);
     }
 
     @Test
@@ -73,23 +74,30 @@ public class AITest {
 
         EmployeeAI zeCastro = new ZeCastroAI(balta.getPosition());
 
-        Point target = Jorge.singleton.getPosition().addVector(new Vector(2,2));
+        Point target;
 
-        target = target.addVector(Vector.from(balta.getPosition(), target).multiply(-1));
+        {
+            Assertions.assertEquals(Vector.UP, Jorge.singleton.getDirection());
 
-        Assertions.assertEquals(ZeCastroAI.SCATTER_TARGET, zeCastro.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
+            target = Jorge.singleton.getPosition().addVector(new Vector(-2, -2));
 
-        Assertions.assertEquals(target, zeCastro.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
+            target = target.addVector(Vector.from(balta.getPosition(), target));
+
+            Assertions.assertEquals(ZeCastroAI.SCATTER_TARGET, zeCastro.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
+
+            Assertions.assertEquals(target, zeCastro.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
+        }
 
         Jorge.singleton.setDirection(Vector.LEFT);
 
-        target = Jorge.singleton.getPosition().addVector(Vector.LEFT.multiply(2));
+        {
+            target = Jorge.singleton.getPosition().addVector(Vector.LEFT.multiply(2));
 
-        target = target.addVector(Vector.from(balta.getPosition(), target).multiply(-1));
+            target = target.addVector(Vector.from(balta.getPosition(), target));
 
-        Assertions.assertEquals(target, zeCastro.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
+            Assertions.assertEquals(target, zeCastro.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
 
-        Assertions.assertEquals(ZeCastroAI.DEAD_TARGET, zeCastro.chooseTargetPosition(Employee.EmployeeState.DEAD, pos));
-
+            Assertions.assertEquals(ZeCastroAI.DEAD_TARGET, zeCastro.chooseTargetPosition(Employee.EmployeeState.DEAD, pos));
+        }
     }
 }

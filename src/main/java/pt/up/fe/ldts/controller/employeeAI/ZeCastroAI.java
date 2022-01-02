@@ -33,10 +33,10 @@ public class ZeCastroAI extends EmployeeAI{ //inky
     private Point chaseTarget(){
         Point target;
         if(Jorge.singleton.getDirection().equals(Vector.UP))
-            target = Jorge.singleton.getPosition().addVector(Vector.UP.multiply(4)).addVector(Vector.LEFT.multiply(2));
+            target = Jorge.singleton.getPosition().addVector(Vector.UP.multiply(2)).addVector(Vector.LEFT.multiply(2));
         else
             target = Jorge.singleton.getPosition().addVector(Jorge.singleton.getDirection().multiply(2));
 
-        return target.addVector(Vector.from(baltaPos, target).multiply(-1));
+        return target.addVector(Vector.from(baltaPos, target));
     }
 }
