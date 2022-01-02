@@ -71,7 +71,7 @@ public class Employee extends Entity implements CervejaListener {
         return directionPairs.get(0).a;
     }
 
-    private List<Vector> possibleDirections(Vector direction){ // prototype, to be the responsibility of the map
+    private List<Vector> possibleDirections(Vector direction){ // prototype, to be under the responsibility of the map
         List<Vector> directions = new ArrayList<>();
 
         if (Vector.UP.equals(direction)) {

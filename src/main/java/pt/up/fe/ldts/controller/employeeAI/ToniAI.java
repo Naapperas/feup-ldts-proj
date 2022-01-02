@@ -7,10 +7,11 @@ import pt.up.fe.ldts.model.Vector;
 
 import java.util.Random;
 
-public class ToniAI implements EmployeeAI { //clyde
+public class ToniAI extends EmployeeAI { //clyde
 
-    static final Point SCATTER_TARGET = new Point(0,20);// valores arbitrarios
-    static final Point DEAD_TARGET = new Point(10,10); // respawn
+    static {
+        SCATTER_TARGET = new Point(0,20);
+    }
 
     public ToniAI() {
     }

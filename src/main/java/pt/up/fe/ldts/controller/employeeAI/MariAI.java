@@ -7,9 +7,11 @@ import pt.up.fe.ldts.model.Vector;
 
 import java.util.Random;
 
-public class MariAI implements EmployeeAI{ //pinky
-    static final Point SCATTER_TARGET = new Point(0,0);
-    static final Point DEAD_TARGET = new Point(10,10);
+public class MariAI extends EmployeeAI{ //pinky
+
+    static {
+        SCATTER_TARGET = new Point(0,0);
+    }
 
     public MariAI() {
     }

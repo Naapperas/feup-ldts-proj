@@ -7,11 +7,12 @@ import pt.up.fe.ldts.model.Vector;
 
 import java.util.Random;
 
-public class ZeCastroAI implements EmployeeAI{ //inky
+public class ZeCastroAI extends EmployeeAI{ //inky
 
     private Point baltaPos;
-    static final Point SCATTER_TARGET = new Point(20,20);// valores arbitrarios
-    static final Point DEAD_TARGET = new Point(10,10); // respawn
+    static {
+        SCATTER_TARGET = new Point(20,20);
+    }
 
     public ZeCastroAI(Point baltaPos){
         this.baltaPos = baltaPos;

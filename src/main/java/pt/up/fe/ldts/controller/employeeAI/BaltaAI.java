@@ -3,13 +3,14 @@ package pt.up.fe.ldts.controller.employeeAI;
 import pt.up.fe.ldts.model.Employee;
 import pt.up.fe.ldts.model.Jorge;
 import pt.up.fe.ldts.model.Point;
-import pt.up.fe.ldts.model.Vector;
 
 import java.util.Random;
 
-public class BaltaAI implements EmployeeAI{ //blinky
-    static final Point SCATTER_TARGET = new Point(20,0);
-    static final Point DEAD_TARGET = new Point(10,10);
+public class BaltaAI extends EmployeeAI{ //blinky
+
+    static {
+        SCATTER_TARGET = new Point(20,0);
+    }
 
     public BaltaAI() {
     }
