@@ -9,8 +9,8 @@ public abstract class Entity extends Element{
 
     /**
      * Constructs a new Entity on the given position
-     * @param x
-     * @param y
+     * @param x the x coordinate of this Entity
+     * @param y the y coordinate of this Entity
      */
     public Entity(int x, int y) {
         super(x, y);

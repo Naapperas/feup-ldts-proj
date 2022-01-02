@@ -17,8 +17,8 @@ public class Cerveja extends Collectible {
 
     /**
      * Constructs a new Cerveja on the given position
-     * @param x
-     * @param y
+     * @param x the x coordinate of this Cerveja
+     * @param y the y coordinate of this Cerveja
      */
     public Cerveja(int x, int y){
         super(x,y);

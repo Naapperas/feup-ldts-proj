@@ -6,8 +6,8 @@ public class Jorge extends Entity{
 
     /**
      * Constructs a new Jorge on the given position
-     * @param x
-     * @param y
+     * @param x the x coordinate of this Jorge
+     * @param y the y coordinate of this Jorge
      */
     private Jorge(int x, int y) {
         super(x, y);

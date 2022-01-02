@@ -22,9 +22,9 @@ public class Employee extends Entity implements CervejaListener {
 
     /**
      * Constructs a new Employee on the given position, with a certain EmployeeAi
-     * @param x
-     * @param y
-     * @param ai
+     * @param x the x coordinate of this Employee
+     * @param y the y coordinate of this Employee
+     * @param ai EmployeeAi used by this employee
      */
     public Employee(int x, int y, EmployeeAI ai) {
         super(x, y);
