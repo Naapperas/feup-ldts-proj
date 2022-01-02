@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class EmployeeTest {
 
     @Test
-    public void testConstrction() {
+    public void testConstruction() {
 
         Employee employee = new Employee(4, 5, null);
 
@@ -31,7 +31,7 @@ public class EmployeeTest {
         EmployeeAI testAI = Mockito.mock(EmployeeAI.class);
         Mockito.when(testAI.chooseTargetDirection(Mockito.any())).thenAnswer(invocation -> {
             test.set(1);
-            return Entity.Direction.LEFT;
+            return Vector.LEFT;
         });
 
         employee = new Employee(4, 5, testAI);
@@ -40,6 +40,6 @@ public class EmployeeTest {
 
         Mockito.verify(testAI, Mockito.times(1)).chooseTargetDirection(Mockito.any());
         Assertions.assertEquals(1, test.get());
-        Assertions.assertEquals(Entity.Direction.LEFT, employee.getDirection());
+        Assertions.assertEquals(Vector.LEFT, employee.getDirection());
     }
 }
