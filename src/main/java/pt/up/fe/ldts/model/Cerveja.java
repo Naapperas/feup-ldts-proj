@@ -15,6 +15,11 @@ public class Cerveja extends Collectible {
         this.listeners.add(listener);
     }
 
+    /**
+     * Constructs a new Cerveja on the given position
+     * @param x
+     * @param y
+     */
     public Cerveja(int x, int y){
         super(x,y);
         this.listeners = new ArrayList<>(); // better for traversal

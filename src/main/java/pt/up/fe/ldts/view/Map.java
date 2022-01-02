@@ -8,11 +8,17 @@ import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
 
+/**
+ * Class to handle the interaction between the Lanterna terminal and the game elements
+ */
 public class Map {
 
     private Screen screen;
     private Arena arena;
 
+    /**
+     * Constructor (create a new Arena and terminal)
+     */
     public Map(){
         arena = new Arena(40, 50);
         try{
