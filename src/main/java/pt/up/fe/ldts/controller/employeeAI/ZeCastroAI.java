@@ -30,6 +30,10 @@ public class ZeCastroAI extends EmployeeAI{ //inky
         };
     }
 
+    /**
+     * ZeCastro's targeted position when chasing Jorge
+     * @return targeted position when chasing Jorge
+     */
     private Point chasingTarget(){
         Point target;
         if(Jorge.singleton.getDirection().equals(Vector.UP))

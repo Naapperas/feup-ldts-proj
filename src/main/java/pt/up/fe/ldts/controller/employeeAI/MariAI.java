@@ -29,6 +29,10 @@ public class MariAI extends EmployeeAI{ //pinky
         };
     }
 
+    /**
+     * Mariana's targeted position when chasing Jorge
+     * @return targeted position when chasing Jorge
+     */
     private Point chasingTarget(){
         if(Jorge.singleton.getDirection().equals(Vector.UP))
             return Jorge.singleton.getPosition().addVector(Vector.UP.multiply(4)).addVector(Vector.LEFT.multiply(4));
