@@ -2,6 +2,9 @@ package pt.up.fe.ldts.model;
 
 import java.util.Objects;
 
+/**
+ * Class that represents a vector (used in calculations with points)
+ */
 public record Vector(int x, int y) implements Comparable {
 
     public static Vector NULL = new Vector(0, 0);
@@ -10,10 +13,19 @@ public record Vector(int x, int y) implements Comparable {
     public static Vector RIGHT = new Vector(1, 0);
     public static Vector DOWN = new Vector(0, 1);
 
+    /**
+     * Calculate the scalar size of this vector
+     * @return the scalar size of this vector
+     */
     public double magnitude() {
         return Math.sqrt(x*x + y*y);
     }
 
+    /**
+     * Multiply vector by scalar
+     * @param i scalar
+     * @return multiplied vector
+     */
     public Vector multiply(int i) {
         return switch (i) {
             case 0 -> Vector.NULL;
@@ -23,12 +35,18 @@ public record Vector(int x, int y) implements Comparable {
         };
     }
 
+    /**
+     * Represent a vector between two points
+     * @param a first point (from)
+     * @param b second point (to)
+     * @return vector from a to b
+     */
     public static Vector from(Point a, Point b) {
         return new Vector(b.getX() - a.getX(), b.getY() - a.getY());
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Object o) {  // UP > LEFT > DOWN > RIGHT
         if (this.equals(Vector.UP)) {
             return o.equals(Vector.UP) ? 0 : -1;
         }

@@ -20,15 +20,29 @@ public class Employee extends Entity implements CervejaListener {
     private EmployeeAI ai;
     private EmployeeState state = EmployeeState.SCATTER;
 
+    /**
+     * Constructs a new Employee on the given position, with a certain EmployeeAi
+     * @param x the x coordinate of this Employee
+     * @param y the y coordinate of this Employee
+     * @param ai EmployeeAi used by this employee
+     */
     public Employee(int x, int y, EmployeeAI ai) {
         super(x, y);
         this.ai = ai;
     }
 
+    /**
+     * Get the current state(EmployeeState) of an employee
+     * @return the current state of this employee
+     */
     public EmployeeState getCurrentState() {
         return this.state;
     }
 
+    /**
+     * Set the current state of an employee
+     * @param newState new EmployeeState
+     */
     public void setCurrentState(EmployeeState newState) {
         this.state = newState;
     }
@@ -53,6 +67,11 @@ public class Employee extends Entity implements CervejaListener {
         this.setDirection(this.chooseNextDirection(targetPoint));
     }
 
+    /**
+     * Choose the direction of an employee according to the position it's targeting
+     * @param targetPoint the position this employee is targeting
+     * @return new direction as vector
+     */
     private Vector chooseNextDirection(Point targetPoint) {
 
         var possibleDirections = this.possibleDirections(this.getDirection());
@@ -70,6 +89,7 @@ public class Employee extends Entity implements CervejaListener {
 
         return directionPairs.get(0).a;
     }
+
 
     private List<Vector> possibleDirections(Vector direction){ // prototype, to be under the responsibility of the map
         List<Vector> directions = new ArrayList<>();

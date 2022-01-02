@@ -6,6 +6,11 @@ public class Tremoco extends Collectible {
         Tremoco.POINTS_PER_ITEM = 10;
     }
 
+    /**
+     * Constructs a new Tremoco on the given position
+     * @param x the x coordinate of this Tremoço
+     * @param y the x coordinate of this Tremoço
+     */
     public Tremoco(int x, int y){
         super(x,y);
     }
