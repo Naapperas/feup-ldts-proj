@@ -26,17 +26,4 @@ public record Vector(int x, int y) {
     public static Vector from(Point a, Point b) {
         return new Vector(b.getX() - a.getX(), b.getY() - a.getY());
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Vector vector = (Vector) o;
-        return x == vector.x && y == vector.y;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
-    }
 }
