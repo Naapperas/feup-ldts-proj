@@ -24,13 +24,13 @@ public class ZeCastroAI extends EmployeeAI{ //inky
     public Point chooseTargetPosition(Employee.EmployeeState state, Point position){
         return switch (state){
             case SCATTER -> SCATTER_TARGET;
-            case CHASING -> chaseTarget();
+            case CHASING -> chasingTarget();
             case DEAD -> DEAD_TARGET;
             case FRIGHTENED -> new Point(random.nextInt(20), random.nextInt(20));
         };
     }
 
-    private Point chaseTarget(){
+    private Point chasingTarget(){
         Point target;
         if(Jorge.singleton.getDirection().equals(Vector.UP))
             target = Jorge.singleton.getPosition().addVector(Vector.UP.multiply(2)).addVector(Vector.LEFT.multiply(2));
