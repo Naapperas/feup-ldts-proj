@@ -2,7 +2,7 @@ package pt.up.fe.ldts.model;
 
 public abstract class Element {
 
-    private Position pos;
+    private Point position;
 
     /**
      * Constructs a new Element on the given position
@@ -12,12 +12,13 @@ public abstract class Element {
      */
 
     public Element(int x, int y){
-        this.pos = new Position(x,y);
+        this.position = new Point(x,y);
     }
 
-    public Position getPosition() {
-        return this.pos;
+    public Point getPosition() {
+        return this.position;
     }
+
     public int getX() {
         return this.getPosition().getX();
     }

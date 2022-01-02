@@ -39,47 +39,47 @@ public class EntityTest {
     @Test
     public void testDirection() {
 
-        Assertions.assertEquals(Entity.Direction.LEFT, entity.getDirection());
+        Assertions.assertEquals(Vector.UP, entity.getDirection());
 
         // UP direction
-        entity.setDirection(Entity.Direction.UP);
+        entity.setDirection(Vector.LEFT);
 
-        Assertions.assertEquals(Entity.Direction.UP, entity.getDirection());
-
-        entity.move();
-
-        Assertions.assertEquals(4, entity.getX());
-        Assertions.assertEquals(4, entity.getY());
-
-        // DOWN direction
-        entity.setDirection(Entity.Direction.DOWN);
-
-        Assertions.assertEquals(Entity.Direction.DOWN, entity.getDirection());
-
-        entity.move();
-
-        Assertions.assertEquals(4, entity.getX());
-        Assertions.assertEquals(5, entity.getY());
-
-        // RIGHT
-        entity.setDirection(Entity.Direction.RIGHT);
-
-        Assertions.assertEquals(Entity.Direction.RIGHT, entity.getDirection());
-
-        entity.move();
-
-        Assertions.assertEquals(5, entity.getX());
-        Assertions.assertEquals(5, entity.getY());
-    }
-
-    @Test
-    public void testMove() {
-
-        Assertions.assertEquals(Entity.Direction.LEFT, entity.getDirection());
+        Assertions.assertEquals(Vector.LEFT, entity.getDirection());
 
         entity.move();
 
         Assertions.assertEquals(3, entity.getX());
         Assertions.assertEquals(5, entity.getY());
+
+        // DOWN direction
+        entity.setDirection(Vector.DOWN);
+
+        Assertions.assertEquals(Vector.DOWN, entity.getDirection());
+
+        entity.move();
+
+        Assertions.assertEquals(3, entity.getX());
+        Assertions.assertEquals(6, entity.getY());
+
+        // RIGHT
+        entity.setDirection(Vector.RIGHT);
+
+        Assertions.assertEquals(Vector.RIGHT, entity.getDirection());
+
+        entity.move();
+
+        Assertions.assertEquals(4, entity.getX());
+        Assertions.assertEquals(6, entity.getY());
+    }
+
+    @Test
+    public void testMove() {
+
+        Assertions.assertEquals(Vector.UP, entity.getDirection());
+
+        entity.move();
+
+        Assertions.assertEquals(4, entity.getX());
+        Assertions.assertEquals(4, entity.getY());
     }
 }
