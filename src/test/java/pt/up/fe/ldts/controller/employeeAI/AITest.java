@@ -72,7 +72,7 @@ public class AITest {
 
         Employee balta = new Employee(10,10,null);
 
-        EmployeeAI zeCastro = new ZeCastroAI(balta.getPosition());
+        EmployeeAI zeCastroAI = new ZeCastroAI(balta);
 
         Point target;
 
@@ -83,9 +83,9 @@ public class AITest {
 
             target = target.addVector(Vector.from(balta.getPosition(), target));
 
-            Assertions.assertEquals(ZeCastroAI.SCATTER_TARGET, zeCastro.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
+            Assertions.assertEquals(ZeCastroAI.SCATTER_TARGET, zeCastroAI.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
 
-            Assertions.assertEquals(target, zeCastro.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
+            Assertions.assertEquals(target, zeCastroAI.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
         }
 
         Jorge.singleton.setDirection(Vector.LEFT);
@@ -95,9 +95,22 @@ public class AITest {
 
             target = target.addVector(Vector.from(balta.getPosition(), target));
 
-            Assertions.assertEquals(target, zeCastro.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
+            Assertions.assertEquals(target, zeCastroAI.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
 
-            Assertions.assertEquals(ZeCastroAI.DEAD_TARGET, zeCastro.chooseTargetPosition(Employee.EmployeeState.DEAD, pos));
+            Assertions.assertEquals(ZeCastroAI.DEAD_TARGET, zeCastroAI.chooseTargetPosition(Employee.EmployeeState.DEAD, pos));
+        }
+
+        Jorge.singleton.setDirection(Vector.UP);
+        balta.changePos(4, 3);
+
+        {
+            target = Jorge.singleton.getPosition().addVector(new Vector(-2, -2));
+
+            target = target.addVector(Vector.from(balta.getPosition(), target));
+
+            Assertions.assertEquals(target, zeCastroAI.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
+
+            Assertions.assertEquals(ZeCastroAI.DEAD_TARGET, zeCastroAI.chooseTargetPosition(Employee.EmployeeState.DEAD, pos));
         }
     }
 }

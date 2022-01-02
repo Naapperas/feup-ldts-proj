@@ -9,13 +9,13 @@ import java.util.Random;
 
 public class ZeCastroAI extends EmployeeAI{ //inky
 
-    private Point baltaPos;
+    private final Employee balta;
     static {
         SCATTER_TARGET = new Point(20,20);
     }
 
-    public ZeCastroAI(Point baltaPos){
-        this.baltaPos = baltaPos;
+    public ZeCastroAI(Employee balta){
+        this.balta = balta;
     }
 
     Random random = new Random();
@@ -37,6 +37,6 @@ public class ZeCastroAI extends EmployeeAI{ //inky
         else
             target = Jorge.singleton.getPosition().addVector(Jorge.singleton.getDirection().multiply(2));
 
-        return target.addVector(Vector.from(baltaPos, target));
+        return target.addVector(Vector.from(balta.getPosition(), target));
     }
 }
