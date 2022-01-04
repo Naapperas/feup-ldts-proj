@@ -11,10 +11,5 @@ public class JorgeTest {
         Jorge.singleton.changePos(4, 5);
     }
 
-    @Test
-    public void testCoords() {
 
-        Assertions.assertEquals(4, Jorge.singleton.getX());
-        Assertions.assertEquals(5, Jorge.singleton.getY());
-    }
 }
