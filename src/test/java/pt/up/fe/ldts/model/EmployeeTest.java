@@ -18,9 +18,6 @@ public class EmployeeTest {
 
         Employee employee = new Employee(4, 5, null);
 
-        Assertions.assertEquals(4, employee.getX());
-        Assertions.assertEquals(5, employee.getY());
-
         Assertions.assertEquals(Employee.EmployeeState.SCATTER, employee.getCurrentState());
     }
 
