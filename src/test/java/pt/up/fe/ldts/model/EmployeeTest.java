@@ -25,6 +25,7 @@ public class EmployeeTest {
     }
 
     @Test
+<<<<<<< HEAD
     public void testSettingStates() {
 
         Employee employee = new Employee(4, 5, null);
@@ -80,6 +81,14 @@ public class EmployeeTest {
         employee.cervejaPicked();
 
         Assertions.assertEquals(Vector.DOWN, employee.getDirection());
+=======
+    public void testStates() {
+
+        Employee employee = new Employee(4, 5, null);
+        employee.setCurrentState(Employee.EmployeeState.DEAD);
+
+        Assertions.assertEquals(Employee.EmployeeState.DEAD, employee.getCurrentState());
+>>>>>>> 0461fbf (test setting a new state for an employee)
     }
 
     @Test
