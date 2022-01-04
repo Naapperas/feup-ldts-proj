@@ -23,12 +23,7 @@ public class EntityTest {
             }
         };
     }
-    
-    @Test
-    public void testCoords() {
-        Assertions.assertEquals(4, entity.getX());
-        Assertions.assertEquals(5, entity.getY());
-    }
+
 
     @Test
     public void testChangePos() {

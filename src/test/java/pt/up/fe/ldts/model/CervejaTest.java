@@ -8,13 +8,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class CervejaTest {
 
-    @Test
-    public void testCoords(){
-        Element cerveja = new Cerveja(5, 4);
-
-        Assertions.assertEquals(5, cerveja.getX());
-        Assertions.assertEquals(4, cerveja.getY());
-    }
 
     @Test
     public void testCollect() {
