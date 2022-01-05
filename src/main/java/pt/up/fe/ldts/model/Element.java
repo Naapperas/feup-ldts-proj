@@ -2,7 +2,7 @@ package pt.up.fe.ldts.model;
 
 public abstract class Element {
 
-    private Point position;
+    private final Point position;
 
     /**
      * Constructs a new Element on the given position

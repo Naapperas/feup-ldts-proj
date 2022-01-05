@@ -82,7 +82,7 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawHero(Point position) {
+    public void drawJorge(Point position) {
         drawCharacter(position.getX(), position.getY(), 'H', "#FFD700");
     }
 
@@ -92,7 +92,7 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawMonster(Point position) {
+    public void drawEmployee(Point position) {
         drawCharacter(position.getX(), position.getY(), '@', "#CC0000");
     }
 

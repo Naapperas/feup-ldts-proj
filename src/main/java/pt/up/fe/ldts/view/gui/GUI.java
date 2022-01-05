@@ -7,11 +7,11 @@ import java.io.IOException;
 public interface GUI {
     ACTION getNextAction() throws IOException;
 
-    void drawHero(Point position);
+    void drawJorge(Point position);
 
     void drawWall(Point position);
 
-    void drawMonster(Point position);
+    void drawEmployee(Point position);
 
     void drawText(Point position, String text, String color);
 
