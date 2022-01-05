@@ -9,7 +9,7 @@ public class Renderer {
 
     private static final List<Drawable> viewers = new ArrayList<>();
 
-    public void addViewer(Drawable viewer) {
+    public static void addViewer(Drawable viewer) {
         viewers.add(viewer);
     }
 
