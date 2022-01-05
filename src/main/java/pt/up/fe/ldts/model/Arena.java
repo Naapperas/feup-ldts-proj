@@ -73,5 +73,15 @@ public class Arena implements Drawable {
     @Override
     public void render(GUI gui) {
 
+        for (var wall : this.walls)
+            wall.render(gui);
+
+        for (var collectible : this.collectibles)
+            collectible.render(gui);
+
+        for (var employee : this.employees)
+            employee.render(gui);
+
+        Jorge.singleton.render(gui);
     }
 }

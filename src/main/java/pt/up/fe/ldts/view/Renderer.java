@@ -2,6 +2,7 @@ package pt.up.fe.ldts.view;
 
 import pt.up.fe.ldts.view.gui.GUI;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +14,11 @@ public class Renderer {
         viewers.add(viewer);
     }
 
-    public static void render(GUI gui) {
+    public static void render(GUI gui) throws IOException {
+        gui.clear();
         viewers.forEach(viewer -> {
             viewer.render(gui);
         });
+        gui.refresh();
     }
 }
