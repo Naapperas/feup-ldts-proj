@@ -1,5 +1,6 @@
 package pt.up.fe.ldts;
 
+import pt.up.fe.ldts.model.Arena;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
@@ -13,9 +14,15 @@ public class Application {
     private final GUI gui;
     private Object state;
 
+    private Arena arena;
+
     public Application() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(20, 20);
         //this.state = new MenuState(new Menu());
+
+        this.arena = new Arena(20, 20);
+
+        Renderer.addViewer(arena);
     }
 
     public static void main(String[] args) {

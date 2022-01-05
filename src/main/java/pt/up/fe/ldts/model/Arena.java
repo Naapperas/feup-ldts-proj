@@ -18,6 +18,16 @@ public class Arena implements Drawable {
     private final List<Wall> walls = new ArrayList<>();
     private final List<Collectible> collectibles = new ArrayList<>();
 
+    public void addEmployees(List<Employee> employees) {
+        this.employees.addAll(employees);
+    }
+    public void addWalls(List<Wall> walls) {
+        this.walls.addAll(walls);
+    }
+    public void addCollectibles(List<Collectible> collectibles) {
+        this.collectibles.addAll(collectibles);
+    }
+
     /**
      * Constructor
      * @param width horizontal size of the game arena
