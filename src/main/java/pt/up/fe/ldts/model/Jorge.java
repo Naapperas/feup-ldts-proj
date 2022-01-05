@@ -1,5 +1,7 @@
 package pt.up.fe.ldts.model;
 
+import pt.up.fe.ldts.view.gui.GUI;
+
 public class Jorge extends Entity{
 
     public static Jorge singleton = new Jorge(4, 5); // to be changed later
@@ -18,5 +20,8 @@ public class Jorge extends Entity{
         // change direction based on keystrokes
     }
 
+    @Override
+    public void render(GUI gui) {
 
+    }
 }

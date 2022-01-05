@@ -1,12 +1,22 @@
 package pt.up.fe.ldts.model;
 
+import pt.up.fe.ldts.view.Drawable;
+import pt.up.fe.ldts.view.gui.GUI;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class to handle visual elements of the game (mainly the game arena, the surface where every element is placed)
  */
-public class Arena {
+public class Arena implements Drawable {
 
     private int width;
     private int height;
+
+    private final List<Employee> employees = new ArrayList<>();
+    private final List<Wall> walls = new ArrayList<>();
+    private final List<Collectible> collectibles = new ArrayList<>();
 
     /**
      * Constructor
@@ -48,5 +58,10 @@ public class Arena {
      */
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    @Override
+    public void render(GUI gui) {
+
     }
 }
