@@ -1,5 +1,9 @@
 package pt.up.fe.ldts.model;
 
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
+import pt.up.fe.ldts.view.gui.GUI;
+
 public class Tremoco extends Collectible {
 
     static {
@@ -19,6 +23,18 @@ public class Tremoco extends Collectible {
     public void notifyCollected() {
 
         //TODO: when that is implemented, add score to Jorge
+
+    }
+
+    @Override
+    public void render(TextGraphics tg) {
+
+        var previousForegroundColor = tg.getForegroundColor();
+
+        tg.setForegroundColor(TextColor.Factory.fromString("#e4d5b7"));
+        tg.putString(this.getX(), this.getY(), "O");
+
+        tg.setForegroundColor(previousForegroundColor);
 
     }
 }

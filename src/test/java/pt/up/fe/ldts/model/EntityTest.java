@@ -1,8 +1,10 @@
 package pt.up.fe.ldts.model;
 
+import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import pt.up.fe.ldts.view.gui.GUI;
 
 public class EntityTest {
 
@@ -11,6 +13,11 @@ public class EntityTest {
     @BeforeEach
     public void setup(){
         entity = new Entity(4, 5) {
+            @Override
+            public void render(TextGraphics gui) {
+
+            }
+
             @Override
             public void changeDirection() {
 

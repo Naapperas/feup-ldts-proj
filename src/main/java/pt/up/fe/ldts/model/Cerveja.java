@@ -1,5 +1,9 @@
 package pt.up.fe.ldts.model;
 
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
+import pt.up.fe.ldts.view.gui.GUI;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +13,7 @@ public class Cerveja extends Collectible {
         Cerveja.POINTS_PER_ITEM = 20;
     }
 
-    private List<CervejaListener> listeners;
+    private final List<CervejaListener> listeners;
 
     public void addListener(CervejaListener listener) {
         this.listeners.add(listener);
@@ -30,5 +34,18 @@ public class Cerveja extends Collectible {
 
         //TODO: when that is implemented, add score to Jorge
         this.listeners.forEach(CervejaListener::cervejaPicked);
+    }
+
+    @Override
+    public void render(TextGraphics tg) {
+
+        var previousForegroundColor = tg.getForegroundColor();
+
+        tg.setForegroundColor(TextColor.Factory.fromString("#FFA500"));
+        tg.putString(this.getX(), this.getY(), "I");
+
+        tg.setForegroundColor(previousForegroundColor);
+
+
     }
 }

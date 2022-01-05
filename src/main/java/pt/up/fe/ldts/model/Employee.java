@@ -1,14 +1,27 @@
 package pt.up.fe.ldts.model;
 
 import com.github.javaparser.utils.Pair;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
+import pt.up.fe.ldts.view.gui.GUI;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Employee extends Entity implements CervejaListener {
 
-    private static int SCORE_WHEN_EATEN = 20;
+    public static final int SCORE_WHEN_EATEN = 20;
+
+    @Override
+    public void render(TextGraphics tg) {
+        var previousForegroundColor = tg.getForegroundColor();
+
+        tg.setForegroundColor(TextColor.Factory.fromString("#FFA500"));
+        tg.putString(this.getX(), this.getY(), "A");
+
+        tg.setForegroundColor(previousForegroundColor);
+    }
 
     public enum EmployeeState {
         SCATTER,
@@ -17,7 +30,7 @@ public class Employee extends Entity implements CervejaListener {
         DEAD
     }
 
-    private EmployeeAI ai;
+    private final EmployeeAI ai;
     private EmployeeState state = EmployeeState.SCATTER;
 
     /**
