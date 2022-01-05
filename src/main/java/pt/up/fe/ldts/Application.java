@@ -9,6 +9,7 @@ import pt.up.fe.ldts.view.gui.LanternaGUI;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -20,15 +21,15 @@ public class Application {
 
     private Arena arena;
 
-    private List<Wall> getMapWalls() {
-        return null;
+    private List<Wall> getMapWalls(int width, int heigth) {
+        return Arrays.asList(new Wall(10, 10));
     }
 
     public Application() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(WIDTH, HEIGTH);
 
         this.arena = new Arena(WIDTH, HEIGTH);
-        this.arena.addWalls(this.getMapWalls());
+        this.arena.addWalls(this.getMapWalls(WIDTH, HEIGTH));
 
         Renderer.addViewer(arena);
     }

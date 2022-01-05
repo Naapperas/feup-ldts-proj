@@ -27,8 +27,8 @@ public class Jorge extends Entity{
 
         var previousForegroundColor = tg.getForegroundColor();
 
-        tg.setForegroundColor(TextColor.Factory.fromString(TextColor.ANSI.YELLOW.name()));
-        tg.putString(this.getX(), this.getY(), "J");
+        tg.setForegroundColor(TextColor.Factory.fromString("#FFFF00"));
+        tg.putString(this.getX(), this.getY(), "O");
 
         tg.setForegroundColor(previousForegroundColor);
 
