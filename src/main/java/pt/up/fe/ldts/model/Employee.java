@@ -2,13 +2,19 @@ package pt.up.fe.ldts.model;
 
 import com.github.javaparser.utils.Pair;
 import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
+import pt.up.fe.ldts.view.gui.GUI;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Employee extends Entity implements CervejaListener {
 
-    private static int SCORE_WHEN_EATEN = 20;
+    private static final int SCORE_WHEN_EATEN = 20;
+
+    @Override
+    public void render(GUI gui) {
+
+    }
 
     public enum EmployeeState {
         SCATTER,

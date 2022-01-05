@@ -1,5 +1,7 @@
 package pt.up.fe.ldts.model;
 
+import pt.up.fe.ldts.view.gui.GUI;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,5 +32,10 @@ public class Cerveja extends Collectible {
 
         //TODO: when that is implemented, add score to Jorge
         this.listeners.forEach(CervejaListener::cervejaPicked);
+    }
+
+    @Override
+    public void render(GUI gui) {
+
     }
 }

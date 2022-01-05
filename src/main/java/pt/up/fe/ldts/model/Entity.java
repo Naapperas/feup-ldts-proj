@@ -3,7 +3,7 @@ package pt.up.fe.ldts.model;
 /**
  *
  */
-public abstract class Entity extends Element{
+public abstract class Entity extends Element {
 
     protected Vector direction;
 

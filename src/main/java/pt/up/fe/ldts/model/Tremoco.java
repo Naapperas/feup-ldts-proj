@@ -1,5 +1,7 @@
 package pt.up.fe.ldts.model;
 
+import pt.up.fe.ldts.view.gui.GUI;
+
 public class Tremoco extends Collectible {
 
     static {
@@ -19,6 +21,11 @@ public class Tremoco extends Collectible {
     public void notifyCollected() {
 
         //TODO: when that is implemented, add score to Jorge
+
+    }
+
+    @Override
+    public void render(GUI gui) {
 
     }
 }

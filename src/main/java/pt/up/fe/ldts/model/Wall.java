@@ -1,9 +1,11 @@
 package pt.up.fe.ldts.model;
 
+import pt.up.fe.ldts.view.gui.GUI;
+
 /**
  * Class to represent walls (elements that serve as impassable positions for entities)
  */
-public class Wall extends Element{
+public class Wall extends Element {
 
     /**
      * Constructs a new Wall on the given position
@@ -15,4 +17,8 @@ public class Wall extends Element{
     }
 
 
+    @Override
+    public void render(GUI gui) {
+
+    }
 }

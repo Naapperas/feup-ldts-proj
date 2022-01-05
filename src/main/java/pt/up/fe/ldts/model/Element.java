@@ -1,6 +1,8 @@
 package pt.up.fe.ldts.model;
 
-public abstract class Element {
+import pt.up.fe.ldts.view.Drawable;
+
+public abstract class Element implements Drawable {
 
     private final Point position;
 
