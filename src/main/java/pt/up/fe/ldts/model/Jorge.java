@@ -6,7 +6,7 @@ import pt.up.fe.ldts.view.gui.GUI;
 
 public class Jorge extends Entity{
 
-    public static Jorge singleton = new Jorge(13, 16); // to be changed later
+    public static Jorge singleton = new Jorge(13, 17); // to be changed later
 
     /**
      * Constructs a new Jorge on the given position
