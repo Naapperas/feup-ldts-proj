@@ -1,9 +1,14 @@
 package pt.up.fe.ldts.model;
 
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import pt.up.fe.ldts.model.Arena;
+import pt.up.fe.ldts.view.Renderer;
+import pt.up.fe.ldts.view.gui.GUI;
 
 import java.nio.file.FileSystemLoopException;
 import java.util.ArrayList;
@@ -64,7 +69,11 @@ public class ArenaTest {
         }
         arena.addEmployees(employees);
 
-        arena.render(null);
+        TextGraphics tg = Mockito.mock(TextGraphics.class);
+
+        arena.render(tg);
+
+        Mockito.verify(tg, Mockito.times(1)).fillRectangle(new TerminalPosition(0, 0), new TerminalSize(20, 20), ' ');
 
         Assertions.assertEquals(50, wallTest.get());
         Assertions.assertEquals(15, collectibleTest.get());

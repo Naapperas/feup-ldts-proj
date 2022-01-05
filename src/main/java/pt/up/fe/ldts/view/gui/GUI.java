@@ -1,5 +1,6 @@
 package pt.up.fe.ldts.view.gui;
 
+import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.model.Point;
 
 import java.io.IOException;
@@ -7,13 +8,7 @@ import java.io.IOException;
 public interface GUI {
     ACTION getNextAction() throws IOException;
 
-    void drawJorge(Point position);
-
-    void drawWall(Point position);
-
-    void drawEmployee(Point position);
-
-    void drawText(Point position, String text, String color);
+    TextGraphics getTextGraphics();
 
     void clear();
 

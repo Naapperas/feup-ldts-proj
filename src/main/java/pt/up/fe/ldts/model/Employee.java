@@ -1,6 +1,7 @@
 package pt.up.fe.ldts.model;
 
 import com.github.javaparser.utils.Pair;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
 import pt.up.fe.ldts.view.gui.GUI;
 
@@ -12,7 +13,7 @@ public class Employee extends Entity implements CervejaListener {
     private static final int SCORE_WHEN_EATEN = 20;
 
     @Override
-    public void render(GUI gui) {
+    public void render(TextGraphics gui) {
 
     }
 
@@ -23,7 +24,7 @@ public class Employee extends Entity implements CervejaListener {
         DEAD
     }
 
-    private EmployeeAI ai;
+    private final EmployeeAI ai;
     private EmployeeState state = EmployeeState.SCATTER;
 
     /**

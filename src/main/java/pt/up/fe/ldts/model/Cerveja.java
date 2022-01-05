@@ -1,5 +1,6 @@
 package pt.up.fe.ldts.model;
 
+import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.view.gui.GUI;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class Cerveja extends Collectible {
     }
 
     @Override
-    public void render(GUI gui) {
+    public void render(TextGraphics gui) {
 
     }
 }

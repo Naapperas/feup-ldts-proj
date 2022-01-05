@@ -1,5 +1,9 @@
 package pt.up.fe.ldts.model;
 
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.view.Drawable;
 import pt.up.fe.ldts.view.gui.GUI;
 
@@ -71,17 +75,20 @@ public class Arena implements Drawable {
     }
 
     @Override
-    public void render(GUI gui) {
+    public void render(TextGraphics tg) {
+
+        tg.setBackgroundColor(TextColor.Factory.fromString(TextColor.ANSI.BLACK.name()));
+        tg.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
 
         for (var wall : this.walls)
-            wall.render(gui);
+            wall.render(tg);
 
         for (var collectible : this.collectibles)
-            collectible.render(gui);
+            collectible.render(tg);
 
         for (var employee : this.employees)
-            employee.render(gui);
+            employee.render(tg);
 
-        Jorge.singleton.render(gui);
+        Jorge.singleton.render(tg);
     }
 }

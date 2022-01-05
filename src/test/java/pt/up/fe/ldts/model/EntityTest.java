@@ -1,5 +1,6 @@
 package pt.up.fe.ldts.model;
 
+import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -13,7 +14,7 @@ public class EntityTest {
     public void setup(){
         entity = new Entity(4, 5) {
             @Override
-            public void render(GUI gui) {
+            public void render(TextGraphics gui) {
 
             }
 

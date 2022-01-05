@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * Class that represents a vector (used in calculations with points)
  */
-public record Vector(int x, int y) implements Comparable {
+public record Vector(int x, int y) implements Comparable<Vector> {
 
     public static Vector NULL = new Vector(0, 0);
     public static Vector LEFT = new Vector(-1, 0);
@@ -46,7 +46,7 @@ public record Vector(int x, int y) implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {  // UP > LEFT > DOWN > RIGHT
+    public int compareTo(Vector o) {  // UP > LEFT > DOWN > RIGHT
         if (this.equals(Vector.UP)) {
             return o.equals(Vector.UP) ? 0 : -1;
         }

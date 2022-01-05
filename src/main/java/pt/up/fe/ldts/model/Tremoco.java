@@ -1,5 +1,6 @@
 package pt.up.fe.ldts.model;
 
+import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.view.gui.GUI;
 
 public class Tremoco extends Collectible {
@@ -25,7 +26,7 @@ public class Tremoco extends Collectible {
     }
 
     @Override
-    public void render(GUI gui) {
+    public void render(TextGraphics gui) {
 
     }
 }

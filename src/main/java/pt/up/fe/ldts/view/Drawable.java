@@ -1,7 +1,7 @@
 package pt.up.fe.ldts.view;
 
-import pt.up.fe.ldts.view.gui.GUI;
+import com.googlecode.lanterna.graphics.TextGraphics;
 
 public interface Drawable {
-    void render(GUI gui);
+    void render(TextGraphics tg);
 }
