@@ -1,4 +1,4 @@
-package pt.up.fe.ldts.view;
+package pt.up.fe.ldts.model;
 
 /**
  * Class to handle visual elements of the game (mainly the game arena, the surface where every element is placed)

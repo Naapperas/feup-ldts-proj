@@ -2,6 +2,7 @@ package pt.up.fe.ldts.view;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pt.up.fe.ldts.model.Arena;
 
 public class ArenaTest {
 
