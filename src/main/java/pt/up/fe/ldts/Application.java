@@ -17,7 +17,7 @@ public class Application {
     private final GUI gui;
     private Object state;
 
-    private static final int WIDTH = 20, HEIGTH = 20;
+    private static final int WIDTH = 27, HEIGTH = 30;
 
     private Arena arena;
 
