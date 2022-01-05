@@ -30,7 +30,7 @@ public class Application {
         for (int i = 0; i<=WIDTH; i++)
             walls.add(new Wall(i, 0));
         for (int i = 0; i<=WIDTH; i++)
-            walls.add(new Wall(i, 30));
+            walls.add(new Wall(i, HEIGTH));
 
         // SIDES
         for (int i = 0; i<=HEIGTH; i++) {

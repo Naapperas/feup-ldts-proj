@@ -21,10 +21,13 @@ public class Wall extends Element {
     public void render(TextGraphics tg) {
 
         var previousForegroundColor = tg.getForegroundColor();
+        var previousBackgroundColor = tg.getBackgroundColor();
 
+        tg.setBackgroundColor(TextColor.Factory.fromString(TextColor.ANSI.BLUE.name()));
         tg.setForegroundColor(TextColor.Factory.fromString(TextColor.ANSI.BLUE.name()));
         tg.putString(this.getX(), this.getY(), "W");
 
         tg.setForegroundColor(previousForegroundColor);
+        tg.setBackgroundColor(previousBackgroundColor);
     }
 }
