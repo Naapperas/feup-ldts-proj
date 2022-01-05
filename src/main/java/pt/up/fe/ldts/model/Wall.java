@@ -1,7 +1,7 @@
 package pt.up.fe.ldts.model;
 
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import pt.up.fe.ldts.view.gui.GUI;
 
 /**
  * Class to represent walls (elements that serve as impassable positions for entities)
@@ -17,9 +17,14 @@ public class Wall extends Element {
         super(x,y);
     }
 
-
     @Override
-    public void render(TextGraphics gui) {
+    public void render(TextGraphics tg) {
 
+        var previousForegroundColor = tg.getForegroundColor();
+
+        tg.setForegroundColor(TextColor.Factory.fromString(TextColor.ANSI.BLUE.name()));
+        tg.putString(this.getX(), this.getY(), "W");
+
+        tg.setForegroundColor(previousForegroundColor);
     }
 }

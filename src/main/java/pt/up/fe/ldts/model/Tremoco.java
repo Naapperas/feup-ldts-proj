@@ -1,5 +1,6 @@
 package pt.up.fe.ldts.model;
 
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.view.gui.GUI;
 
@@ -26,7 +27,14 @@ public class Tremoco extends Collectible {
     }
 
     @Override
-    public void render(TextGraphics gui) {
+    public void render(TextGraphics tg) {
+
+        var previousForegroundColor = tg.getForegroundColor();
+
+        tg.setForegroundColor(TextColor.Factory.fromString("#e4d5b7"));
+        tg.putString(this.getX(), this.getY(), "O");
+
+        tg.setForegroundColor(previousForegroundColor);
 
     }
 }

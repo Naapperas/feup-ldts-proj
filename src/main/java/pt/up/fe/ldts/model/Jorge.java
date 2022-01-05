@@ -1,5 +1,6 @@
 package pt.up.fe.ldts.model;
 
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.view.gui.GUI;
 
@@ -22,7 +23,14 @@ public class Jorge extends Entity{
     }
 
     @Override
-    public void render(TextGraphics gui) {
+    public void render(TextGraphics tg) {
+
+        var previousForegroundColor = tg.getForegroundColor();
+
+        tg.setForegroundColor(TextColor.Factory.fromString(TextColor.ANSI.YELLOW.name()));
+        tg.putString(this.getX(), this.getY(), "J");
+
+        tg.setForegroundColor(previousForegroundColor);
 
     }
 }
