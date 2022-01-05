@@ -13,11 +13,12 @@ It's Halloween night, so __Jorge__ and the employees are dressed as the characte
 Check the full report [here](docs/README.md)  
 <br />
 
-This project was developed by [Gonçalo Marques](https://github.com/GoncaloMarques-up) (up202006874), [Nuno Pereira](https://github.com/Naapperas) (up202007865) and [Pedro Nunes](https://github.com/pedronunes19) (up202004714) for LDTS 2021/2022.
-
-<br/>
 
 <p align="center">
 <img src="docs/images/pacman.gif"/>
 </p>  
+
+<br/>
+
+This project was developed by [Gonçalo Marques](https://github.com/GoncaloMarques-up) (up202006874), [Nuno Pereira](https://github.com/Naapperas) (up202007865) and [Pedro Nunes](https://github.com/pedronunes19) (up202004714) for LDTS 2021/2022.
 
