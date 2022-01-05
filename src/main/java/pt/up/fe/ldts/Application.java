@@ -215,10 +215,10 @@ public class Application {
 
     private List<Employee> getMapEmployees(){
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee(13, 13, new BaltaAI()));
+        employees.add(new Employee(13, 14, new BaltaAI()));
         employees.add(new Employee(13, 14, new MariAI()));
-        employees.add(new Employee(14, 14, new ZeCastroAI(employees.get(0))));
-        employees.add(new Employee(12, 14, new ToniAI()));
+        employees.add(new Employee(13, 14, new ZeCastroAI(employees.get(0))));
+        employees.add(new Employee(13, 14, new ToniAI()));
         return employees;
     }
 
