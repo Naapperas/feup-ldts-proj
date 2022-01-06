@@ -16,7 +16,7 @@ public class Employee extends Entity implements CervejaListener {
         var previousForegroundColor = tg.getForegroundColor();
 
         tg.setForegroundColor(this.ai.getEmployeeColor());
-        tg.putString(this.getX(), this.getY(), "A");
+        tg.putString(this.getX(), this.getY(), "d");
 
         tg.setForegroundColor(previousForegroundColor);
     }
