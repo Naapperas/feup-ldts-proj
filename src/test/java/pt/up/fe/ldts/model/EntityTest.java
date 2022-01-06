@@ -19,7 +19,7 @@ public class EntityTest {
             }
 
             @Override
-            public void changeDirection() {
+            public void changeDirection(Arena arena) {
 
             }
         };

@@ -23,9 +23,9 @@ public class AITest {
     public void toniTest(){
         EmployeeAI toni = new ToniAI();
 
-        Assertions.assertEquals(ToniAI.SCATTER_TARGET, toni.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
+        Assertions.assertEquals(toni.getScatterTarget(), toni.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
 
-        Assertions.assertEquals(ToniAI.SCATTER_TARGET, toni.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
+        Assertions.assertEquals(toni.getScatterTarget(), toni.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
 
         pos = pos.addVector(new Vector(10,10));
 
@@ -40,7 +40,7 @@ public class AITest {
     public void baltaTest(){
         EmployeeAI baltazar = new BaltaAI();
 
-        Assertions.assertEquals(BaltaAI.SCATTER_TARGET, baltazar.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
+        Assertions.assertEquals(baltazar.getScatterTarget(), baltazar.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
 
         Assertions.assertEquals(Jorge.singleton.getPosition(), baltazar.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
 
@@ -53,7 +53,7 @@ public class AITest {
         EmployeeAI mariana = new MariAI();
         Point target = Jorge.singleton.getPosition().addVector(new Vector(-4,-4));
 
-        Assertions.assertEquals(MariAI.SCATTER_TARGET, mariana.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
+        Assertions.assertEquals(mariana.getScatterTarget(), mariana.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
 
         Assertions.assertEquals(target, mariana.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
 
@@ -83,7 +83,7 @@ public class AITest {
 
             target = target.addVector(Vector.from(balta.getPosition(), target));
 
-            Assertions.assertEquals(ZeCastroAI.SCATTER_TARGET, zeCastroAI.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
+            Assertions.assertEquals(zeCastroAI.getScatterTarget(), zeCastroAI.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
 
             Assertions.assertEquals(target, zeCastroAI.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
         }

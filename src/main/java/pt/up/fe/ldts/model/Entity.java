@@ -59,5 +59,5 @@ public abstract class Entity extends Element {
      * Change an entity's current direction
      * Abstract so different entities have different ways of choosing which direction to take
      */
-    public abstract void changeDirection();
+    public abstract void changeDirection(Arena arena);
 }

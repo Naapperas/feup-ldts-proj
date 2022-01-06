@@ -1,10 +1,8 @@
 package pt.up.fe.ldts.model;
 
 import com.github.javaparser.utils.Pair;
-import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
-import pt.up.fe.ldts.view.gui.GUI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,11 +71,16 @@ public class Employee extends Entity implements CervejaListener {
     }
 
     @Override
-    public void changeDirection() {
+    public void changeDirection(Arena arena) {
 
-        var targetPoint = this.ai.chooseTargetPosition(this.getCurrentState(), this.getPosition());
+        Point targetPoint;
 
-        this.setDirection(this.chooseNextDirection(targetPoint));
+        if (this.getPosition().equals(new Point(13, 13)) || ((11 <= this.getPosition().getX() && this.getPosition().getX() <= 15) && (14 <= this.getPosition().getY() && this.getPosition().getY() <= 16))) {
+            targetPoint = new Point(13, 12); // make them leave the box initially
+        } else
+            targetPoint = this.ai.chooseTargetPosition(this.getCurrentState(), this.getPosition());
+
+        this.setDirection(this.chooseNextDirection(arena, targetPoint));
     }
 
     /**
@@ -85,9 +88,9 @@ public class Employee extends Entity implements CervejaListener {
      * @param targetPoint the position this employee is targeting
      * @return new direction as vector
      */
-    private Vector chooseNextDirection(Point targetPoint) {
+    private Vector chooseNextDirection(Arena arena, Point targetPoint) {
 
-        var possibleDirections = this.possibleDirections(this.getDirection());
+        var possibleDirections = arena.getValidDirections(this.getPosition(), this.getDirection(), false);
         List<Pair<Vector, Double>> directionPairs = new ArrayList<>();
 
         for (var direction : possibleDirections)
@@ -101,29 +104,5 @@ public class Employee extends Entity implements CervejaListener {
         });
 
         return directionPairs.get(0).a;
-    }
-
-
-    private List<Vector> possibleDirections(Vector direction){ // prototype, to be under the responsibility of the map
-        List<Vector> directions = new ArrayList<>();
-
-        if (Vector.UP.equals(direction)) {
-            directions.add(Vector.UP);
-            directions.add(Vector.LEFT);
-            directions.add(Vector.RIGHT);
-        } else if (Vector.LEFT.equals(direction)) {
-            directions.add(Vector.LEFT);
-            directions.add(Vector.DOWN);
-            directions.add(Vector.UP);
-        } else if (Vector.DOWN.equals(direction)) {
-            directions.add(Vector.DOWN);
-            directions.add(Vector.RIGHT);
-            directions.add(Vector.LEFT);
-        } else if (Vector.RIGHT.equals(direction)) {
-            directions.add(Vector.RIGHT);
-            directions.add(Vector.UP);
-            directions.add(Vector.DOWN);
-        }
-        return directions;
     }
 }

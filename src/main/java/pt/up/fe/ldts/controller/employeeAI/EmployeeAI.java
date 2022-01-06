@@ -10,7 +10,11 @@ import pt.up.fe.ldts.model.Point;
 public abstract class EmployeeAI {
 
     protected static final Point DEAD_TARGET = new Point(10,10); // respawn
-    protected static Point SCATTER_TARGET;
+    protected Point SCATTER_TARGET;
+
+    public Point getScatterTarget() {
+        return this.SCATTER_TARGET;
+    }
 
     /**
      * Chooses the next direction for this Employee

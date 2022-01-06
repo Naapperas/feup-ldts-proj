@@ -10,11 +10,8 @@ import java.util.Random;
 
 public class ToniAI extends EmployeeAI { //clyde
 
-    static {
-        SCATTER_TARGET = new Point(0,20);
-    }
-
     public ToniAI() {
+        SCATTER_TARGET = new Point(-10,50); // why 50?
     }
 
     Random random = new Random();
@@ -22,7 +19,7 @@ public class ToniAI extends EmployeeAI { //clyde
     @Override
     public Point chooseTargetPosition(Employee.EmployeeState state, Point position){
         return switch (state){
-            case SCATTER -> SCATTER_TARGET;
+            case SCATTER -> this.getScatterTarget();
             case CHASING -> Vector.from(Jorge.singleton.getPosition(), position).magnitude() > 8 ? Jorge.singleton.getPosition() : SCATTER_TARGET;
             case DEAD -> DEAD_TARGET;
             case FRIGHTENED -> new Point(random.nextInt(20), random.nextInt(20));
