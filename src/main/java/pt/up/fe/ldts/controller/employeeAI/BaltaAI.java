@@ -9,8 +9,8 @@ import java.util.Random;
 
 public class BaltaAI extends EmployeeAI{ //blinky
 
-    static {
-        SCATTER_TARGET = new Point(20,0);
+    {
+        this.SCATTER_TARGET = new Point(20,0);
     }
 
     public BaltaAI() {
@@ -21,7 +21,7 @@ public class BaltaAI extends EmployeeAI{ //blinky
     @Override
     public Point chooseTargetPosition(Employee.EmployeeState state, Point position){
         return switch (state){
-            case SCATTER -> SCATTER_TARGET;
+            case SCATTER -> this.getScatterTarget();
             case CHASING -> Jorge.singleton.getPosition();
             case DEAD -> DEAD_TARGET;
             case FRIGHTENED -> new Point(random.nextInt(20), random.nextInt(20));

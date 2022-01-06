@@ -11,8 +11,8 @@ import java.util.Random;
 public class ZeCastroAI extends EmployeeAI{ //inky
 
     private final Employee balta;
-    static {
-        SCATTER_TARGET = new Point(20,20);
+    {
+        this.SCATTER_TARGET = new Point(20,20);
     }
 
     public ZeCastroAI(Employee balta){
@@ -24,7 +24,7 @@ public class ZeCastroAI extends EmployeeAI{ //inky
     @Override
     public Point chooseTargetPosition(Employee.EmployeeState state, Point position){
         return switch (state){
-            case SCATTER -> SCATTER_TARGET;
+            case SCATTER -> this.getScatterTarget();
             case CHASING -> chasingTarget();
             case DEAD -> DEAD_TARGET;
             case FRIGHTENED -> new Point(random.nextInt(20), random.nextInt(20));

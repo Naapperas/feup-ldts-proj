@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class MariAI extends EmployeeAI { //pinky
 
-    static {
+    {
         SCATTER_TARGET = new Point(0,0);
     }
 
@@ -22,7 +22,7 @@ public class MariAI extends EmployeeAI { //pinky
     @Override
     public Point chooseTargetPosition(Employee.EmployeeState state, Point position){
         return switch (state){
-            case SCATTER -> SCATTER_TARGET;
+            case SCATTER -> this.getScatterTarget();
             case CHASING -> chasingTarget();
             case DEAD -> DEAD_TARGET;
             case FRIGHTENED -> new Point(random.nextInt(20), random.nextInt(20));

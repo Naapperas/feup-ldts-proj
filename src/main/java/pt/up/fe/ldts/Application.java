@@ -248,11 +248,14 @@ public class Application {
             long lastTime = System.currentTimeMillis();
 
             if (lastTime - startTime > 500) {
-                // update entities
+                this.arena.getEmployees().forEach(employee -> {
+                    employee.changeDirection(this.arena);
+                    employee.move();
+                });
+                startTime = lastTime;
             }
 
             Renderer.render(gui);
-            startTime = lastTime;
 
             long elapsedTime = System.currentTimeMillis() - lastTime;
             long sleepTime = frameTime - elapsedTime;
