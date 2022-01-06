@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Jorge extends Entity{
 
-    public static Jorge singleton = new Jorge(7, 6); // to be changed later
+    public static Jorge singleton = new Jorge(13, 18); // to be changed later
 
     AtomicInteger score = new AtomicInteger(0);
 
@@ -21,7 +21,7 @@ public class Jorge extends Entity{
     }
 
     @Override
-    public void changeDirection() {
+    public void changeDirection(Arena arena) {
         // change direction based on keystrokes
     }
 

@@ -4,6 +4,7 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import groovyjarjarantlr4.v4.runtime.atn.EpsilonTransition;
 import pt.up.fe.ldts.view.Drawable;
 
 import java.util.ArrayList;
@@ -23,6 +24,10 @@ public class Arena implements Drawable {
     private final List<Employee> employees = new ArrayList<>();
     private final List<Wall> walls = new ArrayList<>();
     private final List<Collectible> collectibles = new ArrayList<>();
+
+    public List<Employee> getEmployees() {
+        return this.employees;
+    }
 
     public void addEmployees(List<Employee> employees) {
         this.employees.addAll(employees);
