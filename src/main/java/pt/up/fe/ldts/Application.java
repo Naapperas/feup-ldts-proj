@@ -237,15 +237,25 @@ public class Application {
 
     private void start() throws IOException {
 
+        boolean running = true;
+
         int FPS = 60;
         int frameTime = 1000 / FPS;
 
-        int test = 0;
-
         long startTime = System.currentTimeMillis();
-        while (test++ <= 1000) {
+        while (running) {
 
             long lastTime = System.currentTimeMillis();
+
+            GUI.ACTION currentAction = gui.getNextAction();
+
+            switch (currentAction) {
+                case QUIT:
+                    running = false;
+                case NONE:
+                default:
+                    break;
+            }
 
             if (lastTime - startTime > TICK_TIME) {
                 this.arena.getEmployees().forEach(employee -> {

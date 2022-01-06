@@ -80,8 +80,6 @@ public class Employee extends Entity implements CervejaListener {
         } else
             targetPoint = this.ai.chooseTargetPosition(this.getCurrentState(), this.getPosition());
 
-        System.out.println(targetPoint.getX() + " " + targetPoint.getY());
-
         this.setDirection(this.chooseNextDirection(arena, targetPoint));
     }
 
