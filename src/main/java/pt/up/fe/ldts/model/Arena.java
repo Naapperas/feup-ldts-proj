@@ -77,7 +77,17 @@ public class Arena implements Drawable {
     }
 
     public Set<Vector> getValidDirections(Point position, Vector currentDirection, boolean isJorge) {
-        return null;
+        Set<Vector> validDirs = new HashSet<>(List.of(Vector.UP, Vector.LEFT, Vector.DOWN, Vector.RIGHT));
+
+        return validDirs
+                .stream()
+                .filter(dir -> isJorge || !dir.equals(currentDirection.multiply(-1)))
+                .filter(dir -> {
+                    var newPosition = position.addVector(dir);
+
+                    return !this.walls.contains(new Wall(newPosition.getX(), newPosition.getY()));
+                })
+                .collect(Collectors.toUnmodifiableSet());
     }
 
     @Override

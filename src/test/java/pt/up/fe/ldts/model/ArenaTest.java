@@ -10,6 +10,7 @@ import pt.up.fe.ldts.model.Arena;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
 
+import java.awt.image.DirectColorModel;
 import java.nio.file.FileSystemLoopException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -278,7 +279,7 @@ public class ArenaTest {
 
         {
             Jorge.singleton.changePos(6, 6);
-            Set<Vector> expected = Set.of(Vector.LEFT, Vector.DOWN, Vector.RIGHT);
+            Set<Vector> expected = Set.of(Vector.UP, Vector.LEFT, Vector.RIGHT);
 
             Assertions.assertEquals(expected, arena.getValidDirections(Jorge.singleton.getPosition(), Jorge.singleton.getDirection(), false));
         }
@@ -288,6 +289,14 @@ public class ArenaTest {
             Set<Vector> expected = Set.of(Vector.UP, Vector.LEFT, Vector.DOWN, Vector.RIGHT);
 
             Assertions.assertEquals(expected, arena.getValidDirections(Jorge.singleton.getPosition(), Jorge.singleton.getDirection(), true));
+        }
+
+        {
+            Jorge.singleton.changePos(7, 6);
+            Jorge.singleton.setDirection(Vector.RIGHT);
+            Set<Vector> expected = Set.of(Vector.RIGHT);
+
+            Assertions.assertEquals(expected, arena.getValidDirections(Jorge.singleton.getPosition(), Jorge.singleton.getDirection(), false));
         }
     }
 }
