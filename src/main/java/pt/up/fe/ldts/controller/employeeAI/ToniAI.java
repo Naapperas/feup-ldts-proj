@@ -10,11 +10,8 @@ import java.util.Random;
 
 public class ToniAI extends EmployeeAI { //clyde
 
-    {
-        SCATTER_TARGET = new Point(0,20);
-    }
-
     public ToniAI() {
+        SCATTER_TARGET = new Point(-10,50); // why 50?
     }
 
     Random random = new Random();

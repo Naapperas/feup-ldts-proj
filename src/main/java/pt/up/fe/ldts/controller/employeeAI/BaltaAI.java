@@ -9,11 +9,8 @@ import java.util.Random;
 
 public class BaltaAI extends EmployeeAI{ //blinky
 
-    {
-        this.SCATTER_TARGET = new Point(20,0);
-    }
-
     public BaltaAI() {
+        this.SCATTER_TARGET = new Point(37,-20); // somehow 21 fixes the problem
     }
 
     Random random = new Random();

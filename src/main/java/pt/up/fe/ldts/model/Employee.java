@@ -73,7 +73,12 @@ public class Employee extends Entity implements CervejaListener {
     @Override
     public void changeDirection(Arena arena) {
 
-        var targetPoint = this.ai.chooseTargetPosition(this.getCurrentState(), this.getPosition());
+        Point targetPoint;
+
+        if (this.getPosition().equals(new Point(13, 13)) || ((11 <= this.getPosition().getX() && this.getPosition().getX() <= 15) && (14 <= this.getPosition().getY() && this.getPosition().getY() <= 16))) {
+            targetPoint = new Point(13, 12); // make them leave the box initially
+        } else
+            targetPoint = this.ai.chooseTargetPosition(this.getCurrentState(), this.getPosition());
 
         System.out.println(targetPoint.getX() + " " + targetPoint.getY());
 

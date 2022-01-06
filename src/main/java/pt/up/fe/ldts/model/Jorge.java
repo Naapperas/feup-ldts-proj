@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Jorge extends Entity{
 
-    public static Jorge singleton = new Jorge(13, 18); // to be changed later
+    public static Jorge singleton = new Jorge(13, 24); // to be changed later
 
     AtomicInteger score = new AtomicInteger(0);
 

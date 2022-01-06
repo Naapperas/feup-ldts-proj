@@ -11,11 +11,9 @@ import java.util.Random;
 public class ZeCastroAI extends EmployeeAI{ //inky
 
     private final Employee balta;
-    {
-        this.SCATTER_TARGET = new Point(20,20);
-    }
 
     public ZeCastroAI(Employee balta){
+        this.SCATTER_TARGET = new Point(40,50);
         this.balta = balta;
     }
 
