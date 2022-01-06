@@ -86,12 +86,14 @@ public class Arena implements Drawable {
 
         return validDirs
                 .stream()
-                .filter(dir -> isJorge || !dir.equals(currentDirection.multiply(-1)))
-                .filter(dir -> {
+                .filter(dir -> isJorge || !dir.equals(currentDirection.multiply(-1))) // ghosts can't go back
+                .filter(dir -> { // cant go through walls
                     var newPosition = position.addVector(dir);
 
                     return !this.walls.contains(new Wall(newPosition.getX(), newPosition.getY()));
                 })
+                .filter(dir -> isJorge || !dir.equals(Vector.UP) || !((position.getY() == 12 || position.getY() == 24) && (9 <= position.getX() && position.getX() <= 17))) // ghosts cant go up on corridors
+                .filter(dir -> !position.equals(new Point(13, 12)) || !dir.equals(Vector.DOWN)) // cant go back to initial box
                 .collect(Collectors.toUnmodifiableSet());
     }
 

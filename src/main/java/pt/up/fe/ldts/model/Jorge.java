@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Jorge extends Entity{
 
-    public static Jorge singleton = new Jorge(13, 24); // to be changed later
+    public static Jorge singleton = new Jorge(13, 18); // to be changed later
 
     AtomicInteger score = new AtomicInteger(0);
 
@@ -18,6 +18,7 @@ public class Jorge extends Entity{
      */
     private Jorge(int x, int y) {
         super(x, y);
+        this.setDirection(Vector.UP);
     }
 
     @Override

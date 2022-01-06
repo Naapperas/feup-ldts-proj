@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Application {
 
-    private static final int TICK_TIME = 150;
+    private static final int TICK_TIME = 50;
 
     private final GUI gui;
 
