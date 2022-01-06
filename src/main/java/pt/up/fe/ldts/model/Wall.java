@@ -30,4 +30,12 @@ public class Wall extends Element {
         tg.setForegroundColor(previousForegroundColor);
         tg.setBackgroundColor(previousBackgroundColor);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Wall w = (Wall) obj;
+        return w.getPosition().equals(this.getPosition());
+    }
 }

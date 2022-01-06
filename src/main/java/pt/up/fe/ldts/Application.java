@@ -27,23 +27,22 @@ public class Application {
     private List<Wall> getMapWalls(int width, int heigth) {
         List<Wall> walls = new ArrayList<>();
         // UPPER AND LOWER BOUNDS
-        for (int i = 0; i<=WIDTH; i++)
+        for (int i = 0; i<=width; i++)
             walls.add(new Wall(i, 1));
-        for (int i = 0; i<=WIDTH; i++)
-            walls.add(new Wall(i, HEIGTH+1));
+        for (int i = 0; i<=width; i++)
+            walls.add(new Wall(i, heigth+1));
 
         // SIDES
-        for (int i = 0; i<=HEIGTH; i++) {
+        for (int i = 0; i<=heigth; i++) {
             if (i == 10 || i == 11 || i == 12 || i == 14|| i == 16 || i == 17 || i == 18)
                 continue;
             walls.add(new Wall(0, i+1));
         }
-        for (int i = 0; i<=HEIGTH; i++) {
+        for (int i = 0; i<=heigth; i++) {
             if (i == 10 || i == 11 || i == 12 || i == 14|| i == 16 || i == 17 || i == 18)
                 continue;
             walls.add(new Wall(26, i+1));
         }
-
 
         // SMALLER PARTS OF THE BORDER
         for (int i = 1; i<=5; i++)
@@ -77,7 +76,6 @@ public class Application {
             walls.add(new Wall(5, i));
             walls.add(new Wall(21, i));
         }
-
 
         // CENTER
         for (int i = 10; i<=16; i++) {
@@ -118,7 +116,6 @@ public class Application {
             walls.add(new Wall(i, 5));
         }
 
-
         // OTHER STUFF MIDDLE/TOP
         for (int i = 10; i<=16; i++) {
             walls.add(new Wall(i, 7));
@@ -144,7 +141,6 @@ public class Application {
             walls.add(new Wall(i, 11));
         }
 
-
         // OTHER STUFF MIDDLE/BOTTOM
         for (int i = 10; i<=16; i++) {
             walls.add(new Wall(i, 19));
@@ -161,7 +157,6 @@ public class Application {
             walls.add(new Wall(18, i));
             walls.add(new Wall(19, i));
         }
-
 
         // OTHER STUFF BOTTOM
         for (int i = 10; i<=16; i++) {

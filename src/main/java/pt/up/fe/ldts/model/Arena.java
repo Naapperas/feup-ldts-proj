@@ -7,7 +7,10 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.view.Drawable;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Class to handle visual elements of the game (mainly the game arena, the surface where every element is placed)
@@ -73,6 +76,10 @@ public class Arena implements Drawable {
         this.height = height;
     }
 
+    public Set<Vector> getValidDirections(Point position, Vector currentDirection, boolean isJorge) {
+        return null;
+    }
+
     @Override
     public void render(TextGraphics tg) {
 
@@ -88,6 +95,6 @@ public class Arena implements Drawable {
         for (var employee : this.employees)
             employee.render(tg);
 
-        Jorge.singleton.render(tg);
+        Jorge.singleton.render(tg); // make Jorge the last element to be rendered on screen so the score always appears on top
     }
 }
