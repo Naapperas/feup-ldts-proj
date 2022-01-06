@@ -1,5 +1,6 @@
 package pt.up.fe.ldts.controller.employeeAI;
 
+import com.googlecode.lanterna.TextColor;
 import pt.up.fe.ldts.model.Employee;
 import pt.up.fe.ldts.model.Jorge;
 import pt.up.fe.ldts.model.Point;
@@ -25,5 +26,9 @@ public class BaltaAI extends EmployeeAI{ //blinky
             case DEAD -> DEAD_TARGET;
             case FRIGHTENED -> new Point(random.nextInt(20), random.nextInt(20));
         };
+    }
+
+    public TextColor getEmployeeColor() {
+        return TextColor.Factory.fromString("#E70000");
     }
 }

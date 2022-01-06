@@ -1,5 +1,6 @@
 package pt.up.fe.ldts.controller.employeeAI;
 
+import com.googlecode.lanterna.TextColor;
 import pt.up.fe.ldts.model.Employee;
 import pt.up.fe.ldts.model.Jorge;
 import pt.up.fe.ldts.model.Point;
@@ -7,7 +8,7 @@ import pt.up.fe.ldts.model.Vector;
 
 import java.util.Random;
 
-public class MariAI extends EmployeeAI{ //pinky
+public class MariAI extends EmployeeAI { //pinky
 
     static {
         SCATTER_TARGET = new Point(0,0);
@@ -27,6 +28,11 @@ public class MariAI extends EmployeeAI{ //pinky
             case FRIGHTENED -> new Point(random.nextInt(20), random.nextInt(20));
 
         };
+    }
+
+    @Override
+    public TextColor getEmployeeColor() {
+        return TextColor.Factory.fromString("#ed8fe4");
     }
 
     /**

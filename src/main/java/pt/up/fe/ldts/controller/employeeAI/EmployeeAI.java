@@ -1,5 +1,6 @@
 package pt.up.fe.ldts.controller.employeeAI;
 
+import com.googlecode.lanterna.TextColor;
 import pt.up.fe.ldts.model.Employee;
 import pt.up.fe.ldts.model.Point;
 
@@ -16,4 +17,5 @@ public abstract class EmployeeAI {
      */
     public abstract Point chooseTargetPosition(Employee.EmployeeState state, Point position);
 
+    public abstract TextColor getEmployeeColor();
 }
