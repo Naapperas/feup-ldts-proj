@@ -1,9 +1,8 @@
 package pt.up.fe.ldts;
 
 import pt.up.fe.ldts.controller.employeeAI.*;
-import pt.up.fe.ldts.model.Arena;
-import pt.up.fe.ldts.model.Employee;
-import pt.up.fe.ldts.model.Wall;
+import pt.up.fe.ldts.model.*;
+import pt.up.fe.ldts.model.Point;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
@@ -12,13 +11,13 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
 
+    private static final int TICK_TIME = 150;
+
     private final GUI gui;
-    private Object state;
 
     private static final int WIDTH = 27, HEIGTH = 30;
 
@@ -237,17 +236,18 @@ public class Application {
     }
 
     private void start() throws IOException {
+
         int FPS = 60;
         int frameTime = 1000 / FPS;
 
         int test = 0;
 
         long startTime = System.currentTimeMillis();
-        while (test++ <= 500) {
+        while (test++ <= 1000) {
 
             long lastTime = System.currentTimeMillis();
 
-            if (lastTime - startTime > 500) {
+            if (lastTime - startTime > TICK_TIME) {
                 this.arena.getEmployees().forEach(employee -> {
                     employee.changeDirection(this.arena);
                     employee.move();
