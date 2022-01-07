@@ -6,6 +6,10 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import pt.up.fe.ldts.controller.employeeAI.BaltaAI;
+import pt.up.fe.ldts.controller.employeeAI.MariAI;
+import pt.up.fe.ldts.controller.employeeAI.ToniAI;
+import pt.up.fe.ldts.controller.employeeAI.ZeCastroAI;
 import pt.up.fe.ldts.model.Arena;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
@@ -269,6 +273,15 @@ public class ArenaTest {
         return walls;
     }
 
+    private List<Employee> getMapEmployees(){
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee(13, 15, new BaltaAI()));
+        employees.add(new Employee(13, 16, new MariAI()));
+        employees.add(new Employee(14, 16, new ZeCastroAI(employees.get(0))));
+        employees.add(new Employee(12, 16, new ToniAI()));
+        return employees;
+    }
+
     @Test
     public void testValidDirections() {
 
@@ -298,5 +311,19 @@ public class ArenaTest {
 
             Assertions.assertEquals(expected, arena.getValidDirections(Jorge.singleton.getPosition(), Jorge.singleton.getDirection(), false));
         }
+    }
+
+    @Test
+    public void testAddListeners(){
+        Arena arena = new Arena(27, 27);
+        arena.addEmployees(this.getMapEmployees());
+
+        List<Collectible> test = new ArrayList<>();
+        test.add(new Tremoco(1, 1));
+        Cerveja cerveja = new Cerveja(1, 2);
+        test.add(cerveja);
+        arena.addCollectibles(test);
+
+        Assertions.assertEquals(4, cerveja.listeners.size());
     }
 }

@@ -23,7 +23,7 @@ public class Application {
 
     private Arena arena;
 
-    private List<Wall> getMapWalls(int width, int heigth) {
+    public List<Wall> getMapWalls(int width, int heigth) {
         List<Wall> walls = new ArrayList<>();
         // UPPER AND LOWER BOUNDS
         for (int i = 0; i<=width; i++)
@@ -218,12 +218,36 @@ public class Application {
         return employees;
     }
 
+    public List<Collectible> getMapCollectibles(int width, int height){
+        List<Collectible> collectibles = new ArrayList<>();
+
+        List<Point> wallPos = new ArrayList<>();
+        for(Wall w : this.getMapWalls(width, height)){
+            wallPos.add(w.getPosition());
+        }
+
+        for (int x = 0; x < width; x++){
+            for (int y = 1; y<=height; y++){
+                if (wallPos.contains(new Point(x, y)))
+                    continue;
+                if ((x<=5 && y>=11 && y<=19) || (x>=21 && y>=11 && y<=19) || (x>=7 && x<=19 && y>=10 && y<=20))
+                    continue;
+                if ((x==1 && y ==4) || (x==1 && y ==(height-6)) || (x==(width-2) && y ==4) || (x==(width-2) && y ==(height-6)))
+                    collectibles.add(new Cerveja(x, y));
+                else
+                    collectibles.add(new Tremoco(x, y));
+            }
+        }
+        return collectibles;
+    }
+
     public Application() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(WIDTH, HEIGTH+1);
 
         this.arena = new Arena(WIDTH, HEIGTH);
         this.arena.addWalls(this.getMapWalls(WIDTH, HEIGTH));
         this.arena.addEmployees(this.getMapEmployees());
+        this.arena.addCollectibles(this.getMapCollectibles(WIDTH, HEIGTH));
 
         Renderer.addViewer(arena);
     }

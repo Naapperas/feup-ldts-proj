@@ -13,7 +13,7 @@ public class Cerveja extends Collectible {
         Cerveja.POINTS_PER_ITEM = 20;
     }
 
-    private final List<CervejaListener> listeners;
+    public final List<CervejaListener> listeners;
 
     public void addListener(CervejaListener listener) {
         this.listeners.add(listener);
@@ -42,7 +42,7 @@ public class Cerveja extends Collectible {
         var previousForegroundColor = tg.getForegroundColor();
 
         tg.setForegroundColor(TextColor.Factory.fromString("#FFA500"));
-        tg.putString(this.getX(), this.getY(), "I");
+        tg.putString(this.getX(), this.getY(), "B");
 
         tg.setForegroundColor(previousForegroundColor);
 
