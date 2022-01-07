@@ -2,6 +2,7 @@ package pt.up.fe.ldts.model;
 
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import static pt.up.fe.ldts.view.gui.GUI.ACTION;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -18,12 +19,29 @@ public class Jorge extends Entity{
      */
     private Jorge(int x, int y) {
         super(x, y);
-        this.setDirection(Vector.UP);
+        this.setDirection(Vector.NULL);
+    }
+
+    public void chooseDirection(ACTION action, Arena arena) {
+        
+        Vector newDirection = switch (action) {
+            case UP -> Vector.UP;
+            case DOWN -> Vector.DOWN;
+            case LEFT -> Vector.LEFT;
+            case RIGHT -> Vector.RIGHT;
+            default -> this.getDirection();
+        };
+
+        if (!arena.getValidDirections(this.getPosition(), this.getDirection(), true).contains(newDirection))
+            return;
+
+        this.setDirection(newDirection);
     }
 
     @Override
     public void changeDirection(Arena arena) {
-        // change direction based on keystrokes
+        if (!arena.getValidDirections(this.getPosition(), this.getDirection(), true).contains(this.getDirection()))
+            this.setDirection(Vector.NULL);
     }
 
     public void addPoints(int points) {
