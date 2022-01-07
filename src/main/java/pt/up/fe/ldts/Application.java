@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Application {
 
-    private static final int TICK_TIME = 50;
+    private static final int TICK_TIME = 75;
 
     private final GUI gui;
 
@@ -276,20 +276,19 @@ public class Application {
             switch (currentAction) {
                 case QUIT:
                     running = false;
-                case NONE:
+                    break;
+                case SELECT: // TODO: to be implemented if we add an "initial screen"
+                    break;
                 default:
                     break;
             }
 
             if (lastTime - startTime > TICK_TIME) {
-                this.arena.getEmployees().forEach(employee -> {
-                    employee.changeDirection(this.arena);
-                    employee.move();
-                });
+                tick(currentAction);
                 startTime = lastTime;
             }
 
-            Renderer.render(gui);
+            this.render();
 
             long elapsedTime = System.currentTimeMillis() - lastTime;
             long sleepTime = frameTime - elapsedTime;
@@ -302,5 +301,22 @@ public class Application {
         }
 
         gui.close();
+    }
+
+    private void render() throws IOException {
+        Renderer.render(gui);
+    }
+
+    private void tick(GUI.ACTION action) {
+
+        Jorge.singleton.chooseDirection(action, this.arena);
+        Jorge.singleton.changeDirection(this.arena);
+
+        Jorge.singleton.move();
+
+        this.arena.getEmployees().forEach(employee -> {
+            employee.changeDirection(this.arena);
+            employee.move();
+        });
     }
 }
