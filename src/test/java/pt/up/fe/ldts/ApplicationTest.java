@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ApplicationTest {
     @Test
-    public void createCollectiblesCorrectly() throws IOException, URISyntaxException, FontFormatException {
+    public void createCollectiblesCorrectly() {
         var app = Mockito.mock(Application.class);
         Mockito.doAnswer(invocation -> {
             List<Wall> walls = new ArrayList<>();
@@ -24,7 +24,7 @@ public class ApplicationTest {
                 walls.add(new Wall(i, 1));
                 walls.add(new Wall(i, 5));
             }
-            for (int i = 0; i <= 5; i++){
+            for (int i = 1; i <= 5; i++){
                 walls.add(new Wall(0, i));
                 walls.add(new Wall(3, i));
             }
@@ -33,10 +33,10 @@ public class ApplicationTest {
 
         List<Point> wallPos = new ArrayList<>();
         List<Point> collectiblePos = new ArrayList<>();
-        for(Wall w : app.getMapWalls(4, 4)){
+        for(Wall w : app.getMapWalls(4, 5)){
             wallPos.add(w.getPosition());
         }
-        for(Collectible c : app.getMapCollectibles(4, 4)){
+        for(Collectible c : app.getMapCollectibles(4, 5)){
             collectiblePos.add(c.getPosition());
         }
 
