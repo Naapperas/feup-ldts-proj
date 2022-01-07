@@ -249,7 +249,7 @@ public class Application {
         this.arena.addEmployees(this.getMapEmployees());
         this.arena.addCollectibles(this.getMapCollectibles(WIDTH, HEIGTH));
 
-        Renderer.addViewer(arena);
+        Renderer.addDrawable(arena);
     }
 
     public static void main(String[] args) {

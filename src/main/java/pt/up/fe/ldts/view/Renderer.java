@@ -14,9 +14,11 @@ public class Renderer {
 
     private static final List<Drawable> viewers = new ArrayList<>();
 
-    public static void addViewer(Drawable viewer) {
-        viewers.add(viewer);
+    public static void addDrawable(Drawable drawable) {
+        viewers.add(drawable);
     }
+
+    public static void clearRenderer() { Renderer.viewers.clear(); }
 
     public static void render(GUI gui) throws IOException {
 

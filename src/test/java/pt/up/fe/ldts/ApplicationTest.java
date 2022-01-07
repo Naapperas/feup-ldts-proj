@@ -48,8 +48,5 @@ public class ApplicationTest {
         Assertions.assertEquals(6, collectiblePos.size());
 
         Assertions.assertTrue(app.getMapCollectibles(4, 5).contains(new Cerveja(1, 4)));
-
-
-
     }
 }

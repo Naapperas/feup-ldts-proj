@@ -12,6 +12,8 @@ public class RendererTest {
 
     @Test
     public void testRender() throws IOException {
+        Renderer.clearRenderer();
+
         AtomicInteger test = new AtomicInteger(0);
 
         for (int i = 0; i < 5; i++) {
@@ -21,12 +23,14 @@ public class RendererTest {
                 test.incrementAndGet();
                 return null;
             }).when(drawable).render(Mockito.any());
-            Renderer.addViewer(drawable);
+            Renderer.addDrawable(drawable);
         }
 
         GUI gui = Mockito.mock(GUI.class);
 
         Renderer.render(gui);
+
+        Mockito.verify(gui, Mockito.atLeastOnce()).getTextGraphics();
         Assertions.assertEquals(5, test.get());
     }
 
