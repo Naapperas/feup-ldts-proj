@@ -36,7 +36,13 @@ public class Arena implements Drawable {
         this.walls.addAll(walls);
     }
     public void addCollectibles(List<Collectible> collectibles) {
-        this.collectibles.addAll(collectibles);
+        for (Collectible c : collectibles){  // using for loop to find cervejas and add employees as listeners (addCollectibles should be used after addEmployees)
+            if (c.getClass() == Cerveja.class){
+                for (Employee e : this.employees)
+                    ((Cerveja) c).addListener(e);
+            }
+            this.collectibles.add(c);
+        }
     }
 
     /**

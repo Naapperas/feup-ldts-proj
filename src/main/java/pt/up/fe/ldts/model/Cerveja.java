@@ -13,7 +13,7 @@ public class Cerveja extends Collectible {
         Cerveja.POINTS_PER_ITEM = 20;
     }
 
-    private final List<CervejaListener> listeners;
+    public final List<CervejaListener> listeners;
 
     public void addListener(CervejaListener listener) {
         this.listeners.add(listener);
