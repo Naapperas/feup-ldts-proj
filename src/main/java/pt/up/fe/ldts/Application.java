@@ -230,6 +230,8 @@ public class Application {
             for (int y = 1; y<=height; y++){
                 if (wallPos.contains(new Point(x, y)))
                     continue;
+                if ((x<=5 && y>=11 && y<=19) || (x>=21 && y>=11 && y<=19) || (x>=7 && x<=19 && y>=10 && y<=20))
+                    continue;
                 if ((x==1 && y ==4) || (x==1 && y ==(height-6)) || (x==(width-2) && y ==4) || (x==(width-2) && y ==(height-6)))
                     collectibles.add(new Cerveja(x, y));
                 else
