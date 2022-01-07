@@ -22,14 +22,14 @@ public class ApplicationTest {
             List<Wall> walls = new ArrayList<>();
             for (int i = 0; i <= 3; i++){
                 walls.add(new Wall(i, 1));
-                walls.add(new Wall(i, 4));
+                walls.add(new Wall(i, 5));
             }
-            for (int i = 0; i <= 4; i++){
+            for (int i = 0; i <= 5; i++){
                 walls.add(new Wall(0, i));
                 walls.add(new Wall(3, i));
             }
             return walls;
-        }).when(app).getMapWalls(Mockito.any(), Mockito.any());
+        }).when(app).getMapWalls(Mockito.anyInt(), Mockito.anyInt());
 
         List<Point> wallPos = new ArrayList<>();
         List<Point> collectiblePos = new ArrayList<>();
@@ -44,9 +44,11 @@ public class ApplicationTest {
             Assertions.assertFalse(wallPos.contains(p));
         }
 
-        Assertions.assertTrue(app.getMapCollectibles(4, 4).contains(new Cerveja(1, 3)));
+        Assertions.assertEquals(6, collectiblePos.size());
 
-        Assertions.assertEquals(4, collectiblePos.size());
+        Assertions.assertTrue(app.getMapCollectibles(4, 5).contains(new Cerveja(1, 4)));
+
+
 
     }
 }

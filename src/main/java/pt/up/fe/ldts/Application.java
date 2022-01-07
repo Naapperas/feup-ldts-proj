@@ -220,6 +220,22 @@ public class Application {
 
     public List<Collectible> getMapCollectibles(int width, int height){
         List<Collectible> collectibles = new ArrayList<>();
+
+        List<Point> wallPos = new ArrayList<>();
+        for(Wall w : this.getMapWalls(width, height)){
+            wallPos.add(w.getPosition());
+        }
+
+        for (int x = 0; x < width; x++){
+            for (int y = 1; y<=height; y++){
+                if (wallPos.contains(new Point(x, y)))
+                    continue;
+                if ((x==1 && y ==4) || (x==1 && y ==(height-6)) || (x==(width-2) && y ==4) || (x==(width-2) && y ==(height-6)))
+                    collectibles.add(new Cerveja(x, y));
+                else
+                    collectibles.add(new Tremoco(x, y));
+            }
+        }
         return collectibles;
     }
 
