@@ -23,7 +23,7 @@ public class Application {
 
     private Arena arena;
 
-    private List<Wall> getMapWalls(int width, int heigth) {
+    public List<Wall> getMapWalls(int width, int heigth) {
         List<Wall> walls = new ArrayList<>();
         // UPPER AND LOWER BOUNDS
         for (int i = 0; i<=width; i++)
@@ -218,7 +218,7 @@ public class Application {
         return employees;
     }
 
-    private List<Collectible> getMapCollectibles(int width, int height){
+    public List<Collectible> getMapCollectibles(int width, int height){
         List<Collectible> collectibles = new ArrayList<>();
         return collectibles;
     }
