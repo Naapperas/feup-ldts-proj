@@ -218,12 +218,18 @@ public class Application {
         return employees;
     }
 
+    private List<Collectible> getMapCollectibles(int width, int height){
+        List<Collectible> collectibles = new ArrayList<>();
+        return collectibles;
+    }
+
     public Application() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(WIDTH, HEIGTH+1);
 
         this.arena = new Arena(WIDTH, HEIGTH);
         this.arena.addWalls(this.getMapWalls(WIDTH, HEIGTH));
         this.arena.addEmployees(this.getMapEmployees());
+        this.arena.addCollectibles(this.getMapCollectibles(WIDTH, HEIGTH));
 
         Renderer.addViewer(arena);
     }

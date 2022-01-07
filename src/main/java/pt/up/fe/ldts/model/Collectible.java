@@ -17,4 +17,12 @@ public abstract class Collectible extends Element {
 
     public abstract void notifyCollected();
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Collectible w = (Collectible) obj;
+        return w.getPosition().equals(this.getPosition());
+    }
+
 }
