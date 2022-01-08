@@ -15,7 +15,7 @@ Check the full report [here](docs/README.md)
 
 
 <p align="center">
-<img src="docs/images/pacman.gif"/>
+<img src="docs/images/mock.png"/>
 </p>  
 
 <br/>
