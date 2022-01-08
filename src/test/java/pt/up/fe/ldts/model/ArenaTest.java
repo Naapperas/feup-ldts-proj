@@ -10,14 +10,8 @@ import pt.up.fe.ldts.controller.employeeAI.BaltaAI;
 import pt.up.fe.ldts.controller.employeeAI.MariAI;
 import pt.up.fe.ldts.controller.employeeAI.ToniAI;
 import pt.up.fe.ldts.controller.employeeAI.ZeCastroAI;
-import pt.up.fe.ldts.model.Arena;
-import pt.up.fe.ldts.view.Renderer;
-import pt.up.fe.ldts.view.gui.GUI;
 
-import java.awt.image.DirectColorModel;
-import java.nio.file.FileSystemLoopException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;

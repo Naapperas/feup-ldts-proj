@@ -1,10 +1,9 @@
 package pt.up.fe.ldts.model;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
-import pt.up.fe.ldts.view.gui.GUI;
 
 public class EntityTest {
 
