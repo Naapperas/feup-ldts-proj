@@ -2,7 +2,6 @@ package pt.up.fe.ldts.model;
 
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import pt.up.fe.ldts.view.gui.GUI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +41,7 @@ public class Cerveja extends Collectible {
         var previousForegroundColor = tg.getForegroundColor();
 
         tg.setForegroundColor(TextColor.Factory.fromString("#FFA500"));
-        tg.putString(this.getX(), this.getY(), "B");
+        tg.putString(this.getX(), this.getY(), "i");
 
         tg.setForegroundColor(previousForegroundColor);
 

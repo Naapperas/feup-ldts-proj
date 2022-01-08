@@ -4,7 +4,6 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import groovyjarjarantlr4.v4.runtime.atn.EpsilonTransition;
 import pt.up.fe.ldts.view.Drawable;
 
 import java.util.ArrayList;
@@ -111,6 +110,8 @@ public class Arena implements Drawable {
 
         for (var wall : this.walls)
             wall.render(tg);
+
+        tg.putString(13,12, "_");
 
         for (var collectible : this.collectibles)
             collectible.render(tg);

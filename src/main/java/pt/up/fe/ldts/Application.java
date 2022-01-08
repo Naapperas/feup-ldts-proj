@@ -19,25 +19,25 @@ public class Application {
 
     private final GUI gui;
 
-    private static final int WIDTH = 27, HEIGTH = 30;
+    private static final int WIDTH = 27, HEIGHT = 30;
 
     private Arena arena;
 
-    public List<Wall> getMapWalls(int width, int heigth) {
+    public List<Wall> getMapWalls(int width, int height) {
         List<Wall> walls = new ArrayList<>();
         // UPPER AND LOWER BOUNDS
         for (int i = 0; i<=width; i++)
             walls.add(new Wall(i, 1));
         for (int i = 0; i<=width; i++)
-            walls.add(new Wall(i, heigth+1));
+            walls.add(new Wall(i, height+1));
 
         // SIDES
-        for (int i = 0; i<=heigth; i++) {
+        for (int i = 0; i<=height; i++) {
             if (i == 10 || i == 11 || i == 12 || i == 14|| i == 16 || i == 17 || i == 18)
                 continue;
             walls.add(new Wall(0, i+1));
         }
-        for (int i = 0; i<=heigth; i++) {
+        for (int i = 0; i<=height; i++) {
             if (i == 10 || i == 11 || i == 12 || i == 14|| i == 16 || i == 17 || i == 18)
                 continue;
             walls.add(new Wall(26, i+1));
@@ -242,12 +242,12 @@ public class Application {
     }
 
     public Application() throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new LanternaGUI(WIDTH, HEIGTH+1);
+        this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
-        this.arena = new Arena(WIDTH, HEIGTH);
-        this.arena.addWalls(this.getMapWalls(WIDTH, HEIGTH));
+        this.arena = new Arena(WIDTH, HEIGHT);
+        this.arena.addWalls(this.getMapWalls(WIDTH, HEIGHT));
         this.arena.addEmployees(this.getMapEmployees());
-        this.arena.addCollectibles(this.getMapCollectibles(WIDTH, HEIGTH));
+        this.arena.addCollectibles(this.getMapCollectibles(WIDTH, HEIGHT));
 
         Renderer.addDrawable(arena);
     }
@@ -263,7 +263,7 @@ public class Application {
 
         boolean running = true;
 
-        int FPS = 11;
+        int FPS = 6;
         int frameTime = 1000 / FPS;
 
         long startTime = System.currentTimeMillis();

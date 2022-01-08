@@ -1,7 +1,5 @@
 package pt.up.fe.ldts.model;
 
-import java.util.Objects;
-
 /**
  * Class that represents a vector (used in calculations with points)
  */
