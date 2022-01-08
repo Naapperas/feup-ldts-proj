@@ -263,7 +263,7 @@ public class Application {
 
         boolean running = true;
 
-        int FPS = 11;
+        int FPS = 6;
         int frameTime = 1000 / FPS;
 
         long startTime = System.currentTimeMillis();

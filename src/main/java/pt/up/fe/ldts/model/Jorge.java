@@ -52,13 +52,29 @@ public class Jorge extends Entity{
         return score.get();
     }
 
+    private char previousRenderChar = 'h';
+
     @Override
     public void render(TextGraphics tg) {
 
         var previousForegroundColor = tg.getForegroundColor();
 
         tg.setForegroundColor(TextColor.Factory.fromString("#FFFF00"));
-        tg.putString(this.getX(), this.getY(), "c");
+        if(previousRenderChar == 'h') {
+            if (Vector.RIGHT.equals(Jorge.singleton.getDirection())) {
+                previousRenderChar = 'c';
+            } else if (Vector.LEFT.equals(Jorge.singleton.getDirection())) {
+                previousRenderChar = 'g';
+            } else if (Vector.UP.equals(Jorge.singleton.getDirection())) {
+                previousRenderChar = 'e';
+            } else if (Vector.DOWN.equals(Jorge.singleton.getDirection())) {
+                previousRenderChar = 'f';
+            }
+        }
+        else
+            previousRenderChar = 'h';
+        tg.putString(this.getX(), this.getY(), "" + previousRenderChar);//bola cheia
+
 
         tg.putString(0, 0, "SCORE:" + this.getScore());
 

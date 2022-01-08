@@ -111,6 +111,8 @@ public class Arena implements Drawable {
         for (var wall : this.walls)
             wall.render(tg);
 
+        tg.putString(13,12, "_");
+
         for (var collectible : this.collectibles)
             collectible.render(tg);
 
