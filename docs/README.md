@@ -44,19 +44,41 @@ This project was developed for LDTS 2021/2022 by
 ### Scared Employees
 ### Problem in context
 
-We needed to have a way of notifying every Employee 
-when a ___cerveja___ was consumed.
+We needed to have a way of notifying every Employee when a ___cerveja___ was consumed.
 
 **The Pattern**
 
-We have used the **Observer** pattern. This pattern allows for an object, called *publisher*, to notify other objects, called *subscribers* of some event. The ***cerveja***s are the publishers and the Employees are the subscribers.
+We have used the [Observer](https://refactoring.guru/design-patterns/observer) pattern. This pattern allows for an object, called *publisher*, to notify other objects, called *subscribers* of some event. The ***cerveja***s are the publishers and the Employees are the subscribers.
 
 **Implementation**
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
 
-![img](https://www.fe.up.pt/~arestivo/page/img/examples/lpoo/state.svg)
+![Observer Pattern for CervejaListener's](images/observer-cerveja.png)
 
+**Consequences**
+
+Using this pattern allows us to make sure that, no matter how many Employees are present at any given time in the game, as long as they are marked as listeners on each ___cerveja___ object, they will be notified when a ___cerveja___ is picked.
+
+### Many Employess
+
+### Problem in context
+
+There are different types of Employees, each with their own way of picking the next cell to target or what color to use when rendering them. However, creating different subclasses of Employee and pottentially rewritting the same code in multiple places is bad practice.
+
+**The Pattern**
+
+The design pattern applied is the [Strategy](https://refactoring.guru/design-patterns/strategy) pattern. This way, we can abstract from each Employee the computation of the target location to move to and just move to it, regardless of how it is calculated.
+
+**Implementation**
+
+The following figure shows how the pattern’s roles were mapped to the application classes.
+
+![Strategy Pattern for EmployeeAI](images/strategy-employee-ai.png)
+
+**Consequences**
+
+Using this pattern, we can create many different color+movement pattern combinations without the need to re-write how an employee should choose its target.
 
 ## Testing
 
