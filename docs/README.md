@@ -64,7 +64,7 @@ Using this pattern allows us to make sure that, no matter how many Employees are
 
 ### Problem in context
 
-There are different types of Employees, each with their own way of picking the next cell to target or what color to use when rendering them. However, creating different subclasses of Employee and pottentially rewritting the same code in multiple places is bad practice.
+There are different types of Employees, each with their own way of picking the next cell to target or what color to use when rendering them. However, creating different subclasses of Employee and potentially rewritting the same code in multiple places is bad practice.
 
 **The Pattern**
 
@@ -78,9 +78,13 @@ The following figure shows how the pattern’s roles were mapped to the applicat
 
 **Consequences**
 
-Using this pattern, we can create many different color+movement pattern combinations without the need to re-write how an employee should choose its target.
+Using this pattern, we can create many color+movement pattern combinations without the need to re-write how an employee should choose its target.
 
 ## Testing
+
+Test Coverage
+
+![Test Code coverage](images/coverage.png)
 
 >Coverage and mutation reports
 
