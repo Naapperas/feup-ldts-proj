@@ -2,6 +2,7 @@ package pt.up.fe.ldts.model.map;
 
 import pt.up.fe.ldts.model.Collectible;
 import pt.up.fe.ldts.model.Employee;
+import pt.up.fe.ldts.model.Point;
 import pt.up.fe.ldts.model.Wall;
 
 import java.util.List;
@@ -13,6 +14,12 @@ public class FileLoadedMap implements Map {
     private List<Wall> walls;
     private List<Employee> employees;
     private List<Collectible> collectibles;
+
+    private Point gatePosition;
+
+    public FileLoadedMap(String mapName) {
+
+    }
 
     @Override
     public List<Wall> getMapWalls() {
@@ -27,6 +34,11 @@ public class FileLoadedMap implements Map {
     @Override
     public List<Employee> getMapEmployees() {
         return this.employees;
+    }
+
+    @Override
+    public Point getGate() {
+        return this.gatePosition;
     }
 
     @Override
