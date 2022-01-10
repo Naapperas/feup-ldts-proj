@@ -13,7 +13,7 @@ public interface Map {
     List<Collectible> getMapCollecibles();
     List<Employee> getMapEmployees();
 
-    Point getGate();
+    Point getGatePosition();
 
     int getWidth();
     int getHeight();

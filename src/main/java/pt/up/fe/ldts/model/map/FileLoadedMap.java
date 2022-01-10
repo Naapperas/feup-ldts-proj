@@ -37,7 +37,7 @@ public class FileLoadedMap implements Map {
     }
 
     @Override
-    public Point getGate() {
+    public Point getGatePosition() {
         return this.gatePosition;
     }
 

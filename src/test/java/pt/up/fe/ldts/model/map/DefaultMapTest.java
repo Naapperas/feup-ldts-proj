@@ -37,6 +37,16 @@ public class DefaultMapTest {
     }
 
     @Test
+    public void testGatePosition() {
+
+        var gatePosition = m.getGatePosition();
+
+        Assertions.assertNotNull(gatePosition);
+        Assertions.assertEquals(new Point(13, 13), gatePosition);
+
+    }
+
+    @Test
     public void testCollectibleCreation() {
 
         // maybe figure out a better way to test this
