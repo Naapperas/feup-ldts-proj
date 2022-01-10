@@ -234,7 +234,7 @@ public class DefaultMap implements Map{
 
     @Override
     public Point getGatePosition() {
-        return null;
+        return new Point(13, 13);
     }
 
     @Override
