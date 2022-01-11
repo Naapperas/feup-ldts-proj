@@ -6,25 +6,33 @@ import pt.up.fe.ldts.controller.employeeAI.ToniAI;
 import pt.up.fe.ldts.controller.employeeAI.ZeCastroAI;
 import pt.up.fe.ldts.model.*;
 
-import java.io.*;
-import java.net.URISyntaxException;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileLoadedMap implements Map {
 
-    private int width, height, boxWidth, boxHeight;
+    private final int width, height, boxWidth, boxHeight;
 
-    private List<Wall> walls;
-    private List<Employee> employees;
-    private List<Collectible> collectibles;
+    private final List<Wall> walls;
+    private final List<Employee> employees;
+    private final List<Collectible> collectibles;
 
-    private Point gatePosition, boxPosition; //top left corner of ghost box
+    private Point gatePosition; // can't be final since it is initialized in a switch statement ,so it might not happen
+    private final Point boxPosition/*top left corner of ghost box*/;
 
     public FileLoadedMap(String mapName) throws Exception {
-        URL resource = getClass().getClassLoader().getResource("map/default.map");
+        URL resource = getClass().getClassLoader().getResource("map/" + mapName + ".map");
+
+        if(resource == null)
+            throw new Exception("Map file not found :(");
+
         File mapFile = new File(resource.toURI());
+
+        Point baltaPos = new Point(0,0), zePos = new Point(0,0), toniPos = new Point(0,0), mariPos = new Point(0,0);
 
         walls = new ArrayList<>();
         employees = new ArrayList<>();
@@ -55,6 +63,10 @@ public class FileLoadedMap implements Map {
                     case 'C' -> collectibles.add(new Cerveja(x,y));
                     case 'J' -> Jorge.singleton.changePos(x,y);
                     case 'G' -> gatePosition = new Point(x,y);
+                    case 'B' -> baltaPos = new Point(x,y);
+                    case 'Z' -> zePos = new Point(x,y);
+                    case 'M' -> mariPos = new Point(x,y);
+                    case 't' -> toniPos = new Point(x,y);
                 }
             }
         }
@@ -70,10 +82,10 @@ public class FileLoadedMap implements Map {
         boxWidth = Integer.parseInt(sr[0]);
         boxHeight = Integer.parseInt(sr[1]);
 
-        employees.add(new Employee(13, 15, new BaltaAI()));
-        employees.add(new Employee(13, 16, new MariAI()));
-        employees.add(new Employee(14, 16, new ZeCastroAI(employees.get(0))));
-        employees.add(new Employee(12, 16, new ToniAI()));
+        employees.add(new Employee(baltaPos.getX(), baltaPos.getY(), new BaltaAI()));
+        employees.add(new Employee(zePos.getX(), zePos.getY(), new ZeCastroAI(employees.get(0))));
+        employees.add(new Employee(mariPos.getX(), mariPos.getY(), new MariAI()));
+        employees.add(new Employee(toniPos.getX(), toniPos.getY(), new ToniAI()));
     }
 
     @Override
@@ -106,4 +118,15 @@ public class FileLoadedMap implements Map {
         return this.height;
     }
 
+    public int getBoxHeight() {
+        return boxHeight;
+    }
+
+    public int getBoxWidth() {
+        return boxWidth;
+    }
+
+    public Point getBoxPosition() {
+        return boxPosition;
+    }
 }
