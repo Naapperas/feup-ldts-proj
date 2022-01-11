@@ -2,6 +2,7 @@ plugins {
     id 'groovy'
     id 'java'
     id 'info.solidsoft.pitest' version '1.6.0'
+    id 'application'
 }
 
 group 'pt.up.fe.ldts'
@@ -28,3 +29,5 @@ pitest {
     junit5PluginVersion = '0.15'
     pitestVersion = '1.6.7'
 }
+
+mainClassName = 'pt.up.fe.ldts.Application'
