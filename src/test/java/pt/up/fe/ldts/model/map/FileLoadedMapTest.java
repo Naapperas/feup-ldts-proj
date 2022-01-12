@@ -24,7 +24,7 @@ public class FileLoadedMapTest {
             new FileLoadedMap("invalidWidth");
             Assertions.fail(); // should never reach this line
         } catch (Exception e) {
-            Assertions.assertEquals("invalidWidth.map: Expected line with width: 27, instead got: 22 -      WTWWWWW W WWWWWTW", e.getMessage());
+            Assertions.assertEquals("invalidWidth.map: Expected line with width: 27, instead got: 22 -      WtWWWWW W WWWWWtW", e.getMessage());
         }
     }
 
@@ -47,6 +47,50 @@ public class FileLoadedMapTest {
             Assertions.fail(); // should never reach this line
         } catch (Exception e) {
             Assertions.assertEquals("Negative height: -1 - invalidDimensionsY.map", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testLoadBaltaPosition() {
+
+        try {
+            new FileLoadedMap("defaultNoB");
+            Assertions.fail(); // should never reach this line
+        } catch (Exception e) {
+            Assertions.assertEquals("Employee not found: Balta - defaultNoB.map", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testLoadToniPosition() {
+
+        try {
+            new FileLoadedMap("defaultNoT");
+            Assertions.fail(); // should never reach this line
+        } catch (Exception e) {
+            Assertions.assertEquals("Employee not found: Toni - defaultNoT.map", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testLoadZeCastroPosition() {
+
+        try {
+            new FileLoadedMap("defaultNoZ");
+            Assertions.fail(); // should never reach this line
+        } catch (Exception e) {
+            Assertions.assertEquals("Employee not found: ZeCastro - defaultNoZ.map", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testLoadMariPosition() {
+
+        try {
+            new FileLoadedMap("defaultNoM");
+            Assertions.fail(); // should never reach this line
+        } catch (Exception e) {
+            Assertions.assertEquals("Employee not found: Mari - defaultNoM.map", e.getMessage());
         }
     }
 
