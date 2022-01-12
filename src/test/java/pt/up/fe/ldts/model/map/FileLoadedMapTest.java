@@ -1,15 +1,10 @@
 package pt.up.fe.ldts.model.map;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pt.up.fe.ldts.model.*;
 
-import java.util.List;
-
 public class FileLoadedMapTest {
-
-    private Map m;
 
     @Test
     public void testInvalidMapName() {
@@ -30,6 +25,28 @@ public class FileLoadedMapTest {
             Assertions.fail(); // should never reach this line
         } catch (Exception e) {
             Assertions.assertEquals("invalidWidth.map: Expected line with width: 27, instead got: 22 -      WTWWWWW W WWWWWTW", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testInvalidMapWidth() {
+
+        try {
+            new FileLoadedMap("invalidDimensionsX");
+            Assertions.fail(); // should never reach this line
+        } catch (Exception e) {
+            Assertions.assertEquals("Negative width: invalidDimensionsX.map", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testInvalidLineHeight() {
+
+        try {
+            new FileLoadedMap("invalidDimensionsY");
+            Assertions.fail(); // should never reach this line
+        } catch (Exception e) {
+            Assertions.assertEquals("Negative height: invalidDimensionsY.map", e.getMessage());
         }
     }
 
