@@ -89,31 +89,49 @@ public class FileLoadedMap implements Map {
 
         boxPosition = new Point(Integer.parseInt(sr[0]), Integer.parseInt(sr[1]));
 
+        if (boxPosition.getX() < 0 || boxPosition.getY() < 0){
+            StringBuilder sb = new StringBuilder();
+            sb.append("Invalid box position: (").append(boxPosition.getX()).append(",").append(boxPosition.getY()).append(") - ").append(mapName).append(".map");
+            throw new Exception(sb.toString());
+        }
+
         str = br.readLine();
         sr = str.split("X");
 
         boxWidth = Integer.parseInt(sr[0]);
+
+        if (boxWidth < 0){
+            StringBuilder sb = new StringBuilder();
+            sb.append("Negative box width: ").append(boxWidth).append(" - ").append(mapName).append(".map");
+            throw new Exception(sb.toString());
+        }
         boxHeight = Integer.parseInt(sr[1]);
 
-        if(baltaPos.equals(new Point(-1,-1))){
+        if (boxHeight < 0){
+            StringBuilder sb = new StringBuilder();
+            sb.append("Negative box height: ").append(boxHeight).append(" - ").append(mapName).append(".map");
+            throw new Exception(sb.toString());
+        }
+
+        if (baltaPos.equals(new Point(-1,-1))){
             StringBuilder sb = new StringBuilder();
             sb.append("Employee not found: Balta").append(" - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
 
-        if(toniPos.equals(new Point(-1,-1))){
+        if (toniPos.equals(new Point(-1,-1))){
             StringBuilder sb = new StringBuilder();
             sb.append("Employee not found: Toni").append(" - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
 
-        if(mariPos.equals(new Point(-1,-1))){
+        if (mariPos.equals(new Point(-1,-1))){
             StringBuilder sb = new StringBuilder();
             sb.append("Employee not found: Mari").append(" - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
 
-        if(zePos.equals(new Point(-1,-1))){
+        if (zePos.equals(new Point(-1,-1))){
             StringBuilder sb = new StringBuilder();
             sb.append("Employee not found: ZeCastro").append(" - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
