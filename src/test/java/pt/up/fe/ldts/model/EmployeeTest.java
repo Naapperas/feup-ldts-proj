@@ -74,6 +74,15 @@ public class EmployeeTest {
     }
 
     @Test
+    public void testCervejaPicked(){
+        Employee employee = new Employee(13, 13, new ToniAI()); // ai doesn't matter here
+
+        employee.cervejaPicked();
+
+        Assertions.assertEquals(Vector.DOWN, employee.getDirection());
+    }
+
+    @Test
     public void testNotifiable() {
 
         Point basePoint = new Point(4, 5);
