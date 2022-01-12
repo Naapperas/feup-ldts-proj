@@ -51,7 +51,7 @@ public class FileLoadedMap implements Map {
 
             if(str.length() != width){
                 StringBuilder sb = new StringBuilder();
-                sb.append("expected line with width: ").append(width).append(", instead got: ").append(str.length()).append(" - ").append(str);
+                sb.append("Expected line with width: ").append(width).append(", instead got: ").append(str.length()).append(" - ").append(str);
                 throw new Exception(sb.toString());
             }
 
@@ -118,14 +118,17 @@ public class FileLoadedMap implements Map {
         return this.height;
     }
 
+    @Override
     public int getBoxHeight() {
         return boxHeight;
     }
 
+    @Override
     public int getBoxWidth() {
         return boxWidth;
     }
 
+    @Override
     public Point getBoxPosition() {
         return boxPosition;
     }

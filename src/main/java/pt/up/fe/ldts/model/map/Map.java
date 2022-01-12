@@ -14,7 +14,11 @@ public interface Map {
     List<Employee> getMapEmployees();
 
     Point getGatePosition();
+    Point getBoxPosition();
 
     int getWidth();
     int getHeight();
+
+    int getBoxWidth();
+    int getBoxHeight();
 }

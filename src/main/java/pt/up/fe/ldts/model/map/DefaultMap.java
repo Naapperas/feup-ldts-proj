@@ -238,6 +238,11 @@ public class DefaultMap implements Map{
     }
 
     @Override
+    public Point getBoxPosition() {
+        return new Point(11, 14);
+    }
+
+    @Override
     public int getWidth() {
         return 27;
     }
@@ -245,5 +250,15 @@ public class DefaultMap implements Map{
     @Override
     public int getHeight() {
         return 30;
+    }
+
+    @Override
+    public int getBoxWidth() {
+        return 5;
+    }
+
+    @Override
+    public int getBoxHeight() {
+        return 3;
     }
 }
