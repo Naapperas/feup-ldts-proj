@@ -95,6 +95,36 @@ public class FileLoadedMapTest {
     }
 
     @Test
+    public void testInvalidBoxPosition(){
+        try {
+            new FileLoadedMap("invalidBox");
+            Assertions.fail(); // should never reach this line
+        } catch (Exception e){
+            Assertions.assertEquals("Invalid box position: (-1,13) - invalidBox.map", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testInvalidBoxHeight(){
+        try {
+            new FileLoadedMap("invalidBoxDimensionsY");
+            Assertions.fail(); // should never reach this line
+        } catch (Exception e){
+            Assertions.assertEquals("Negative box height: -1 - invalidBoxDimensionsY.map", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testInvalidBoxWidth(){
+        try {
+            new FileLoadedMap("invalidBoxDimensionsX");
+            Assertions.fail(); // should never reach this line
+        } catch (Exception e){
+            Assertions.assertEquals("Negative box width: -1 - invalidBoxDimensionsX.map", e.getMessage());
+        }
+    }
+
+    @Test
     public void testMapCreation() throws Exception {
 
         Map m = new FileLoadedMap("default");
