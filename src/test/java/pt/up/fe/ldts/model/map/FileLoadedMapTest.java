@@ -29,7 +29,7 @@ public class FileLoadedMapTest {
             new FileLoadedMap("invalidWidth");
             Assertions.fail(); // should never reach this line
         } catch (Exception e) {
-            Assertions.assertEquals("Expected line with width: 27, instead got 22 -      WTWWWWW W WWWWWTW", e.getMessage());
+            Assertions.assertEquals("invalidWidth.map: Expected line with width: 27, instead got: 22 -      WTWWWWW W WWWWWTW", e.getMessage());
         }
     }
 

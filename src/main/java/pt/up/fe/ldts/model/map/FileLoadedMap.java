@@ -25,10 +25,14 @@ public class FileLoadedMap implements Map {
     private final Point boxPosition/*top left corner of ghost box*/;
 
     public FileLoadedMap(String mapName) throws Exception {
-        URL resource = getClass().getClassLoader().getResource("map/" + mapName + ".map");
+        URL resource = getClass().getClassLoader().getResource("maps/" + mapName + ".map");
 
-        if(resource == null)
-            throw new Exception("Map file not found :(");
+        if(resource == null) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Map file not found: ").append(mapName).append(".map");
+
+            throw new Exception(sb.toString());
+        }
 
         File mapFile = new File(resource.toURI());
 
@@ -51,10 +55,9 @@ public class FileLoadedMap implements Map {
 
             if(str.length() != width){
                 StringBuilder sb = new StringBuilder();
-                sb.append("Expected line with width: ").append(width).append(", instead got: ").append(str.length()).append(" - ").append(str);
+                sb.append(mapName).append(".map: ").append("Expected line with width: ").append(width).append(", instead got: ").append(str.length()).append(" - ").append(str);
                 throw new Exception(sb.toString());
             }
-
 
             for(int x = 0; x < this.width; x++){
                 switch (str.charAt(x)){
