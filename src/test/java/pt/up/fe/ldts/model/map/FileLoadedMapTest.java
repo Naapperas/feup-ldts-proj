@@ -35,7 +35,7 @@ public class FileLoadedMapTest {
             new FileLoadedMap("invalidDimensionsX");
             Assertions.fail(); // should never reach this line
         } catch (Exception e) {
-            Assertions.assertEquals("Negative width: invalidDimensionsX.map", e.getMessage());
+            Assertions.assertEquals("Negative width: -1 - invalidDimensionsX.map", e.getMessage());
         }
     }
 
@@ -46,7 +46,7 @@ public class FileLoadedMapTest {
             new FileLoadedMap("invalidDimensionsY");
             Assertions.fail(); // should never reach this line
         } catch (Exception e) {
-            Assertions.assertEquals("Negative height: invalidDimensionsY.map", e.getMessage());
+            Assertions.assertEquals("Negative height: -1 - invalidDimensionsY.map", e.getMessage());
         }
     }
 

@@ -27,7 +27,7 @@ public class FileLoadedMap implements Map {
     public FileLoadedMap(String mapName) throws Exception {
         URL resource = getClass().getClassLoader().getResource("maps/" + mapName + ".map");
 
-        if(resource == null) {
+        if (resource == null) {
             StringBuilder sb = new StringBuilder();
             sb.append("Map file not found: ").append(mapName).append(".map");
 
@@ -35,6 +35,7 @@ public class FileLoadedMap implements Map {
         }
 
         File mapFile = new File(resource.toURI());
+        BufferedReader br = new BufferedReader(new FileReader(mapFile));
 
         Point baltaPos = new Point(0,0), zePos = new Point(0,0), toniPos = new Point(0,0), mariPos = new Point(0,0);
 
@@ -42,13 +43,22 @@ public class FileLoadedMap implements Map {
         employees = new ArrayList<>();
         collectibles = new ArrayList<>();
 
-        BufferedReader br = new BufferedReader(new FileReader(mapFile));
-
         String str = br.readLine();
         String[] sr = str.split("X");
 
         width = Integer.parseInt(sr[0]);
+        if (width < 0) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Negative width: ").append(width).append(" - ").append(mapName).append(".map");
+            throw new Exception(sb.toString());
+        }
+
         height = Integer.parseInt(sr[1]);
+        if (height < 0) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Negative height: ").append(height).append(" - ").append(mapName).append(".map");
+            throw new Exception(sb.toString());
+        }
 
         for(int y = 0; y < this.height; y++){
             str = br.readLine();
@@ -62,14 +72,14 @@ public class FileLoadedMap implements Map {
             for(int x = 0; x < this.width; x++){
                 switch (str.charAt(x)){
                     case 'W' -> walls.add(new Wall(x,y));
-                    case 'T' -> collectibles.add(new Tremoco(x,y));
+                    case 't' -> collectibles.add(new Tremoco(x,y));
                     case 'C' -> collectibles.add(new Cerveja(x,y));
                     case 'J' -> Jorge.singleton.changePos(x,y);
                     case 'G' -> gatePosition = new Point(x,y);
                     case 'B' -> baltaPos = new Point(x,y);
                     case 'Z' -> zePos = new Point(x,y);
                     case 'M' -> mariPos = new Point(x,y);
-                    case 't' -> toniPos = new Point(x,y);
+                    case 'T' -> toniPos = new Point(x,y);
                 }
             }
         }
