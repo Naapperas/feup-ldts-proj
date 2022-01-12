@@ -11,13 +11,32 @@ public class FileLoadedMapTest {
 
     private Map m;
 
-    @BeforeEach
-    void setup() throws Exception {
-        m = new FileLoadedMap("default");
+    @Test
+    public void testInvalidMapName() {
+
+        try {
+            new FileLoadedMap("notFound");
+            Assertions.fail(); // should never reach this line
+        } catch (Exception e) {
+            Assertions.assertEquals("Map file not found: notFound.map", e.getMessage());
+        }
     }
 
     @Test
-    public void testMapCreation(){
+    public void testInvalidLineWidth() {
+
+        try {
+            new FileLoadedMap("invalidWidth");
+            Assertions.fail(); // should never reach this line
+        } catch (Exception e) {
+            Assertions.assertEquals("Expected line with width: 27, instead got 22 -      WTWWWWW W WWWWWTW", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testMapCreation() throws Exception {
+
+        Map m = new FileLoadedMap("default");
 
         Assertions.assertEquals(27, m.getWidth());
         Assertions.assertEquals(31, m.getHeight());
