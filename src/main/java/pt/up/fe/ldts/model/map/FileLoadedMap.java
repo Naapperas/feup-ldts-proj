@@ -37,7 +37,7 @@ public class FileLoadedMap implements Map {
         File mapFile = new File(resource.toURI());
         BufferedReader br = new BufferedReader(new FileReader(mapFile));
 
-        Point baltaPos = new Point(0,0), zePos = new Point(0,0), toniPos = new Point(0,0), mariPos = new Point(0,0);
+        Point baltaPos = new Point(-1,-1), zePos = new Point(-1,-1), toniPos = new Point(-1,-1), mariPos = new Point(-1,-1);
 
         walls = new ArrayList<>();
         employees = new ArrayList<>();
@@ -87,13 +87,37 @@ public class FileLoadedMap implements Map {
         str = br.readLine();
         sr = str.split(",");
 
-        boxPosition = new Point(Integer.parseInt(sr[0]), Integer.parseInt(sr[0]));
+        boxPosition = new Point(Integer.parseInt(sr[0]), Integer.parseInt(sr[1]));
 
         str = br.readLine();
         sr = str.split("X");
 
         boxWidth = Integer.parseInt(sr[0]);
         boxHeight = Integer.parseInt(sr[1]);
+
+        if(baltaPos.equals(new Point(-1,-1))){
+            StringBuilder sb = new StringBuilder();
+            sb.append("Employee not found: Balta").append(" - ").append(mapName).append(".map");
+            throw new Exception(sb.toString());
+        }
+
+        if(toniPos.equals(new Point(-1,-1))){
+            StringBuilder sb = new StringBuilder();
+            sb.append("Employee not found: Toni").append(" - ").append(mapName).append(".map");
+            throw new Exception(sb.toString());
+        }
+
+        if(mariPos.equals(new Point(-1,-1))){
+            StringBuilder sb = new StringBuilder();
+            sb.append("Employee not found: Mari").append(" - ").append(mapName).append(".map");
+            throw new Exception(sb.toString());
+        }
+
+        if(zePos.equals(new Point(-1,-1))){
+            StringBuilder sb = new StringBuilder();
+            sb.append("Employee not found: ZeCastro").append(" - ").append(mapName).append(".map");
+            throw new Exception(sb.toString());
+        }
 
         employees.add(new Employee(baltaPos.getX(), baltaPos.getY(), new BaltaAI()));
         employees.add(new Employee(zePos.getX(), zePos.getY(), new ZeCastroAI(employees.get(0))));

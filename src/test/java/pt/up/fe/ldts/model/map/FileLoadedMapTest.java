@@ -121,6 +121,11 @@ public class FileLoadedMapTest {
         Assertions.assertEquals(4, employees.size());
 
         employees.forEach(employee -> Assertions.assertEquals(Vector.UP, employee.getDirection()));
+
+        Assertions.assertEquals(new Point(11,13), m.getBoxPosition());
+
+        Assertions.assertEquals(5, m.getBoxWidth());
+        Assertions.assertEquals(3, m.getBoxHeight());
     }
 
 }
