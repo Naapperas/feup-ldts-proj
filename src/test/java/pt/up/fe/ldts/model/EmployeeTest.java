@@ -18,19 +18,7 @@ public class EmployeeTest {
 
         Employee employee = new Employee(4, 5, null);
 
-        Assertions.assertEquals(4, employee.getX());
-        Assertions.assertEquals(5, employee.getY());
-
         Assertions.assertEquals(Employee.EmployeeState.SCATTER, employee.getCurrentState());
-    }
-
-    @Test
-    public void testSettingStates() {
-
-        Employee employee = new Employee(4, 5, null);
-        employee.setCurrentState(Employee.EmployeeState.CHASING);
-
-        Assertions.assertEquals(Employee.EmployeeState.CHASING, employee.getCurrentState());
     }
 
     private List<Vector> possibleDirections(Vector direction){
@@ -74,12 +62,21 @@ public class EmployeeTest {
     }
 
     @Test
-    public void testCervejaPicked(){
+    public void testCervejaPicked() {
         Employee employee = new Employee(13, 13, new ToniAI()); // ai doesn't matter here
 
         employee.cervejaPicked();
 
         Assertions.assertEquals(Vector.DOWN, employee.getDirection());
+    }
+
+    @Test
+    public void testStates() {
+
+        Employee employee = new Employee(4, 5, null);
+        employee.setCurrentState(Employee.EmployeeState.DEAD);
+
+        Assertions.assertEquals(Employee.EmployeeState.DEAD, employee.getCurrentState());
     }
 
     @Test
