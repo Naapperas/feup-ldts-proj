@@ -1,8 +1,7 @@
 package pt.up.fe.ldts;
 
-import pt.up.fe.ldts.controller.employeeAI.*;
-import pt.up.fe.ldts.model.*;
-import pt.up.fe.ldts.model.Point;
+import pt.up.fe.ldts.model.Arena;
+import pt.up.fe.ldts.model.Jorge;
 import pt.up.fe.ldts.model.map.DefaultMap;
 import pt.up.fe.ldts.model.map.Map;
 import pt.up.fe.ldts.view.Renderer;
@@ -12,8 +11,6 @@ import pt.up.fe.ldts.view.gui.LanternaGUI;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Application {
 
