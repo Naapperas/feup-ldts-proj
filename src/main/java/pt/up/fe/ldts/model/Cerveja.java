@@ -41,7 +41,7 @@ public class Cerveja extends Collectible {
         var previousForegroundColor = tg.getForegroundColor();
 
         tg.setForegroundColor(TextColor.Factory.fromString("#FFA500"));
-        tg.putString(this.getX(), this.getY(), "i");
+        tg.putString(this.getX(), this.getY()+1, "i");
 
         tg.setForegroundColor(previousForegroundColor);
 

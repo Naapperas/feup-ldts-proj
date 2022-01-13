@@ -31,7 +31,7 @@ public class Tremoco extends Collectible {
         var previousForegroundColor = tg.getForegroundColor();
 
         tg.setForegroundColor(TextColor.Factory.fromString("#e4d5b7"));
-        tg.putString(this.getX(), this.getY(), ".");
+        tg.putString(this.getX(), this.getY()+1, ".");
 
         tg.setForegroundColor(previousForegroundColor);
 

@@ -36,7 +36,7 @@ public abstract class Entity extends Element {
             return; // unknown direction
         var newPos = this.getPosition().addVector(this.direction);
 
-        if (newPos.getY() == 15) {
+        if (newPos.getY() == 14) {
             if (newPos.getX() <= 0) newPos.setX(26);
             else if (newPos.getX() >= 27) newPos.setX(0);
         }
