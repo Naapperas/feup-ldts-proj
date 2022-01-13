@@ -63,7 +63,7 @@ public class Employee extends Entity implements CervejaListener {
 
         var currState = this.getCurrentState();
         this.setCurrentState(EmployeeState.FRIGHTENED);
-        this.getDirection().multiply(-1);
+        this.setDirection(this.getDirection().multiply(-1));
 
         //TODO: implement timer
 

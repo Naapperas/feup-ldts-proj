@@ -53,4 +53,16 @@ public class VectorTest {
         Assertions.assertEquals(Vector.NULL, v.multiply(0));
         Assertions.assertEquals(v, v.multiply(1));
     }
+
+    @Test
+    public void testCompare() {
+
+        Assertions.assertEquals(0, Vector.UP.compareTo(Vector.UP));
+        Assertions.assertEquals(0, Vector.LEFT.compareTo(Vector.LEFT));
+        Assertions.assertEquals(0, Vector.DOWN.compareTo(Vector.DOWN));
+        Assertions.assertEquals(0, Vector.RIGHT.compareTo(Vector.RIGHT));
+
+        Assertions.assertEquals(1, Vector.DOWN.compareTo(Vector.LEFT));
+        Assertions.assertEquals(-1, Vector.DOWN.compareTo(Vector.RIGHT));
+    }
 }

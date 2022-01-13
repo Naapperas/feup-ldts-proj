@@ -1,5 +1,6 @@
 package pt.up.fe.ldts.controller.employeeAI;
 
+import com.googlecode.lanterna.TextColor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,6 +35,10 @@ public class AITest {
         Assertions.assertEquals(ToniAI.DEAD_TARGET, toni.chooseTargetPosition(Employee.EmployeeState.DEAD, pos));
 
         //falta testar frightened
+
+        TextColor expectedColor = TextColor.Factory.fromString("#e5b362");
+
+        Assertions.assertEquals(expectedColor, toni.getEmployeeColor());
     }
 
     @Test
@@ -46,6 +51,9 @@ public class AITest {
 
         Assertions.assertEquals(BaltaAI.DEAD_TARGET, baltazar.chooseTargetPosition(Employee.EmployeeState.DEAD, pos));
 
+        TextColor expectedColor = TextColor.Factory.fromString("#E70000");
+
+        Assertions.assertEquals(expectedColor, baltazar.getEmployeeColor());
     }
 
     @Test
@@ -65,6 +73,9 @@ public class AITest {
 
         Assertions.assertEquals(MariAI.DEAD_TARGET, mariana.chooseTargetPosition(Employee.EmployeeState.DEAD, pos));
 
+        TextColor expectedColor = TextColor.Factory.fromString("#ed8fe4");
+
+        Assertions.assertEquals(expectedColor, mariana.getEmployeeColor());
     }
 
     @Test
@@ -72,7 +83,7 @@ public class AITest {
 
         Employee balta = new Employee(10,10,null);
 
-        EmployeeAI zeCastroAI = new ZeCastroAI(balta);
+        EmployeeAI zeCastro = new ZeCastroAI(balta);
 
         Point target;
 
@@ -83,9 +94,9 @@ public class AITest {
 
             target = target.addVector(Vector.from(balta.getPosition(), target));
 
-            Assertions.assertEquals(zeCastroAI.getScatterTarget(), zeCastroAI.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
+            Assertions.assertEquals(zeCastro.getScatterTarget(), zeCastro.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
 
-            Assertions.assertEquals(target, zeCastroAI.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
+            Assertions.assertEquals(target, zeCastro.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
         }
 
         Jorge.singleton.setDirection(Vector.LEFT);
@@ -95,9 +106,9 @@ public class AITest {
 
             target = target.addVector(Vector.from(balta.getPosition(), target));
 
-            Assertions.assertEquals(target, zeCastroAI.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
+            Assertions.assertEquals(target, zeCastro.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
 
-            Assertions.assertEquals(ZeCastroAI.DEAD_TARGET, zeCastroAI.chooseTargetPosition(Employee.EmployeeState.DEAD, pos));
+            Assertions.assertEquals(ZeCastroAI.DEAD_TARGET, zeCastro.chooseTargetPosition(Employee.EmployeeState.DEAD, pos));
         }
 
         Jorge.singleton.setDirection(Vector.UP);
@@ -108,9 +119,13 @@ public class AITest {
 
             target = target.addVector(Vector.from(balta.getPosition(), target));
 
-            Assertions.assertEquals(target, zeCastroAI.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
+            Assertions.assertEquals(target, zeCastro.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
 
-            Assertions.assertEquals(ZeCastroAI.DEAD_TARGET, zeCastroAI.chooseTargetPosition(Employee.EmployeeState.DEAD, pos));
+            Assertions.assertEquals(ZeCastroAI.DEAD_TARGET, zeCastro.chooseTargetPosition(Employee.EmployeeState.DEAD, pos));
         }
+
+        TextColor expectedColor = TextColor.Factory.fromString("#43eee4");
+
+        Assertions.assertEquals(expectedColor, zeCastro.getEmployeeColor());
     }
 }

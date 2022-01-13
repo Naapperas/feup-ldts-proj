@@ -4,8 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
+import pt.up.fe.ldts.controller.employeeAI.ToniAI;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -20,6 +22,15 @@ public class EmployeeTest {
         Assertions.assertEquals(5, employee.getY());
 
         Assertions.assertEquals(Employee.EmployeeState.SCATTER, employee.getCurrentState());
+    }
+
+    @Test
+    public void testSettingStates() {
+
+        Employee employee = new Employee(4, 5, null);
+        employee.setCurrentState(Employee.EmployeeState.CHASING);
+
+        Assertions.assertEquals(Employee.EmployeeState.CHASING, employee.getCurrentState());
     }
 
     private List<Vector> possibleDirections(Vector direction){
@@ -43,6 +54,32 @@ public class EmployeeTest {
             directions.add(Vector.DOWN);
         }
         return directions;
+    }
+
+    @Test
+    public void testInsideBox(){
+        Employee employee = new Employee(13, 13, new ToniAI()); // ai doesn't matter here
+        employee.setDirection(Vector.DOWN);
+
+        Set<Vector> everyDir = new HashSet<>();
+        everyDir.add(Vector.UP);
+        everyDir.add(Vector.DOWN);
+        everyDir.add(Vector.LEFT);
+        everyDir.add(Vector.RIGHT);
+        Arena arena = Mockito.mock(Arena.class);
+        Mockito.when(arena.getValidDirections(Mockito.any(), Mockito.any(), Mockito.anyBoolean())).thenReturn(everyDir);
+        employee.changeDirection(arena);
+
+        Assertions.assertEquals(Vector.UP, employee.getDirection());
+    }
+
+    @Test
+    public void testCervejaPicked(){
+        Employee employee = new Employee(13, 13, new ToniAI()); // ai doesn't matter here
+
+        employee.cervejaPicked();
+
+        Assertions.assertEquals(Vector.DOWN, employee.getDirection());
     }
 
     @Test
