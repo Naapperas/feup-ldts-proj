@@ -73,7 +73,7 @@ public class Jorge extends Entity{
         }
         else
             previousRenderChar = 'h';
-        tg.putString(this.getX(), this.getY(), "" + previousRenderChar);//bola cheia
+        tg.putString(this.getX(), this.getY()+1, "" + previousRenderChar);//bola cheia
 
 
         tg.putString(0, 0, "SCORE:" + this.getScore());

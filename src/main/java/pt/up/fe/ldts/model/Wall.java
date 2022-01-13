@@ -25,7 +25,7 @@ public class Wall extends Element {
 
         tg.setBackgroundColor(TextColor.Factory.fromString(TextColor.ANSI.BLUE.name()));
         tg.setForegroundColor(TextColor.Factory.fromString(TextColor.ANSI.BLUE.name()));
-        tg.putString(this.getX(), this.getY(), "W");
+        tg.putString(this.getX(), this.getY()+1, "W");
 
         tg.setForegroundColor(previousForegroundColor);
         tg.setBackgroundColor(previousBackgroundColor);
