@@ -32,6 +32,7 @@ public class Application {
         this.arena.setWalls(map.getMapWalls());
         this.arena.setEmployees(map.getMapEmployees());
         this.arena.setCollectibles(map.getMapCollecibles());
+        this.arena.setGatePosition(map.getGatePosition());
 
         Renderer.addDrawable(arena);
     }
