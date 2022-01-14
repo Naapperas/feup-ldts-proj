@@ -57,6 +57,10 @@ public class Arena implements Drawable {
         this.gatePosition = gatePosition;
     }
 
+    public Point getGatePosition() {
+        return this.gatePosition;
+    }
+
     public Arena(Map map) {
         this.setGatePosition(map.getGatePosition());
 
@@ -166,6 +170,5 @@ public class Arena implements Drawable {
                 this.collectibles.remove(c);
                 return;
             }
-
     }
 }
