@@ -57,6 +57,10 @@ public class Arena implements Drawable {
         this.gatePosition = gatePosition;
     }
 
+    public Point getGatePosition() {
+        return this.gatePosition;
+    }
+
     public Arena(Map map) {
         this.setGatePosition(map.getGatePosition());
 
@@ -156,5 +160,15 @@ public class Arena implements Drawable {
             employee.render(tg);
 
         Jorge.singleton.render(tg); // make Jorge the last element to be rendered on screen so the score always appears on top
+    }
+
+    public void checkCollectibleColision() {
+
+        for (Collectible c : this.collectibles)
+            if (Jorge.singleton.getPosition().equals(c.getPosition())) {
+                c.notifyCollected();
+                this.collectibles.remove(c);
+                return;
+            }
     }
 }

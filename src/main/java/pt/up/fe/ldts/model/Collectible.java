@@ -3,7 +3,7 @@ package pt.up.fe.ldts.model;
 public abstract class Collectible extends Element {
 
     // the points to give to the player when this item is collected
-    protected static int POINTS_PER_ITEM;
+    protected abstract int pointsPerItem();
 
     /**
      * Constructs a new Collectible on the given position

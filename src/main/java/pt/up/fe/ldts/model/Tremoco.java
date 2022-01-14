@@ -5,8 +5,9 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Tremoco extends Collectible {
 
-    static {
-        Tremoco.POINTS_PER_ITEM = 10;
+    @Override
+    protected int pointsPerItem() {
+        return 10;
     }
 
     /**
@@ -20,9 +21,7 @@ public class Tremoco extends Collectible {
 
     @Override
     public void notifyCollected() {
-
-        //TODO: when that is implemented, add score to Jorge
-
+        Jorge.singleton.addPoints(this.pointsPerItem());
     }
 
     @Override

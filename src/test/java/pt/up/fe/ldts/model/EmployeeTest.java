@@ -2,6 +2,7 @@ package pt.up.fe.ldts.model;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
 import pt.up.fe.ldts.controller.employeeAI.ToniAI;
@@ -56,6 +57,8 @@ public class EmployeeTest {
         everyDir.add(Vector.RIGHT);
         Arena arena = Mockito.mock(Arena.class);
         Mockito.when(arena.getValidDirections(Mockito.any(), Mockito.any(), Mockito.anyBoolean())).thenReturn(everyDir);
+        Mockito.when(arena.isInsideBox(Mockito.any())).thenReturn(true);
+        Mockito.when(arena.getGatePosition()).thenReturn(new Point(13, 12));
         employee.changeDirection(arena);
 
         Assertions.assertEquals(Vector.UP, employee.getDirection());

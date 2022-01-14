@@ -7,10 +7,13 @@ import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Employee extends Entity implements CervejaListener {
 
     public static final int SCORE_WHEN_EATEN = 20;
+    private static final int TIME_FRIGHTENED = 5; // in seconds
 
     @Override
     public void render(TextGraphics tg) {
@@ -66,9 +69,17 @@ public class Employee extends Entity implements CervejaListener {
         this.setCurrentState(EmployeeState.FRIGHTENED);
         this.setDirection(this.getDirection().multiply(-1));
 
-        //TODO: implement timer
+        Timer t = new Timer();
+        t.schedule(new TimerTask() {
 
-        this.setCurrentState(currState);
+            final Employee e = Employee.this;
+
+            @Override
+            public void run() {
+                e.setDirection(e.getDirection().multiply(-1));
+                e.setCurrentState(currState);
+            }
+        }, 1000 * TIME_FRIGHTENED);
     }
 
     @Override
@@ -76,9 +87,9 @@ public class Employee extends Entity implements CervejaListener {
 
         Point targetPoint;
 
-        if (this.getPosition().equals(new Point(13, 13)) || ((11 <= this.getPosition().getX() && this.getPosition().getX() <= 15) && (14 <= this.getPosition().getY() && this.getPosition().getY() <= 16))) {
-            targetPoint = new Point(13, 12); // make them leave the box initially
-        } else
+        if (arena.isInsideBox(this.getPosition()))
+            targetPoint = arena.getGatePosition().addVector(Vector.UP); // make them leave the box initially
+        else
             targetPoint = this.ai.chooseTargetPosition(this.getCurrentState(), this.getPosition());
 
         this.setDirection(this.chooseNextDirection(arena, targetPoint));
