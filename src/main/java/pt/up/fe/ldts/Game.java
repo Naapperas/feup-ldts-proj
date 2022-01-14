@@ -53,8 +53,6 @@ public class Game implements AppState{
                 case QUIT:
                     running = false;
                     break;
-                case SELECT: // TODO: to be implemented if we add an "initial screen"
-                    break;
                 default:
                     break;
             }
