@@ -97,7 +97,6 @@ public class Arena implements Drawable {
 
                     return !this.walls.contains(new Wall(newPosition.getX(), newPosition.getY()));
                 })
-                .filter(dir -> isJorge || !dir.equals(Vector.UP) || !((position.getY() == 11 || position.getY() == 23) && (9 <= position.getX() && position.getX() <= 17))) // ghosts cant go up on corridors
                 .filter(dir -> !position.equals(new Point(13, 11)) || !dir.equals(Vector.DOWN)) // cant go back to initial box
                 .collect(Collectors.toUnmodifiableSet());
     }
