@@ -73,6 +73,8 @@ public class ArenaTest {
 
         TextGraphics tg = Mockito.mock(TextGraphics.class);
 
+        arena.setGatePosition(new Point(0, 0));
+
         arena.render(tg);
 
         Mockito.verify(tg, Mockito.times(1)).fillRectangle(new TerminalPosition(0, 0), new TerminalSize(20, 20), ' ');
@@ -307,6 +309,14 @@ public class ArenaTest {
             Set<Vector> expected = Set.of(Vector.RIGHT);
 
             Assertions.assertEquals(expected, arena.getValidDirections(Jorge.singleton.getPosition(), Jorge.singleton.getDirection(), false));
+        }
+
+        {
+            Jorge.singleton.changePos(13, 11);
+            Jorge.singleton.setDirection(Vector.RIGHT);
+            Set<Vector> expected = Set.of(Vector.RIGHT, Vector.LEFT);
+
+            Assertions.assertEquals(expected, arena.getValidDirections(Jorge.singleton.getPosition(), Jorge.singleton.getDirection(), true));
         }
     }
 
