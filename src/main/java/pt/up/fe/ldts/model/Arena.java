@@ -132,8 +132,8 @@ public class Arena implements Drawable {
 
     public boolean isInsideBox(Point position) {
 
-        boolean insideWidth = this.boxCorner.getX() <= position.getX() && position.getX() <= this.boxCorner.getX() + this.boxWidth;
-        boolean insideHeight = this.boxCorner.getY() <= position.getY() && position.getY() <= this.boxCorner.getY() + this.boxHeight;
+        boolean insideWidth = this.boxCorner.getX() <= position.getX() && position.getX() < this.boxCorner.getX() + this.boxWidth;
+        boolean insideHeight = this.boxCorner.getY() <= position.getY() && position.getY() < this.boxCorner.getY() + this.boxHeight;
 
         return insideWidth && insideHeight;
     }

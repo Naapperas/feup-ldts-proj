@@ -29,8 +29,6 @@ public class Application {
         this.map = new DefaultMap();
         this.arena = new Arena(this.map);
 
-        Jorge.singleton.changePos(6, 6);
-
         Renderer.addDrawable(arena);
     }
 

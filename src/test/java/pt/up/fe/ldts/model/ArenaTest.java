@@ -331,5 +331,8 @@ public class ArenaTest {
 
         Assertions.assertTrue(a.isInsideBox(new Point(14, 14)));
         Assertions.assertFalse(a.isInsideBox(new Point(1, 1)));
+        Assertions.assertFalse(a.isInsideBox(new Point(10, 12)));
+        Assertions.assertFalse(a.isInsideBox(new Point(16, 16)));
+        Assertions.assertTrue(a.isInsideBox(new Point(15, 15)));
     }
 }
