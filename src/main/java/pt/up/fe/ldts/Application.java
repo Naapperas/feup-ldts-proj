@@ -13,7 +13,7 @@ public class Application {
         state = new Menu(this);
     }
 
-    private void start() throws IOException {
+    private void start() throws Exception {
         state.start();
     }
 
@@ -24,5 +24,10 @@ public class Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void changeState(AppState state) throws Exception {
+        this.state = state;
+        this.start();
     }
 }

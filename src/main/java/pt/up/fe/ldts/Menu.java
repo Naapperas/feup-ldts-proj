@@ -19,8 +19,8 @@ public class Menu extends AppState{
     }
 
     @Override
-    public void start() throws IOException {
-        boolean running = true;
+    public void start() throws Exception {
+        boolean running = true, game = false;
         while (running){
 
             GUI.ACTION currentAction = gui.getNextAction();
@@ -29,12 +29,18 @@ public class Menu extends AppState{
                 case QUIT:
                     running = false;
                     break;
+                case SELECT:
+                    running=false;
+                    game = true;
+                    break;
                 default:
                     break;
             }
             this.render();
         }
         gui.close();
+        if (game)
+            this.app.changeState(new Game(this.app));
     }
 
     @Override
