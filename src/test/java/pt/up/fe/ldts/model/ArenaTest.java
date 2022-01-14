@@ -286,6 +286,7 @@ public class ArenaTest {
         List<Wall> walls = this.getMapWalls(27, 27);
 
         arena.setWalls(walls);
+        arena.setGatePosition(new Point(13, 12));
 
         Jorge.singleton.setDirection(Vector.UP);
 
