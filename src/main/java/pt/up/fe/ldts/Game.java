@@ -13,7 +13,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class Game implements AppState{
+public class Game extends AppState{
 
     private static final int TICK_TIME = 75;
 
@@ -24,7 +24,8 @@ public class Game implements AppState{
     private Arena arena;
     private Map map;
 
-    public Game() throws Exception {
+    public Game(Application app) throws Exception {
+        super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
         this.map = new DefaultMap();
