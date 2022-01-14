@@ -10,6 +10,7 @@ import pt.up.fe.ldts.controller.employeeAI.BaltaAI;
 import pt.up.fe.ldts.controller.employeeAI.MariAI;
 import pt.up.fe.ldts.controller.employeeAI.ToniAI;
 import pt.up.fe.ldts.controller.employeeAI.ZeCastroAI;
+import pt.up.fe.ldts.model.map.DefaultMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -284,6 +285,8 @@ public class ArenaTest {
 
         arena.setWalls(walls);
 
+        Jorge.singleton.setDirection(Vector.UP);
+
         {
             Jorge.singleton.changePos(6, 6);
             Set<Vector> expected = Set.of(Vector.UP, Vector.LEFT, Vector.RIGHT);
@@ -319,5 +322,14 @@ public class ArenaTest {
         arena.setCollectibles(test);
 
         Assertions.assertEquals(4, cerveja.listeners.size());
+    }
+
+    @Test
+    public void testInsideBox() throws Exception {
+
+        Arena a = new Arena(new DefaultMap());
+
+        Assertions.assertTrue(a.isInsideBox(new Point(14, 14)));
+        Assertions.assertFalse(a.isInsideBox(new Point(1, 1)));
     }
 }
