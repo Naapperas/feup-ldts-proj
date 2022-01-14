@@ -64,6 +64,13 @@ public class Arena implements Drawable {
         this.boxWidth = map.getBoxWidth();
         this.boxHeight = map.getBoxHeight();
 
+        this.setEmployees(map.getMapEmployees());
+        this.setCollectibles(map.getMapCollecibles());
+        this.setWalls(map.getMapWalls());
+
+        this.width = map.getWidth();
+        this.height = map.getHeight();
+
     }
 
     /**

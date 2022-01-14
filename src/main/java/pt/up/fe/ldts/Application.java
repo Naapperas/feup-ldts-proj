@@ -23,16 +23,11 @@ public class Application {
     private Arena arena;
     private Map map;
 
-
     public Application() throws Exception {
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
-        this.arena = new Arena(WIDTH, HEIGHT);
         this.map = new DefaultMap();
-        this.arena.setWalls(map.getMapWalls());
-        this.arena.setEmployees(map.getMapEmployees());
-        this.arena.setCollectibles(map.getMapCollecibles());
-        this.arena.setGatePosition(map.getGatePosition());
+        this.arena = new Arena(this.map);
 
         Renderer.addDrawable(arena);
     }
