@@ -113,7 +113,7 @@ public class FileLoadedMap implements Map {
             throw new Exception(sb.toString());
         }
 
-        if (!isInsideBox(baltaPos) && baltaPos != null){
+        if (baltaPos != null && !isInsideBox(baltaPos)){
             StringBuilder sb = new StringBuilder();
             sb.append("Employee outside box: Balta").append(" - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
@@ -134,6 +134,12 @@ public class FileLoadedMap implements Map {
         if (!isInsideBox(zePos) && zePos != null){
             StringBuilder sb = new StringBuilder();
             sb.append("Employee outside box: ZeCastro").append(" - ").append(mapName).append(".map");
+            throw new Exception(sb.toString());
+        }
+
+        if(zePos != null && baltaPos == null){
+            StringBuilder sb = new StringBuilder();
+            sb.append("ZeCastro can't exist without Balta - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
 

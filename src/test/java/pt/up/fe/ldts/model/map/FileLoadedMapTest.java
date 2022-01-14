@@ -95,6 +95,16 @@ public class FileLoadedMapTest {
     }
 
     @Test
+    public void testLoadZeCastroWithNoBalta(){
+        try {
+            new FileLoadedMap("zeNoBalta");
+            Assertions.fail(); // should never reach this line
+        } catch (Exception e) {
+            Assertions.assertEquals("ZeCastro can't exist without Balta - zeNoBalta.map", e.getMessage());
+        }
+    }
+
+    @Test
     public void testInvalidBoxPosition(){
         try {
             new FileLoadedMap("invalidBox");
