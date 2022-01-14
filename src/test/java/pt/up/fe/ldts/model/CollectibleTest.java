@@ -12,6 +12,8 @@ public class CollectibleTest {
         Tremoco t = new Tremoco(0, 0);
         Cerveja c = new Cerveja(0, 0);
 
+        Jorge.singleton.addPoints(-Jorge.singleton.getScore());
+
         Assertions.assertEquals(0, Jorge.singleton.getScore());
 
         t.notifyCollected();
