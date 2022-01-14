@@ -42,7 +42,7 @@ public class ArenaTest {
             }).when(wall).render(Mockito.any());
             walls.add(wall);
         }
-        arena.addWalls(walls);
+        arena.setWalls(walls);
 
         AtomicInteger collectibleTest = new AtomicInteger(0);
         List<Collectible> collectibles = new ArrayList<>();
@@ -55,7 +55,7 @@ public class ArenaTest {
             }).when(collectible).render(Mockito.any());
             collectibles.add(collectible);
         }
-        arena.addCollectibles(collectibles);
+        arena.setCollectibles(collectibles);
 
         AtomicInteger employeeTest = new AtomicInteger(0);
         List<Employee> employees = new ArrayList<>();
@@ -68,7 +68,7 @@ public class ArenaTest {
             }).when(employee).render(Mockito.any());
             employees.add(employee);
         }
-        arena.addEmployees(employees);
+        arena.setEmployees(employees);
 
         TextGraphics tg = Mockito.mock(TextGraphics.class);
 
@@ -282,7 +282,7 @@ public class ArenaTest {
         Arena arena = new Arena(27, 27);
         List<Wall> walls = this.getMapWalls(27, 27);
 
-        arena.addWalls(walls);
+        arena.setWalls(walls);
 
         {
             Jorge.singleton.changePos(6, 6);
@@ -310,13 +310,13 @@ public class ArenaTest {
     @Test
     public void testAddListeners(){
         Arena arena = new Arena(27, 27);
-        arena.addEmployees(this.getMapEmployees());
+        arena.setEmployees(this.getMapEmployees());
 
         List<Collectible> test = new ArrayList<>();
         test.add(new Tremoco(1, 1));
         Cerveja cerveja = new Cerveja(1, 2);
         test.add(cerveja);
-        arena.addCollectibles(test);
+        arena.setCollectibles(test);
 
         Assertions.assertEquals(4, cerveja.listeners.size());
     }

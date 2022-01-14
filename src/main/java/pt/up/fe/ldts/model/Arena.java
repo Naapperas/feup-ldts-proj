@@ -4,6 +4,7 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import pt.up.fe.ldts.model.map.Map;
 import pt.up.fe.ldts.view.Drawable;
 
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class Arena implements Drawable {
     private int width;
     private int height;
 
+    private Point gatePosition;
+
     private final List<Employee> employees = new ArrayList<>();
     private final List<Wall> walls = new ArrayList<>();
     private final List<Collectible> collectibles = new ArrayList<>();
@@ -28,13 +31,18 @@ public class Arena implements Drawable {
         return this.employees;
     }
 
-    public void addEmployees(List<Employee> employees) {
+    public void setEmployees(List<Employee> employees) {
+        this.employees.clear();
         this.employees.addAll(employees);
     }
-    public void addWalls(List<Wall> walls) {
+
+    public void setWalls(List<Wall> walls) {
+        this.walls.clear();
         this.walls.addAll(walls);
     }
-    public void addCollectibles(List<Collectible> collectibles) {
+
+    public void setCollectibles(List<Collectible> collectibles) {
+        this.collectibles.clear();
         for (Collectible c : collectibles){  // using for loop to find cervejas and add employees as listeners (addCollectibles should be used after addEmployees)
             if (c.getClass() == Cerveja.class){
                 for (Employee e : this.employees)
@@ -42,6 +50,15 @@ public class Arena implements Drawable {
             }
             this.collectibles.add(c);
         }
+    }
+
+    public void setGatePosition(Point gatePosition) {
+        this.gatePosition = gatePosition;
+    }
+
+    public Arena(Map map) {
+        this.setGatePosition(map.getGatePosition());
+
     }
 
     /**

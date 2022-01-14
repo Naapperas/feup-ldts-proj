@@ -29,9 +29,9 @@ public class Application {
 
         this.arena = new Arena(WIDTH, HEIGHT);
         this.map = new DefaultMap();
-        this.arena.addWalls(map.getMapWalls());
-        this.arena.addEmployees(map.getMapEmployees());
-        this.arena.addCollectibles(map.getMapCollecibles());
+        this.arena.setWalls(map.getMapWalls());
+        this.arena.setEmployees(map.getMapEmployees());
+        this.arena.setCollectibles(map.getMapCollecibles());
 
         Renderer.addDrawable(arena);
     }
