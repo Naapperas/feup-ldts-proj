@@ -5,8 +5,9 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Tremoco extends Collectible {
 
-    static {
-        Tremoco.POINTS_PER_ITEM = 10;
+    @Override
+    protected int pointsPerItem() {
+        return 10;
     }
 
     /**

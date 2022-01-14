@@ -8,14 +8,15 @@ import java.util.List;
 
 public class Cerveja extends Collectible {
 
-    static {
-        Cerveja.POINTS_PER_ITEM = 20;
-    }
-
     public final List<CervejaListener> listeners;
 
     public void addListener(CervejaListener listener) {
         this.listeners.add(listener);
+    }
+
+    @Override
+    protected int pointsPerItem() {
+        return 20;
     }
 
     /**
