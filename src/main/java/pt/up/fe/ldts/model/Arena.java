@@ -21,7 +21,8 @@ public class Arena implements Drawable {
     private int width;
     private int height;
 
-    private Point gatePosition;
+    private Point gatePosition, boxCorner;
+    private int boxWidth, boxHeight;
 
     private final List<Employee> employees = new ArrayList<>();
     private final List<Wall> walls = new ArrayList<>();
@@ -58,6 +59,10 @@ public class Arena implements Drawable {
 
     public Arena(Map map) {
         this.setGatePosition(map.getGatePosition());
+
+        this.boxCorner = map.getBoxPosition();
+        this.boxWidth = map.getBoxWidth();
+        this.boxHeight = map.getBoxHeight();
 
     }
 
@@ -109,13 +114,21 @@ public class Arena implements Drawable {
         return validDirs
                 .stream()
                 .filter(dir -> isJorge || !dir.equals(currentDirection.multiply(-1))) // ghosts can't go back
-                .filter(dir -> { // cant go through walls
+                .filter(dir -> { // can'zt go through walls
                     var newPosition = position.addVector(dir);
 
                     return !this.walls.contains(new Wall(newPosition.getX(), newPosition.getY()));
                 })
                 .filter(dir -> !position.equals(this.gatePosition) || !dir.equals(Vector.DOWN)) // cant go back to initial box
                 .collect(Collectors.toUnmodifiableSet());
+    }
+
+    public boolean isInsideBox(Point position) {
+
+        boolean insideWidth = this.boxCorner.getX() <= position.getX() && position.getX() <= this.boxCorner.getX() + this.boxWidth;
+        boolean insideHeight = this.boxCorner.getY() <= position.getY() && position.getY() <= this.boxCorner.getY() + this.boxHeight;
+
+        return insideWidth && insideHeight;
     }
 
     @Override
