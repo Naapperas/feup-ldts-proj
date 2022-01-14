@@ -3,6 +3,7 @@ package pt.up.fe.ldts;
 import pt.up.fe.ldts.model.Arena;
 import pt.up.fe.ldts.model.Jorge;
 import pt.up.fe.ldts.model.map.DefaultMap;
+import pt.up.fe.ldts.model.map.FileLoadedMap;
 import pt.up.fe.ldts.model.map.Map;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
@@ -18,7 +19,7 @@ public class Application {
 
     private final GUI gui;
 
-    private static final int WIDTH = 27, HEIGHT = 30;
+    private static final int WIDTH = 33, HEIGHT = 33;
 
     private Arena arena;
     private Map map;
