@@ -1,6 +1,7 @@
 package pt.up.fe.ldts.model;
 
 import com.github.javaparser.utils.Pair;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
 
@@ -15,7 +16,7 @@ public class Employee extends Entity implements CervejaListener {
     public void render(TextGraphics tg) {
         var previousForegroundColor = tg.getForegroundColor();
 
-        tg.setForegroundColor(this.ai.getEmployeeColor());
+        tg.setForegroundColor(this.getCurrentState() == EmployeeState.FRIGHTENED ? TextColor.Factory.fromString("#0055ff") : this.ai.getEmployeeColor());
         tg.putString(this.getX(), this.getY()+1, "d");
 
         tg.setForegroundColor(previousForegroundColor);
