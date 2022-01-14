@@ -113,25 +113,25 @@ public class FileLoadedMap implements Map {
             throw new Exception(sb.toString());
         }
 
-        if (baltaPos != null && !isInsideBox(baltaPos)){
+        if (baltaPos != null && isNotInsideBox(baltaPos)){
             StringBuilder sb = new StringBuilder();
             sb.append("Employee outside box: Balta").append(" - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
 
-        if (!isInsideBox(toniPos) && toniPos != null){
+        if (toniPos != null && isNotInsideBox(toniPos)){
             StringBuilder sb = new StringBuilder();
             sb.append("Employee outside box: Toni").append(" - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
 
-        if (!isInsideBox(mariPos) && mariPos != null){
+        if (mariPos != null && isNotInsideBox(mariPos)){
             StringBuilder sb = new StringBuilder();
             sb.append("Employee outside box: Mari").append(" - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
 
-        if (!isInsideBox(zePos) && zePos != null){
+        if (zePos != null && isNotInsideBox(zePos)){
             StringBuilder sb = new StringBuilder();
             sb.append("Employee outside box: ZeCastro").append(" - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
@@ -143,18 +143,22 @@ public class FileLoadedMap implements Map {
             throw new Exception(sb.toString());
         }
 
-        employees.add(new Employee(baltaPos.getX(), baltaPos.getY(), new BaltaAI()));
-        employees.add(new Employee(zePos.getX(), zePos.getY(), new ZeCastroAI(employees.get(0))));
-        employees.add(new Employee(mariPos.getX(), mariPos.getY(), new MariAI()));
-        employees.add(new Employee(toniPos.getX(), toniPos.getY(), new ToniAI()));
+        if (baltaPos != null)
+            employees.add(new Employee(baltaPos.getX(), baltaPos.getY(), new BaltaAI()));
+        if (zePos != null)
+            employees.add(new Employee(zePos.getX(), zePos.getY(), new ZeCastroAI(employees.get(0))));
+        if (mariPos != null)
+            employees.add(new Employee(mariPos.getX(), mariPos.getY(), new MariAI()));
+        if (toniPos != null)
+            employees.add(new Employee(toniPos.getX(), toniPos.getY(), new ToniAI()));
     }
 
-    public boolean isInsideBox(Point position) {
+    private boolean isNotInsideBox(Point position) {
 
         boolean insideWidth = this.boxPosition.getX() <= position.getX() && position.getX() < this.boxPosition.getX() + this.boxWidth;
         boolean insideHeight = this.boxPosition.getY() <= position.getY() && position.getY() < this.boxPosition.getY() + this.boxHeight;
 
-        return insideWidth && insideHeight;
+        return !(insideWidth && insideHeight);
     }
 
     @Override
