@@ -101,5 +101,7 @@ public class Application {
             employee.changeDirection(this.arena);
             employee.move();
         });
+
+        this.arena.checkCollectibleColision();
     }
 }

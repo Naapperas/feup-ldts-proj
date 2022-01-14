@@ -157,4 +157,15 @@ public class Arena implements Drawable {
 
         Jorge.singleton.render(tg); // make Jorge the last element to be rendered on screen so the score always appears on top
     }
+
+    public void checkCollectibleColision() {
+
+        for (Collectible c : this.collectibles)
+            if (Jorge.singleton.getPosition().equals(c.getPosition())) {
+                c.notifyCollected();
+                this.collectibles.remove(c);
+                return;
+            }
+
+    }
 }
