@@ -4,6 +4,7 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import pt.up.fe.ldts.model.map.Map;
 import pt.up.fe.ldts.view.Drawable;
 
 import java.util.ArrayList;
@@ -20,6 +21,9 @@ public class Arena implements Drawable {
     private int width;
     private int height;
 
+    private Point gatePosition, boxCorner;
+    private int boxWidth, boxHeight;
+
     private final List<Employee> employees = new ArrayList<>();
     private final List<Wall> walls = new ArrayList<>();
     private final List<Collectible> collectibles = new ArrayList<>();
@@ -28,13 +32,18 @@ public class Arena implements Drawable {
         return this.employees;
     }
 
-    public void addEmployees(List<Employee> employees) {
+    public void setEmployees(List<Employee> employees) {
+        this.employees.clear();
         this.employees.addAll(employees);
     }
-    public void addWalls(List<Wall> walls) {
+
+    public void setWalls(List<Wall> walls) {
+        this.walls.clear();
         this.walls.addAll(walls);
     }
-    public void addCollectibles(List<Collectible> collectibles) {
+
+    public void setCollectibles(List<Collectible> collectibles) {
+        this.collectibles.clear();
         for (Collectible c : collectibles){  // using for loop to find cervejas and add employees as listeners (addCollectibles should be used after addEmployees)
             if (c.getClass() == Cerveja.class){
                 for (Employee e : this.employees)
@@ -42,6 +51,26 @@ public class Arena implements Drawable {
             }
             this.collectibles.add(c);
         }
+    }
+
+    public void setGatePosition(Point gatePosition) {
+        this.gatePosition = gatePosition;
+    }
+
+    public Arena(Map map) {
+        this.setGatePosition(map.getGatePosition());
+
+        this.boxCorner = map.getBoxPosition();
+        this.boxWidth = map.getBoxWidth();
+        this.boxHeight = map.getBoxHeight();
+
+        this.setEmployees(map.getMapEmployees());
+        this.setCollectibles(map.getMapCollecibles());
+        this.setWalls(map.getMapWalls());
+
+        this.width = map.getWidth();
+        this.height = map.getHeight();
+
     }
 
     /**
@@ -92,14 +121,21 @@ public class Arena implements Drawable {
         return validDirs
                 .stream()
                 .filter(dir -> isJorge || !dir.equals(currentDirection.multiply(-1))) // ghosts can't go back
-                .filter(dir -> { // cant go through walls
+                .filter(dir -> { // can'zt go through walls
                     var newPosition = position.addVector(dir);
 
                     return !this.walls.contains(new Wall(newPosition.getX(), newPosition.getY()));
                 })
-                .filter(dir -> isJorge || !dir.equals(Vector.UP) || !((position.getY() == 11 || position.getY() == 23) && (9 <= position.getX() && position.getX() <= 17))) // ghosts cant go up on corridors
-                .filter(dir -> !position.equals(new Point(13, 11)) || !dir.equals(Vector.DOWN)) // cant go back to initial box
+                .filter(dir -> !position.equals(this.gatePosition.addVector(Vector.UP)) || !dir.equals(Vector.DOWN)) // cant go back to initial box
                 .collect(Collectors.toUnmodifiableSet());
+    }
+
+    public boolean isInsideBox(Point position) {
+
+        boolean insideWidth = this.boxCorner.getX() <= position.getX() && position.getX() < this.boxCorner.getX() + this.boxWidth;
+        boolean insideHeight = this.boxCorner.getY() <= position.getY() && position.getY() < this.boxCorner.getY() + this.boxHeight;
+
+        return insideWidth && insideHeight;
     }
 
     @Override
@@ -111,7 +147,7 @@ public class Arena implements Drawable {
         for (var wall : this.walls)
             wall.render(tg);
 
-        tg.putString(13,12, "_");
+        tg.putString(this.gatePosition.getX(),this.gatePosition.getY(), "_");
 
         for (var collectible : this.collectibles)
             collectible.render(tg);

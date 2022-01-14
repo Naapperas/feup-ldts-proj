@@ -10,6 +10,7 @@ import pt.up.fe.ldts.controller.employeeAI.BaltaAI;
 import pt.up.fe.ldts.controller.employeeAI.MariAI;
 import pt.up.fe.ldts.controller.employeeAI.ToniAI;
 import pt.up.fe.ldts.controller.employeeAI.ZeCastroAI;
+import pt.up.fe.ldts.model.map.DefaultMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class ArenaTest {
             }).when(wall).render(Mockito.any());
             walls.add(wall);
         }
-        arena.addWalls(walls);
+        arena.setWalls(walls);
 
         AtomicInteger collectibleTest = new AtomicInteger(0);
         List<Collectible> collectibles = new ArrayList<>();
@@ -55,7 +56,7 @@ public class ArenaTest {
             }).when(collectible).render(Mockito.any());
             collectibles.add(collectible);
         }
-        arena.addCollectibles(collectibles);
+        arena.setCollectibles(collectibles);
 
         AtomicInteger employeeTest = new AtomicInteger(0);
         List<Employee> employees = new ArrayList<>();
@@ -68,9 +69,11 @@ public class ArenaTest {
             }).when(employee).render(Mockito.any());
             employees.add(employee);
         }
-        arena.addEmployees(employees);
+        arena.setEmployees(employees);
 
         TextGraphics tg = Mockito.mock(TextGraphics.class);
+
+        arena.setGatePosition(new Point(0, 0));
 
         arena.render(tg);
 
@@ -282,7 +285,10 @@ public class ArenaTest {
         Arena arena = new Arena(27, 27);
         List<Wall> walls = this.getMapWalls(27, 27);
 
-        arena.addWalls(walls);
+        arena.setWalls(walls);
+        arena.setGatePosition(new Point(13, 12));
+
+        Jorge.singleton.setDirection(Vector.UP);
 
         {
             Jorge.singleton.changePos(6, 6);
@@ -305,19 +311,39 @@ public class ArenaTest {
 
             Assertions.assertEquals(expected, arena.getValidDirections(Jorge.singleton.getPosition(), Jorge.singleton.getDirection(), false));
         }
+
+        {
+            Jorge.singleton.changePos(13, 11);
+            Jorge.singleton.setDirection(Vector.RIGHT);
+            Set<Vector> expected = Set.of(Vector.RIGHT, Vector.LEFT);
+
+            Assertions.assertEquals(expected, arena.getValidDirections(Jorge.singleton.getPosition(), Jorge.singleton.getDirection(), true));
+        }
     }
 
     @Test
     public void testAddListeners(){
         Arena arena = new Arena(27, 27);
-        arena.addEmployees(this.getMapEmployees());
+        arena.setEmployees(this.getMapEmployees());
 
         List<Collectible> test = new ArrayList<>();
         test.add(new Tremoco(1, 1));
         Cerveja cerveja = new Cerveja(1, 2);
         test.add(cerveja);
-        arena.addCollectibles(test);
+        arena.setCollectibles(test);
 
         Assertions.assertEquals(4, cerveja.listeners.size());
+    }
+
+    @Test
+    public void testInsideBox() throws Exception {
+
+        Arena a = new Arena(new DefaultMap());
+
+        Assertions.assertTrue(a.isInsideBox(new Point(14, 14)));
+        Assertions.assertFalse(a.isInsideBox(new Point(1, 1)));
+        Assertions.assertFalse(a.isInsideBox(new Point(10, 12)));
+        Assertions.assertFalse(a.isInsideBox(new Point(16, 16)));
+        Assertions.assertTrue(a.isInsideBox(new Point(15, 15)));
     }
 }
