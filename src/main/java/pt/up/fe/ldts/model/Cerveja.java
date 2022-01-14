@@ -32,7 +32,8 @@ public class Cerveja extends Collectible {
     @Override
     public void notifyCollected() {
 
-        //TODO: when that is implemented, add score to Jorge
+        Jorge.singleton.addPoints(this.pointsPerItem());
+
         this.listeners.forEach(CervejaListener::cervejaPicked);
     }
 
