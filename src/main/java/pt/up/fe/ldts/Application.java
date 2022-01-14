@@ -10,7 +10,7 @@ public class Application {
     private AppState state;
 
     private Application() throws Exception {
-        state = new Game();
+        state = new Menu();
     }
 
     private void start() throws IOException {
