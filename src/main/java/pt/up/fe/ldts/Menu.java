@@ -21,6 +21,21 @@ public class Menu implements AppState{
 
     @Override
     public void start() throws IOException {
+        boolean running = true;
+        while (running){
+
+            GUI.ACTION currentAction = gui.getNextAction();
+
+            switch (currentAction) {
+                case QUIT:
+                    running = false;
+                    break;
+                default:
+                    break;
+            }
+            this.render();
+        }
+        gui.close();
     }
 
     @Override
