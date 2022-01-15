@@ -18,7 +18,7 @@ public class MapMenu extends AppState {
     public MapMenu(Application app) throws Exception {
         super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
-
+        Renderer.clearRenderer();
     }
 
     @Override

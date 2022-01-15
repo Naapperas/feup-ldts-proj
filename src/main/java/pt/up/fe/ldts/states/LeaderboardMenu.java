@@ -15,7 +15,7 @@ public class LeaderboardMenu extends AppState{
     public LeaderboardMenu(Application app) throws Exception {
         super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
-
+        Renderer.clearRenderer();
     }
 
     @Override

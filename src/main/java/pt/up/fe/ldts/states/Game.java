@@ -30,6 +30,7 @@ public class Game extends AppState {
         this.map = new DefaultMap();
         this.arena = new Arena(this.map);
 
+        Renderer.clearRenderer();
         Renderer.addDrawable(arena);
     }
 
