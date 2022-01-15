@@ -57,7 +57,7 @@ public class FileLoadedMapTest {
             new FileLoadedMap("defaultNoB");
             Assertions.fail(); // should never reach this line
         } catch (Exception e) {
-            Assertions.assertEquals("Employee not found: Balta - defaultNoB.map", e.getMessage());
+            Assertions.assertEquals("Employee outside box: Balta - defaultNoB.map", e.getMessage());
         }
     }
 
@@ -68,7 +68,7 @@ public class FileLoadedMapTest {
             new FileLoadedMap("defaultNoT");
             Assertions.fail(); // should never reach this line
         } catch (Exception e) {
-            Assertions.assertEquals("Employee not found: Toni - defaultNoT.map", e.getMessage());
+            Assertions.assertEquals("Employee outside box: Toni - defaultNoT.map", e.getMessage());
         }
     }
 
@@ -79,7 +79,7 @@ public class FileLoadedMapTest {
             new FileLoadedMap("defaultNoZ");
             Assertions.fail(); // should never reach this line
         } catch (Exception e) {
-            Assertions.assertEquals("Employee not found: ZeCastro - defaultNoZ.map", e.getMessage());
+            Assertions.assertEquals("Employee outside box: ZeCastro - defaultNoZ.map", e.getMessage());
         }
     }
 
@@ -90,7 +90,17 @@ public class FileLoadedMapTest {
             new FileLoadedMap("defaultNoM");
             Assertions.fail(); // should never reach this line
         } catch (Exception e) {
-            Assertions.assertEquals("Employee not found: Mari - defaultNoM.map", e.getMessage());
+            Assertions.assertEquals("Employee outside box: Mari - defaultNoM.map", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testLoadZeCastroWithNoBalta(){
+        try {
+            new FileLoadedMap("zeNoBalta");
+            Assertions.fail(); // should never reach this line
+        } catch (Exception e) {
+            Assertions.assertEquals("ZeCastro can't exist without Balta - zeNoBalta.map", e.getMessage());
         }
     }
 

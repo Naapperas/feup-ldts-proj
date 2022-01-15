@@ -22,6 +22,7 @@ public class FileLoadedMap implements Map {
     private final List<Collectible> collectibles;
 
     private Point gatePosition; // can't be final since it is initialized in a switch statement ,so it might not happen
+    private Point baltaPos, zePos, toniPos, mariPos;
     private final Point boxPosition/*top left corner of ghost box*/;
 
     public FileLoadedMap(String mapName) throws Exception {
@@ -37,7 +38,6 @@ public class FileLoadedMap implements Map {
         File mapFile = new File(resource.toURI());
         BufferedReader br = new BufferedReader(new FileReader(mapFile));
 
-        Point baltaPos = new Point(-1,-1), zePos = new Point(-1,-1), toniPos = new Point(-1,-1), mariPos = new Point(-1,-1);
 
         walls = new ArrayList<>();
         employees = new ArrayList<>();
@@ -113,34 +113,52 @@ public class FileLoadedMap implements Map {
             throw new Exception(sb.toString());
         }
 
-        if (baltaPos.equals(new Point(-1,-1))){
+        if (baltaPos != null && isNotInsideBox(baltaPos)){
             StringBuilder sb = new StringBuilder();
-            sb.append("Employee not found: Balta").append(" - ").append(mapName).append(".map");
+            sb.append("Employee outside box: Balta").append(" - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
 
-        if (toniPos.equals(new Point(-1,-1))){
+        if (toniPos != null && isNotInsideBox(toniPos)){
             StringBuilder sb = new StringBuilder();
-            sb.append("Employee not found: Toni").append(" - ").append(mapName).append(".map");
+            sb.append("Employee outside box: Toni").append(" - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
 
-        if (mariPos.equals(new Point(-1,-1))){
+        if (mariPos != null && isNotInsideBox(mariPos)){
             StringBuilder sb = new StringBuilder();
-            sb.append("Employee not found: Mari").append(" - ").append(mapName).append(".map");
+            sb.append("Employee outside box: Mari").append(" - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
 
-        if (zePos.equals(new Point(-1,-1))){
+        if (zePos != null && isNotInsideBox(zePos)){
             StringBuilder sb = new StringBuilder();
-            sb.append("Employee not found: ZeCastro").append(" - ").append(mapName).append(".map");
+            sb.append("Employee outside box: ZeCastro").append(" - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
 
-        employees.add(new Employee(baltaPos.getX(), baltaPos.getY(), new BaltaAI()));
-        employees.add(new Employee(zePos.getX(), zePos.getY(), new ZeCastroAI(employees.get(0))));
-        employees.add(new Employee(mariPos.getX(), mariPos.getY(), new MariAI()));
-        employees.add(new Employee(toniPos.getX(), toniPos.getY(), new ToniAI()));
+        if(zePos != null && baltaPos == null){
+            StringBuilder sb = new StringBuilder();
+            sb.append("ZeCastro can't exist without Balta - ").append(mapName).append(".map");
+            throw new Exception(sb.toString());
+        }
+
+        if (baltaPos != null)
+            employees.add(new Employee(baltaPos.getX(), baltaPos.getY(), new BaltaAI()));
+        if (zePos != null)
+            employees.add(new Employee(zePos.getX(), zePos.getY(), new ZeCastroAI(employees.get(0))));
+        if (mariPos != null)
+            employees.add(new Employee(mariPos.getX(), mariPos.getY(), new MariAI()));
+        if (toniPos != null)
+            employees.add(new Employee(toniPos.getX(), toniPos.getY(), new ToniAI()));
+    }
+
+    private boolean isNotInsideBox(Point position) {
+
+        boolean insideWidth = this.boxPosition.getX() <= position.getX() && position.getX() < this.boxPosition.getX() + this.boxWidth;
+        boolean insideHeight = this.boxPosition.getY() <= position.getY() && position.getY() < this.boxPosition.getY() + this.boxHeight;
+
+        return !(insideWidth && insideHeight);
     }
 
     @Override
