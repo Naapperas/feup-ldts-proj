@@ -33,7 +33,7 @@ public class Employee extends Entity implements CervejaListener {
     }
 
     private final EmployeeAI ai;
-    private EmployeeState state = EmployeeState.CHASING;
+    private EmployeeState state = EmployeeState.SCATTER;
 
     /**
      * Constructs a new Employee on the given position, with a certain EmployeeAi
@@ -41,8 +41,8 @@ public class Employee extends Entity implements CervejaListener {
      * @param y the y coordinate of this Employee
      * @param ai EmployeeAi used by this employee
      */
-    public Employee(int x, int y, EmployeeAI ai, int mapWidth, int mapHeight) {
-        super(x, y, mapWidth, mapHeight);
+    public Employee(int x, int y, EmployeeAI ai) {
+        super(x, y);
         this.ai = ai;
     }
 

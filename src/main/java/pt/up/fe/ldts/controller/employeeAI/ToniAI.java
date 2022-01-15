@@ -5,13 +5,14 @@ import pt.up.fe.ldts.model.Employee;
 import pt.up.fe.ldts.model.Jorge;
 import pt.up.fe.ldts.model.Point;
 import pt.up.fe.ldts.model.Vector;
+import pt.up.fe.ldts.model.map.MapConfiguration;
 
 import java.util.Random;
 
 public class ToniAI extends EmployeeAI { //clyde
 
     public ToniAI() {
-        SCATTER_TARGET = new Point(-10,50); // why 50?
+        SCATTER_TARGET = new Point(0, MapConfiguration.map.getMapHeight()-1); // why 50?
     }
 
     Random random = new Random();

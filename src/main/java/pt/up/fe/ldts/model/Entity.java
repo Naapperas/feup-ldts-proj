@@ -1,24 +1,22 @@
 package pt.up.fe.ldts.model;
 
+import pt.up.fe.ldts.model.map.MapConfiguration;
+
 /**
  *
  */
 public abstract class Entity extends Element {
 
     protected Vector direction;
-    private int mapHeight;
-    private int mapWidth;
 
     /**
      * Constructs a new Entity on the given position
      * @param x the x coordinate of this Entity
      * @param y the y coordinate of this Entity
      */
-    public Entity(int x, int y, int mapWidth, int mapHeight) {
+    public Entity(int x, int y) {
         super(x, y);
         direction = Vector.UP;  // default direction to start with
-        this.mapHeight = mapHeight;
-        this.mapWidth = mapWidth;
     }
 
     /**
@@ -41,12 +39,12 @@ public abstract class Entity extends Element {
         var newPos = this.getPosition().addVector(this.direction);
 
         if (newPos.getY() == 0)
-            newPos.setY(mapHeight-1);
-        else if (newPos.getY() == mapHeight-1)
+            newPos.setY(MapConfiguration.map.getMapHeight() -1);
+        else if (newPos.getY() == MapConfiguration.map.getMapHeight()-1)
             newPos.setY(0);
         else if (newPos.getX() == 0)
-            newPos.setX(mapWidth-1);
-        else if (newPos.getX() == mapHeight-1)
+            newPos.setX(MapConfiguration.map.getMapWidth()-1);
+        else if (newPos.getX() == MapConfiguration.map.getMapWidth()-1)
             newPos.setX(0);
 
         this.changePos(newPos.getX(), newPos.getY());
@@ -74,7 +72,4 @@ public abstract class Entity extends Element {
      */
     public abstract void changeDirection(Arena arena);
 
-    public void setMapHeight(int mapHeight){this.mapHeight = mapHeight;}
-
-    public void setMapWidth(int mapWidth){this.mapWidth = mapWidth;}
 }

@@ -60,9 +60,6 @@ public class FileLoadedMap implements Map {
             throw new Exception(sb.toString());
         }
 
-        Jorge.singleton.setMapHeight(height);
-        Jorge.singleton.setMapWidth(width);
-
         for(int y = 0; y < this.height; y++){
             str = br.readLine();
 
@@ -145,15 +142,20 @@ public class FileLoadedMap implements Map {
             sb.append("ZeCastro can't exist without Balta - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
+        MapConfiguration.map.setMapHeight(height);
+        MapConfiguration.map.setMapWidth(width);
+        MapConfiguration.map.setBoxPosition(boxPosition);
 
         if (baltaPos != null)
-            employees.add(new Employee(baltaPos.getX(), baltaPos.getY(), new BaltaAI(), this.width, this.height));
+            employees.add(new Employee(baltaPos.getX(), baltaPos.getY(), new BaltaAI()));
         if (zePos != null)
-            employees.add(new Employee(zePos.getX(), zePos.getY(), new ZeCastroAI(employees.get(0)), this.width, this.height));
+            employees.add(new Employee(zePos.getX(), zePos.getY(), new ZeCastroAI(employees.get(0))));
         if (mariPos != null)
-            employees.add(new Employee(mariPos.getX(), mariPos.getY(), new MariAI(), this.width, this.height));
+            employees.add(new Employee(mariPos.getX(), mariPos.getY(), new MariAI()));
         if (toniPos != null)
-            employees.add(new Employee(toniPos.getX(), toniPos.getY(), new ToniAI(), this.width, this.height));
+            employees.add(new Employee(toniPos.getX(), toniPos.getY(), new ToniAI()));
+
+
     }
 
     private boolean isNotInsideBox(Point position) {

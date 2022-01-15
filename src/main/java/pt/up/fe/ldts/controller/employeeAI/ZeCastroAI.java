@@ -5,6 +5,7 @@ import pt.up.fe.ldts.model.Employee;
 import pt.up.fe.ldts.model.Jorge;
 import pt.up.fe.ldts.model.Point;
 import pt.up.fe.ldts.model.Vector;
+import pt.up.fe.ldts.model.map.MapConfiguration;
 
 import java.util.Random;
 
@@ -13,7 +14,7 @@ public class ZeCastroAI extends EmployeeAI{ //inky
     private final Employee balta;
 
     public ZeCastroAI(Employee balta){
-        this.SCATTER_TARGET = new Point(40,50);
+        this.SCATTER_TARGET = new Point(MapConfiguration.map.getMapWidth()-1, MapConfiguration.map.getMapHeight()-1);
         this.balta = balta;
     }
 
