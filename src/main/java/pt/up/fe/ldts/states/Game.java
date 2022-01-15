@@ -4,6 +4,7 @@ import pt.up.fe.ldts.Application;
 import pt.up.fe.ldts.model.Arena;
 import pt.up.fe.ldts.model.Jorge;
 import pt.up.fe.ldts.model.map.DefaultMap;
+import pt.up.fe.ldts.model.map.FileLoadedMap;
 import pt.up.fe.ldts.model.map.Map;
 import pt.up.fe.ldts.states.AppState;
 import pt.up.fe.ldts.view.Renderer;
@@ -23,11 +24,11 @@ public class Game extends AppState {
     private Arena arena;
     private Map map;
 
-    public Game(Application app, Map map) throws Exception {
+    public Game(Application app, String map) throws Exception {
         super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
-        this.map = map;
+        this.map = new FileLoadedMap(map);
         this.arena = new Arena(this.map);
 
         Renderer.clearRenderer();

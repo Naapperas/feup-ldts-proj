@@ -91,7 +91,7 @@ public class MapMenu extends AppState {
         }
         gui.close();
         if (game)
-            this.app.changeState(new Game(this.app, new FileLoadedMap(mapName)));
+            this.app.changeState(new Game(this.app, mapName));
         else
             this.app.changeState(new InitialMenu(this.app));
     }
