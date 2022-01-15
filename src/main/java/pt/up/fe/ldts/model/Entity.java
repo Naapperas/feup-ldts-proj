@@ -1,5 +1,7 @@
 package pt.up.fe.ldts.model;
 
+import pt.up.fe.ldts.model.map.MapConfiguration;
+
 /**
  *
  */
@@ -36,10 +38,14 @@ public abstract class Entity extends Element {
             return; // unknown direction
         var newPos = this.getPosition().addVector(this.direction);
 
-        if (newPos.getY() == 14) {
-            if (newPos.getX() <= 0) newPos.setX(26);
-            else if (newPos.getX() >= 27) newPos.setX(0);
-        }
+        if (newPos.getY() == 0)
+            newPos.setY(MapConfiguration.getMapHeight() -1);
+        else if (newPos.getY() == MapConfiguration.getMapHeight()-1)
+            newPos.setY(0);
+        else if (newPos.getX() == 0)
+            newPos.setX(MapConfiguration.getMapWidth()-1);
+        else if (newPos.getX() == MapConfiguration.getMapWidth()-1)
+            newPos.setX(0);
 
         this.changePos(newPos.getX(), newPos.getY());
     }
@@ -65,4 +71,5 @@ public abstract class Entity extends Element {
      * Abstract so different entities have different ways of choosing which direction to take
      */
     public abstract void changeDirection(Arena arena);
+
 }

@@ -142,6 +142,9 @@ public class FileLoadedMap implements Map {
             sb.append("ZeCastro can't exist without Balta - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
+        MapConfiguration.setMapHeight(height);
+        MapConfiguration.setMapWidth(width);
+        MapConfiguration.setBoxPosition(boxPosition);
 
         if (baltaPos != null)
             employees.add(new Employee(baltaPos.getX(), baltaPos.getY(), new BaltaAI()));
@@ -151,6 +154,8 @@ public class FileLoadedMap implements Map {
             employees.add(new Employee(mariPos.getX(), mariPos.getY(), new MariAI()));
         if (toniPos != null)
             employees.add(new Employee(toniPos.getX(), toniPos.getY(), new ToniAI()));
+
+
     }
 
     private boolean isNotInsideBox(Point position) {
@@ -167,7 +172,7 @@ public class FileLoadedMap implements Map {
     }
 
     @Override
-    public List<Collectible> getMapCollecibles() {
+    public List<Collectible> getMapCollectibles() {
         return this.collectibles;
     }
 

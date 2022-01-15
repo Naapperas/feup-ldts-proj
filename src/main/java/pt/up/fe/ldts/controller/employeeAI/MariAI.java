@@ -11,7 +11,7 @@ import java.util.Random;
 public class MariAI extends EmployeeAI { //pinky
 
     public MariAI() {
-        SCATTER_TARGET = new Point(-10,-20);
+        SCATTER_TARGET = new Point(0,0);
     }
 
     Random random = new Random();
