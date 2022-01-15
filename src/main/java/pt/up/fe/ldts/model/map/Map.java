@@ -10,7 +10,7 @@ import java.util.List;
 public interface Map {
 
     List<Wall> getMapWalls();
-    List<Collectible> getMapCollecibles();
+    List<Collectible> getMapCollectibles();
     List<Employee> getMapEmployees();
 
     Point getGatePosition();

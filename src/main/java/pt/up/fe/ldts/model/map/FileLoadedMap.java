@@ -144,13 +144,13 @@ public class FileLoadedMap implements Map {
         }
 
         if (baltaPos != null)
-            employees.add(new Employee(baltaPos.getX(), baltaPos.getY(), new BaltaAI()));
+            employees.add(new Employee(baltaPos.getX(), baltaPos.getY(), new BaltaAI(), this.width, this.height));
         if (zePos != null)
-            employees.add(new Employee(zePos.getX(), zePos.getY(), new ZeCastroAI(employees.get(0))));
+            employees.add(new Employee(zePos.getX(), zePos.getY(), new ZeCastroAI(employees.get(0)), this.width, this.height));
         if (mariPos != null)
-            employees.add(new Employee(mariPos.getX(), mariPos.getY(), new MariAI()));
+            employees.add(new Employee(mariPos.getX(), mariPos.getY(), new MariAI(), this.width, this.height));
         if (toniPos != null)
-            employees.add(new Employee(toniPos.getX(), toniPos.getY(), new ToniAI()));
+            employees.add(new Employee(toniPos.getX(), toniPos.getY(), new ToniAI(), this.width, this.height));
     }
 
     private boolean isNotInsideBox(Point position) {
@@ -167,7 +167,7 @@ public class FileLoadedMap implements Map {
     }
 
     @Override
-    public List<Collectible> getMapCollecibles() {
+    public List<Collectible> getMapCollectibles() {
         return this.collectibles;
     }
 

@@ -18,7 +18,7 @@ public class Jorge extends Entity{
      * @param y the y coordinate of this Jorge
      */
     private Jorge(int x, int y) {
-        super(x, y);
+        super(x, y,27,31);
         this.setDirection(Vector.NULL);
     }
 

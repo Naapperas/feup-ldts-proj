@@ -11,7 +11,7 @@ public class EntityTest {
 
     @BeforeEach
     public void setup(){
-        entity = new Entity(4, 5) {
+        entity = new Entity(4, 5, 50, 50) {
             @Override
             public void render(TextGraphics gui) {
 

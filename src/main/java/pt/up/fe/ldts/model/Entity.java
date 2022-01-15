@@ -6,15 +6,18 @@ package pt.up.fe.ldts.model;
 public abstract class Entity extends Element {
 
     protected Vector direction;
+    private final int mapHeight, mapWidth;
 
     /**
      * Constructs a new Entity on the given position
      * @param x the x coordinate of this Entity
      * @param y the y coordinate of this Entity
      */
-    public Entity(int x, int y) {
+    public Entity(int x, int y, int mapWidth, int mapHeight) {
         super(x, y);
         direction = Vector.UP;  // default direction to start with
+        this.mapHeight = mapHeight;
+        this.mapWidth = mapWidth;
     }
 
     /**
@@ -36,10 +39,14 @@ public abstract class Entity extends Element {
             return; // unknown direction
         var newPos = this.getPosition().addVector(this.direction);
 
-        if (newPos.getY() == 14) {
-            if (newPos.getX() <= 0) newPos.setX(26);
-            else if (newPos.getX() >= 27) newPos.setX(0);
-        }
+        if (newPos.getY() == 0)
+            newPos.setY(mapHeight);
+        else if (newPos.getY() == mapHeight)
+            newPos.setY(0);
+        else if (newPos.getX() == 0)
+            newPos.setX(mapWidth);
+        else if (newPos.getX() == mapHeight)
+            newPos.setX(0);
 
         this.changePos(newPos.getX(), newPos.getY());
     }

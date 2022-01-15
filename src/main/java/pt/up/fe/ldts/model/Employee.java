@@ -41,8 +41,8 @@ public class Employee extends Entity implements CervejaListener {
      * @param y the y coordinate of this Employee
      * @param ai EmployeeAi used by this employee
      */
-    public Employee(int x, int y, EmployeeAI ai) {
-        super(x, y);
+    public Employee(int x, int y, EmployeeAI ai, int mapWidth, int mapHeight) {
+        super(x, y, mapWidth, mapHeight);
         this.ai = ai;
     }
 

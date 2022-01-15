@@ -145,11 +145,11 @@ public class FileLoadedMapTest {
         Assertions.assertTrue(m.getMapWalls().contains(new Wall(0,0)));
         Assertions.assertTrue(m.getMapWalls().contains(new Wall(24,4)));
 
-        Assertions.assertTrue(m.getMapCollecibles().contains(new Cerveja(1,3)));
-        Assertions.assertTrue(m.getMapCollecibles().contains(new Cerveja(25,3)));
+        Assertions.assertTrue(m.getMapCollectibles().contains(new Cerveja(1,3)));
+        Assertions.assertTrue(m.getMapCollectibles().contains(new Cerveja(25,3)));
 
-        Assertions.assertTrue(m.getMapCollecibles().contains(new Tremoco(1,2)));
-        Assertions.assertTrue(m.getMapCollecibles().contains(new Tremoco(2,23)));
+        Assertions.assertTrue(m.getMapCollectibles().contains(new Tremoco(1,2)));
+        Assertions.assertTrue(m.getMapCollectibles().contains(new Tremoco(2,23)));
 
         Assertions.assertEquals(new Point(13,23), Jorge.singleton.getPosition());
 
