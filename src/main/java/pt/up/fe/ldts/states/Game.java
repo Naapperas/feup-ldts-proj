@@ -23,11 +23,11 @@ public class Game extends AppState {
     private Arena arena;
     private Map map;
 
-    public Game(Application app) throws Exception {
+    public Game(Application app, Map map) throws Exception {
         super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
-        this.map = new DefaultMap();
+        this.map = map;
         this.arena = new Arena(this.map);
 
         Renderer.clearRenderer();

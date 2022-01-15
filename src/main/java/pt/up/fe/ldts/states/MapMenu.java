@@ -1,6 +1,8 @@
 package pt.up.fe.ldts.states;
 
 import pt.up.fe.ldts.Application;
+import pt.up.fe.ldts.model.map.DefaultMap;
+import pt.up.fe.ldts.model.map.FileLoadedMap;
 import pt.up.fe.ldts.model.menus.Button;
 import pt.up.fe.ldts.states.AppState;
 import pt.up.fe.ldts.states.Game;
@@ -23,9 +25,9 @@ public class MapMenu extends AppState {
         super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
-        Button easyButton = new Button(10, 2, "EASY MODE");
-        Button defaultButton = new Button(10, 10, "ENTER TO PLAY");
-        Button hardButton = new Button(10, 18, "HARD MODE");
+        Button easyButton = new Button(10, 2, "EASY MODE (1)");
+        Button defaultButton = new Button(10, 10, "DEFAULT MODE (2)");
+        Button hardButton = new Button(10, 18, "HARD MODE (3)");
         Button goBackButton = new Button(10, 30, "Q TO GO BACK");
 
         Renderer.clearRenderer();
@@ -38,6 +40,7 @@ public class MapMenu extends AppState {
     @Override
     public void start() throws Exception {
         boolean running = true, game = false;
+        String mapName = "default";
         int FPS = 60;
         int frameTime = 1000 / FPS;
 
@@ -52,9 +55,20 @@ public class MapMenu extends AppState {
                 case QUIT:
                     running = false;
                     break;
-                case SELECT:
+                case BABYMODE:
                     running=false;
                     game = true;
+                    mapName = "baby";
+                    break;
+                case DEFAULTMODE:
+                    running=false;
+                    game = true;
+                    mapName = "default";
+                    break;
+                case HARDMODE:
+                    running=false;
+                    game = true;
+                    mapName = "hard";
                     break;
                 default:
                     break;
@@ -77,7 +91,7 @@ public class MapMenu extends AppState {
         }
         gui.close();
         if (game)
-            this.app.changeState(new Game(this.app));
+            this.app.changeState(new Game(this.app, new FileLoadedMap(mapName)));
         else
             this.app.changeState(new InitialMenu(this.app));
     }
