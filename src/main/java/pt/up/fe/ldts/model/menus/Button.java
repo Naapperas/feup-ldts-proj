@@ -19,6 +19,9 @@ public class Button extends Element {
         tg.setBackgroundColor(TextColor.Factory.fromString(TextColor.ANSI.BLUE.name()));
         tg.fillRectangle(new TerminalPosition(this.getX(), this.getY()), new TerminalSize(20, 9), ' ');
 
+        var previousForegroundColor = tg.getForegroundColor();
+        tg.setForegroundColor(TextColor.Factory.fromString("#FFFF00"));
         tg.putString(this.getX() + 3,this.getY() + 4, this.text);
+        tg.setForegroundColor(previousForegroundColor);
     }
 }
