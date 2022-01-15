@@ -10,7 +10,7 @@ import pt.up.fe.ldts.model.map.MapConfiguration;
  */
 public abstract class EmployeeAI {
 
-    protected static final Point DEAD_TARGET = MapConfiguration.map.getBoxPosition(); // respawn
+    protected static final Point DEAD_TARGET = MapConfiguration.getBoxPosition(); // respawn
     protected Point SCATTER_TARGET;
 
     public Point getScatterTarget() {

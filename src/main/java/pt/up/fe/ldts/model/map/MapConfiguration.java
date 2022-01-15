@@ -8,8 +8,6 @@ public class MapConfiguration {
     private static int mapWidth;
     private static Point boxPosition;
 
-    public static MapConfiguration map = new MapConfiguration(0,0,new Point(0,0));
-
     public MapConfiguration(int height, int width, Point boxPosition){
         mapHeight = height;
         mapWidth = width;
@@ -17,27 +15,27 @@ public class MapConfiguration {
     }
 
 
-    public int getMapHeight() {
+    public static int getMapHeight() {
         return mapHeight;
     }
 
-    public void setMapHeight(int height){
+    public static void setMapHeight(int height){
         mapHeight = height;
     }
 
-    public int getMapWidth() {
+    public static int getMapWidth() {
         return mapWidth;
     }
 
-    public void setMapWidth(int width){
+    public static void setMapWidth(int width){
         mapWidth = width;
     }
 
-    public Point getBoxPosition() {
+    public static Point getBoxPosition() {
         return boxPosition;
     }
 
-    public void setBoxPosition(Point boxPos){
+    public static void setBoxPosition(Point boxPos){
         boxPosition = boxPos;
     }
 }

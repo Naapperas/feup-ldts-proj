@@ -39,12 +39,12 @@ public abstract class Entity extends Element {
         var newPos = this.getPosition().addVector(this.direction);
 
         if (newPos.getY() == 0)
-            newPos.setY(MapConfiguration.map.getMapHeight() -1);
-        else if (newPos.getY() == MapConfiguration.map.getMapHeight()-1)
+            newPos.setY(MapConfiguration.getMapHeight() -1);
+        else if (newPos.getY() == MapConfiguration.getMapHeight()-1)
             newPos.setY(0);
         else if (newPos.getX() == 0)
-            newPos.setX(MapConfiguration.map.getMapWidth()-1);
-        else if (newPos.getX() == MapConfiguration.map.getMapWidth()-1)
+            newPos.setX(MapConfiguration.getMapWidth()-1);
+        else if (newPos.getX() == MapConfiguration.getMapWidth()-1)
             newPos.setX(0);
 
         this.changePos(newPos.getX(), newPos.getY());

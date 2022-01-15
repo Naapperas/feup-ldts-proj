@@ -11,7 +11,7 @@ import java.util.Random;
 public class BaltaAI extends EmployeeAI{ //blinky
 
     public BaltaAI() {
-        this.SCATTER_TARGET = new Point(MapConfiguration.map.getMapWidth()-1,0); // somehow 21 fixes the problem
+        this.SCATTER_TARGET = new Point(MapConfiguration.getMapWidth()-1,0); // somehow 21 fixes the problem
     }
 
     Random random = new Random();

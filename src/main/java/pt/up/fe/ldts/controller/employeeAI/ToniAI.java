@@ -12,7 +12,7 @@ import java.util.Random;
 public class ToniAI extends EmployeeAI { //clyde
 
     public ToniAI() {
-        SCATTER_TARGET = new Point(0, MapConfiguration.map.getMapHeight()-1); // why 50?
+        SCATTER_TARGET = new Point(0, MapConfiguration.getMapHeight()-1); // why 50?
     }
 
     Random random = new Random();

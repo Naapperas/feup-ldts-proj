@@ -142,9 +142,9 @@ public class FileLoadedMap implements Map {
             sb.append("ZeCastro can't exist without Balta - ").append(mapName).append(".map");
             throw new Exception(sb.toString());
         }
-        MapConfiguration.map.setMapHeight(height);
-        MapConfiguration.map.setMapWidth(width);
-        MapConfiguration.map.setBoxPosition(boxPosition);
+        MapConfiguration.setMapHeight(height);
+        MapConfiguration.setMapWidth(width);
+        MapConfiguration.setBoxPosition(boxPosition);
 
         if (baltaPos != null)
             employees.add(new Employee(baltaPos.getX(), baltaPos.getY(), new BaltaAI()));

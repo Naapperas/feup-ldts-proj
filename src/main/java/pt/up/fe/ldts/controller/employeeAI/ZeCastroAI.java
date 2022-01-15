@@ -14,7 +14,7 @@ public class ZeCastroAI extends EmployeeAI{ //inky
     private final Employee balta;
 
     public ZeCastroAI(Employee balta){
-        this.SCATTER_TARGET = new Point(MapConfiguration.map.getMapWidth()-1, MapConfiguration.map.getMapHeight()-1);
+        this.SCATTER_TARGET = new Point(MapConfiguration.getMapWidth()-1, MapConfiguration.getMapHeight()-1);
         this.balta = balta;
     }
 
