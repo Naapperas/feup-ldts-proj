@@ -10,7 +10,7 @@ import java.io.IOException;
 public class LeaderboardMenu extends AppState{
     private final GUI gui;
 
-    private static final int WIDTH = 20, HEIGHT = 20;
+    private static final int WIDTH = 40, HEIGHT = 40;
 
     public LeaderboardMenu(Application app) throws Exception {
         super(app);

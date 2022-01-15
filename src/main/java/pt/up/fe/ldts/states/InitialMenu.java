@@ -1,6 +1,7 @@
 package pt.up.fe.ldts.states;
 
 import pt.up.fe.ldts.Application;
+import pt.up.fe.ldts.model.menus.Button;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
@@ -11,12 +12,14 @@ public class InitialMenu extends AppState {
 
     private final GUI gui;
 
-    private static final int WIDTH = 20, HEIGHT = 20;
+    private static final int WIDTH = 40, HEIGHT = 40;
 
     public InitialMenu(Application app) throws Exception {
         super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
+
         Renderer.clearRenderer();
+        Renderer.addDrawable(new Button(10, 10, "ENTER to Play"));
     }
 
     @Override
