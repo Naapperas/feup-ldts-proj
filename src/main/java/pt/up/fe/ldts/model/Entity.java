@@ -6,7 +6,8 @@ package pt.up.fe.ldts.model;
 public abstract class Entity extends Element {
 
     protected Vector direction;
-    private final int mapHeight, mapWidth;
+    private int mapHeight;
+    private int mapWidth;
 
     /**
      * Constructs a new Entity on the given position
@@ -72,4 +73,8 @@ public abstract class Entity extends Element {
      * Abstract so different entities have different ways of choosing which direction to take
      */
     public abstract void changeDirection(Arena arena);
+
+    public void setMapHeight(int mapHeight){this.mapHeight = mapHeight;}
+
+    public void setMapWidth(int mapWidth){this.mapWidth = mapWidth;}
 }

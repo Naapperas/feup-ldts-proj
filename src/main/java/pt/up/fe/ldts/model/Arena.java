@@ -125,12 +125,12 @@ public class Arena implements Drawable {
         return validDirs
                 .stream()
                 .filter(dir -> isJorge || !dir.equals(currentDirection.multiply(-1))) // ghosts can't go back
-                .filter(dir -> { // can'zt go through walls
+                .filter(dir -> { // can't go through walls
                     var newPosition = position.addVector(dir);
 
                     return !this.walls.contains(new Wall(newPosition.getX(), newPosition.getY()));
                 })
-                .filter(dir -> !position.equals(this.gatePosition.addVector(Vector.UP)) || !dir.equals(Vector.DOWN)) // cant go back to initial box
+                .filter(dir -> !position.equals(this.gatePosition.addVector(Vector.UP)) || !dir.equals(Vector.DOWN)) // can't go back to initial box
                 .collect(Collectors.toUnmodifiableSet());
     }
 

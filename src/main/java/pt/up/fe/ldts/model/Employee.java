@@ -33,7 +33,7 @@ public class Employee extends Entity implements CervejaListener {
     }
 
     private final EmployeeAI ai;
-    private EmployeeState state = EmployeeState.SCATTER;
+    private EmployeeState state = EmployeeState.CHASING;
 
     /**
      * Constructs a new Employee on the given position, with a certain EmployeeAi

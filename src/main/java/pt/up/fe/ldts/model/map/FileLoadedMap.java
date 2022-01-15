@@ -60,6 +60,9 @@ public class FileLoadedMap implements Map {
             throw new Exception(sb.toString());
         }
 
+        Jorge.singleton.setMapHeight(height);
+        Jorge.singleton.setMapWidth(width);
+
         for(int y = 0; y < this.height; y++){
             str = br.readLine();
 
