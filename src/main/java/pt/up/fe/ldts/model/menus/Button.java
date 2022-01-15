@@ -17,11 +17,11 @@ public class Button extends Element {
     @Override
     public void render(TextGraphics tg){
         tg.setBackgroundColor(TextColor.Factory.fromString(TextColor.ANSI.BLUE.name()));
-        tg.fillRectangle(new TerminalPosition(this.getX(), this.getY()), new TerminalSize(20, 9), ' ');
+        tg.fillRectangle(new TerminalPosition(this.getX(), this.getY()), new TerminalSize(20, 7), ' ');
 
         var previousForegroundColor = tg.getForegroundColor();
         tg.setForegroundColor(TextColor.Factory.fromString("#FFFF00"));
-        tg.putString(this.getX() + 3,this.getY() + 4, this.text);
+        tg.putString(this.getX() + 3,this.getY() + 3, this.text);
         tg.setForegroundColor(previousForegroundColor);
     }
 }
