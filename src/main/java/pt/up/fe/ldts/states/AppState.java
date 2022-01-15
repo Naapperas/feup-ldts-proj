@@ -1,4 +1,6 @@
-package pt.up.fe.ldts;
+package pt.up.fe.ldts.states;
+
+import pt.up.fe.ldts.Application;
 
 import java.io.IOException;
 

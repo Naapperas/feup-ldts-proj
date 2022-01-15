@@ -1,18 +1,19 @@
-package pt.up.fe.ldts;
+package pt.up.fe.ldts.states;
 
+import pt.up.fe.ldts.Application;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
 
 import java.io.IOException;
 
-public class Menu extends AppState{
+public class InitialMenu extends AppState {
 
     private final GUI gui;
 
     private static final int WIDTH = 20, HEIGHT = 20;
 
-    public Menu(Application app) throws Exception {
+    public InitialMenu(Application app) throws Exception {
         super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
@@ -20,7 +21,7 @@ public class Menu extends AppState{
 
     @Override
     public void start() throws Exception {
-        boolean running = true, game = false;
+        boolean running = true, next_map = false, next_leaderboard = false;
         while (running){
 
             GUI.ACTION currentAction = gui.getNextAction();
@@ -31,7 +32,11 @@ public class Menu extends AppState{
                     break;
                 case SELECT:
                     running=false;
-                    game = true;
+                    next_map = true;
+                    break;
+                case LEADERBOARD:
+                    running=false;
+                    next_leaderboard = true;
                     break;
                 default:
                     break;
@@ -39,8 +44,10 @@ public class Menu extends AppState{
             this.render();
         }
         gui.close();
-        if (game)
-            this.app.changeState(new Game(this.app));
+        if (next_map)
+            this.app.changeState(new MapMenu(this.app));
+        if (next_leaderboard)
+            this.app.changeState(new LeaderboardMenu(this.app));
     }
 
     @Override

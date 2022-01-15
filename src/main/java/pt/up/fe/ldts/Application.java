@@ -1,6 +1,9 @@
 package pt.up.fe.ldts;
 
 
+import pt.up.fe.ldts.states.AppState;
+import pt.up.fe.ldts.states.InitialMenu;
+
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -10,7 +13,7 @@ public class Application {
     private AppState state;
 
     private Application() throws Exception {
-        state = new Menu(this);
+        state = new InitialMenu(this);
     }
 
     private void start() throws Exception {

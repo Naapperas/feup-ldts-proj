@@ -1,19 +1,18 @@
-package pt.up.fe.ldts;
+package pt.up.fe.ldts.states;
 
+import pt.up.fe.ldts.Application;
 import pt.up.fe.ldts.model.Arena;
 import pt.up.fe.ldts.model.Jorge;
 import pt.up.fe.ldts.model.map.DefaultMap;
-import pt.up.fe.ldts.model.map.FileLoadedMap;
 import pt.up.fe.ldts.model.map.Map;
+import pt.up.fe.ldts.states.AppState;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
 
-import java.awt.*;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
-public class Game extends AppState{
+public class Game extends AppState {
 
     private static final int TICK_TIME = 75;
 
