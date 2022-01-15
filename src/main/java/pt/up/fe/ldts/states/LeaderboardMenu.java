@@ -20,7 +20,7 @@ public class LeaderboardMenu extends AppState{
         super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
-        Button goBackButton = new Button(10, 25, "Q to go back");
+        Button goBackButton = new Button(10, 25, "Q TO GO BACK");
 
         Renderer.clearRenderer();
         Renderer.addDrawable(goBackButton);

@@ -20,8 +20,8 @@ public class InitialMenu extends AppState {
         super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
-        Button playButton = new Button(10, 7, "ENTER to Play");
-        Button leaderboardButton = new Button(10, 25, "L to Leaderboard");
+        Button playButton = new Button(10, 7, "ENTER TO PLAY");
+        Button leaderboardButton = new Button(10, 25, "L TO LEADERBOARD");
 
         Renderer.clearRenderer();
         Renderer.addDrawable(playButton);

@@ -23,8 +23,8 @@ public class MapMenu extends AppState {
         super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
-        Button defaultButton = new Button(10, 7, "ENTER to Play");
-        Button goBackButton = new Button(10, 25, "Q to go back");
+        Button defaultButton = new Button(10, 7, "ENTER TO PLAY");
+        Button goBackButton = new Button(10, 25, "Q TO GO BACK");
 
         Renderer.clearRenderer();
         Renderer.addDrawable(defaultButton);
