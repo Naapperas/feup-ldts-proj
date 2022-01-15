@@ -4,16 +4,16 @@ import pt.up.fe.ldts.model.Point;
 
 public class MapConfiguration {
 
-    private int mapHeight;
-    private int mapWidth;
-    private Point boxPosition;
+    private static int mapHeight;
+    private static int mapWidth;
+    private static Point boxPosition;
 
     public static MapConfiguration map = new MapConfiguration(0,0,new Point(0,0));
 
     public MapConfiguration(int height, int width, Point boxPosition){
-        this.mapHeight = height;
-        this.mapWidth = width;
-        this.boxPosition = boxPosition;
+        mapHeight = height;
+        mapWidth = width;
+        MapConfiguration.boxPosition = boxPosition;
     }
 
 
@@ -22,7 +22,7 @@ public class MapConfiguration {
     }
 
     public void setMapHeight(int height){
-        this.mapHeight = height;
+        mapHeight = height;
     }
 
     public int getMapWidth() {
@@ -30,7 +30,7 @@ public class MapConfiguration {
     }
 
     public void setMapWidth(int width){
-        this.mapWidth = width;
+        mapWidth = width;
     }
 
     public Point getBoxPosition() {
@@ -38,6 +38,6 @@ public class MapConfiguration {
     }
 
     public void setBoxPosition(Point boxPos){
-        this.boxPosition = boxPos;
+        boxPosition = boxPos;
     }
 }
