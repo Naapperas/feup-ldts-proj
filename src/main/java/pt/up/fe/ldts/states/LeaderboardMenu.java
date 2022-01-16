@@ -2,11 +2,14 @@ package pt.up.fe.ldts.states;
 
 import pt.up.fe.ldts.Application;
 import pt.up.fe.ldts.model.menus.Button;
+import pt.up.fe.ldts.model.menus.MenuDisplay;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LeaderboardMenu extends AppState{
 
@@ -16,14 +19,19 @@ public class LeaderboardMenu extends AppState{
 
     private static final int WIDTH = 40, HEIGHT = 40;
 
+    private MenuDisplay display;
+
     public LeaderboardMenu(Application app) throws Exception {
         super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
-        Button goBackButton = new Button(10, 25, "Q TO GO BACK");
+        List<Button> buttons = new ArrayList<>();
+
+        buttons.add(new Button(10, 30, "Q TO GO BACK"));
+        display = new MenuDisplay(buttons);
 
         Renderer.clearRenderer();
-        Renderer.addDrawable(goBackButton);
+        Renderer.addDrawable(display);
     }
 
     @Override
@@ -33,6 +41,9 @@ public class LeaderboardMenu extends AppState{
         int frameTime = 1000 / FPS;
 
         long startTime = System.currentTimeMillis();
+
+        this.display.selectTop();
+
         while (running){
 
             long lastTime = System.currentTimeMillis();
@@ -40,8 +51,17 @@ public class LeaderboardMenu extends AppState{
             GUI.ACTION currentAction = gui.getNextAction();
 
             switch (currentAction) {
-                case QUIT:
+                case QUIT:           // not necessary here, staying as an extra
                     running = false;
+                    break;
+                case SELECT:
+                    running=false;
+                    break;
+                case UP:
+                    display.selectUP();
+                    break;
+                case DOWN:
+                    display.selectDown();
                     break;
                 default:
                     break;

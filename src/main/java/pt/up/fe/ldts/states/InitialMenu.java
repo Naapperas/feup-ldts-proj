@@ -2,11 +2,14 @@ package pt.up.fe.ldts.states;
 
 import pt.up.fe.ldts.Application;
 import pt.up.fe.ldts.model.menus.Button;
+import pt.up.fe.ldts.model.menus.MenuDisplay;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InitialMenu extends AppState {
 
@@ -16,25 +19,32 @@ public class InitialMenu extends AppState {
 
     private static final int WIDTH = 40, HEIGHT = 40;
 
+    private MenuDisplay display;
+
     public InitialMenu(Application app) throws Exception {
         super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
-        Button playButton = new Button(10, 7, "ENTER TO PLAY");
-        Button leaderboardButton = new Button(10, 25, "L TO LEADERBOARD");
+        List<Button> buttons = new ArrayList<>();
+
+        buttons.add(new Button(10, 7, "ENTER TO PLAY"));
+        buttons.add(new Button(10, 25, "L TO LEADERBOARD"));
+        display = new MenuDisplay(buttons);
 
         Renderer.clearRenderer();
-        Renderer.addDrawable(playButton);
-        Renderer.addDrawable(leaderboardButton);
+        Renderer.addDrawable(display);
     }
 
     @Override
     public void start() throws Exception {
-        boolean running = true, next_map = false, next_leaderboard = false;
+        boolean running = true, next = false;
         int FPS = 60;
         int frameTime = 1000 / FPS;
 
         long startTime = System.currentTimeMillis();
+
+        this.display.selectTop();
+
         while (running){
             long lastTime = System.currentTimeMillis();
 
@@ -46,11 +56,13 @@ public class InitialMenu extends AppState {
                     break;
                 case SELECT:
                     running=false;
-                    next_map = true;
+                    next = true;
                     break;
-                case LEADERBOARD:
-                    running=false;
-                    next_leaderboard = true;
+                case UP:
+                    display.selectUP();
+                    break;
+                case DOWN:
+                    display.selectDown();
                     break;
                 default:
                     break;
@@ -72,10 +84,12 @@ public class InitialMenu extends AppState {
             }
         }
         gui.close();
-        if (next_map)
-            this.app.changeState(new MapMenu(this.app));
-        if (next_leaderboard)
-            this.app.changeState(new LeaderboardMenu(this.app));
+        if (next) {
+            if (display.getSelected()==0)
+                this.app.changeState(new MapMenu(this.app));
+            if (display.getSelected()==1)
+                this.app.changeState(new LeaderboardMenu(this.app));
+        }
     }
 
     @Override
