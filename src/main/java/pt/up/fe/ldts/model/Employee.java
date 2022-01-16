@@ -20,7 +20,11 @@ public class Employee extends Entity implements CervejaListener {
         var previousForegroundColor = tg.getForegroundColor();
 
         tg.setForegroundColor(this.getCurrentState() == EmployeeState.FRIGHTENED ? TextColor.Factory.fromString("#0055ff") : this.ai.getEmployeeColor());
-        tg.putString(this.getX(), this.getY()+1, "d");
+
+        if(this.getCurrentState() == EmployeeState.DEAD)
+            tg.putString(this.getX(), this.getY(), "j");
+        else
+            tg.putString(this.getX(), this.getY()+1, "d");
 
         tg.setForegroundColor(previousForegroundColor);
     }
@@ -33,7 +37,7 @@ public class Employee extends Entity implements CervejaListener {
     }
 
     private final EmployeeAI ai;
-    private EmployeeState state = EmployeeState.SCATTER;
+    private EmployeeState state = EmployeeState.CHASING;
 
     /**
      * Constructs a new Employee on the given position, with a certain EmployeeAi

@@ -3,10 +3,8 @@ package pt.up.fe.ldts.states;
 import pt.up.fe.ldts.Application;
 import pt.up.fe.ldts.model.Arena;
 import pt.up.fe.ldts.model.Jorge;
-import pt.up.fe.ldts.model.map.DefaultMap;
 import pt.up.fe.ldts.model.map.FileLoadedMap;
 import pt.up.fe.ldts.model.map.Map;
-import pt.up.fe.ldts.states.AppState;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
@@ -97,5 +95,6 @@ public class Game extends AppState {
         });
 
         this.arena.checkCollectibleColision();
+        this.arena.checkEmployeeCollision();
     }
 }
