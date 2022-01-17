@@ -89,6 +89,8 @@ public class Game extends AppState {
 
         Jorge.singleton.move();
 
+        this.arena.checkEmployeeCollision();
+
         this.arena.getEmployees().forEach(employee -> {
             employee.changeDirection(this.arena);
             employee.move();
@@ -96,5 +98,6 @@ public class Game extends AppState {
 
         this.arena.checkCollectibleColision();
         this.arena.checkEmployeeCollision();
+
     }
 }

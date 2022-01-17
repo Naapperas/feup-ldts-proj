@@ -4,6 +4,7 @@ import com.github.javaparser.utils.Pair;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
+import pt.up.fe.ldts.model.map.MapConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.TimerTask;
 
 public class Employee extends Entity implements CervejaListener {
 
-    public static final int SCORE_WHEN_EATEN = 20;
+    public static final int SCORE_WHEN_EATEN = 200;
     private static final int TIME_FRIGHTENED = 5; // in seconds
 
     @Override
@@ -22,7 +23,7 @@ public class Employee extends Entity implements CervejaListener {
         tg.setForegroundColor(this.getCurrentState() == EmployeeState.FRIGHTENED ? TextColor.Factory.fromString("#0055ff") : this.ai.getEmployeeColor());
 
         if(this.getCurrentState() == EmployeeState.DEAD)
-            tg.putString(this.getX(), this.getY(), "j");
+            tg.putString(this.getX(), this.getY()+1, "j");
         else
             tg.putString(this.getX(), this.getY()+1, "d");
 
@@ -120,5 +121,27 @@ public class Employee extends Entity implements CervejaListener {
         });
 
         return directionPairs.get(0).a;
+    }
+
+    @Override
+    public void move(){
+        if (!(this.direction.equals(Vector.UP) || this.direction.equals(Vector.DOWN) || this.direction.equals(Vector.LEFT)|| this.direction.equals(Vector.RIGHT) || this.direction.equals(Vector.NULL)))
+            return; // unknown direction
+
+        if(this.getCurrentState() == EmployeeState.DEAD && this.getPosition().equals(MapConfiguration.getGatePosition().addVector(Vector.UP)))
+            this.setDirection(Vector.DOWN);
+
+        var newPos = this.getPosition().addVector(this.direction);
+
+        if (newPos.getY() == 0)
+            newPos.setY(MapConfiguration.getMapHeight() -1);
+        else if (newPos.getY() == MapConfiguration.getMapHeight()-1)
+            newPos.setY(0);
+        else if (newPos.getX() == 0)
+            newPos.setX(MapConfiguration.getMapWidth()-1);
+        else if (newPos.getX() == MapConfiguration.getMapWidth()-1)
+            newPos.setX(0);
+
+        this.changePos(newPos.getX(), newPos.getY());
     }
 }
