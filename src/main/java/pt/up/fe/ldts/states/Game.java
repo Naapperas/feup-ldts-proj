@@ -76,9 +76,8 @@ public class Game extends AppState {
         }
 
         gui.close();
-        if (!Jorge.singleton.isAlive()){
-            this.app.changeState(new InitialMenu(this.app));
-        }
+        // something for leaderboard if player won
+        this.app.changeState(new InitialMenu(this.app));
     }
 
     @Override
