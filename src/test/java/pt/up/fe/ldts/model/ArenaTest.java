@@ -402,8 +402,8 @@ public class ArenaTest {
 
         a.checkEmployeeCollision(); // resetEntities() called here
 
-        Assertions.assertEquals(MapConfiguration.getGatePosition(), employees.get(0).getPosition());
-        Assertions.assertEquals(MapConfiguration.getGatePosition(), employees.get(1).getPosition());
+        Assertions.assertEquals(MapConfiguration.getGatePosition().addVector(Vector.DOWN), employees.get(0).getPosition());
+        Assertions.assertEquals(MapConfiguration.getGatePosition().addVector(Vector.DOWN), employees.get(1).getPosition());
 
         Assertions.assertEquals(Employee.EmployeeState.SCATTER, employees.get(0).getCurrentState());
         Assertions.assertEquals(Employee.EmployeeState.SCATTER, employees.get(1).getCurrentState());
