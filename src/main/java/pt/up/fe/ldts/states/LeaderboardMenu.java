@@ -27,7 +27,7 @@ public class LeaderboardMenu extends AppState{
 
         List<Button> buttons = new ArrayList<>();
 
-        buttons.add(new Button(10, 30, "Q TO GO BACK"));
+        buttons.add(new Button(10, 30, "GO BACK"));
         display = new MenuDisplay(buttons);
 
         Renderer.clearRenderer();

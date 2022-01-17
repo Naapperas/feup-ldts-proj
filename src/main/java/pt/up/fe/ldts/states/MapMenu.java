@@ -33,9 +33,9 @@ public class MapMenu extends AppState {
         List<Button> buttons = new ArrayList<>();
 
         buttons.add(new Button(10, 2, "EASY MODE (1)"));
-        buttons.add(new Button(10, 10, "DEFAULT MODE (2)"));
+        buttons.add(new Button(10, 10, "NORMAL MODE (2)"));
         buttons.add(new Button(10, 18, "HARD MODE (3)"));
-        buttons.add(new Button(10, 30, "TO GO BACK"));
+        buttons.add(new Button(10, 30, "GO BACK"));
 
         display = new MenuDisplay(buttons);
 

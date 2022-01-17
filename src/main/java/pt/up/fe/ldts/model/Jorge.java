@@ -2,6 +2,8 @@ package pt.up.fe.ldts.model;
 
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import pt.up.fe.ldts.model.map.MapConfiguration;
+
 import static pt.up.fe.ldts.view.gui.GUI.ACTION;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -90,6 +92,10 @@ public class Jorge extends Entity{
 
 
         tg.putString(0, 0, "SCORE:" + this.getScore());
+
+        for(AtomicInteger i = new AtomicInteger(0); i.get() < lives.get(); i.incrementAndGet()){
+            tg.putString(MapConfiguration.getMapWidth() - 1 - i.get(), 0, "c");
+        }
 
         tg.setForegroundColor(previousForegroundColor);
     }
