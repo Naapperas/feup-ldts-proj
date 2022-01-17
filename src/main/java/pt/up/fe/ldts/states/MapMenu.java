@@ -35,7 +35,7 @@ public class MapMenu extends AppState {
         buttons.add(new Button(10, 2, "EASY MODE (1)"));
         buttons.add(new Button(10, 10, "DEFAULT MODE (2)"));
         buttons.add(new Button(10, 18, "HARD MODE (3)"));
-        buttons.add(new Button(10, 30, "Q TO GO BACK"));
+        buttons.add(new Button(10, 30, "TO GO BACK"));
 
         display = new MenuDisplay(buttons);
 
@@ -61,9 +61,6 @@ public class MapMenu extends AppState {
             GUI.ACTION currentAction = gui.getNextAction();
 
             switch (currentAction) {
-                case QUIT:           // not necessary here, staying as an extra
-                    running = false;
-                    break;
                 case SELECT:
                     running=false;
                     break;
