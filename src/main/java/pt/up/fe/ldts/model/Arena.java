@@ -171,4 +171,18 @@ public class Arena implements Drawable {
                 return;
             }
     }
+
+    public void checkEmployeeCollision(){
+        for (Employee e : this.employees){
+            if(Jorge.singleton.getPosition().equals(e.getPosition())){
+                if(e.getCurrentState() == Employee.EmployeeState.FRIGHTENED){
+                    e.setCurrentState(Employee.EmployeeState.DEAD);
+                    Jorge.singleton.addPoints(Employee.SCORE_WHEN_EATEN);
+                }
+                else if (e.getCurrentState() == Employee.EmployeeState.CHASING || e.getCurrentState() == Employee.EmployeeState.SCATTER){
+                    //return to menu
+                }
+            }
+        }
+    }
 }

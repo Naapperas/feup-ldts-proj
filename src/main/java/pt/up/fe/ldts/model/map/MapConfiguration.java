@@ -6,12 +6,12 @@ public class MapConfiguration {
 
     private static int mapHeight;
     private static int mapWidth;
-    private static Point boxPosition;
+    private static Point gatePosition;
 
-    public MapConfiguration(int height, int width, Point boxPosition){
+    public MapConfiguration(int height, int width, Point gatePosition){
         mapHeight = height;
         mapWidth = width;
-        MapConfiguration.boxPosition = boxPosition;
+        MapConfiguration.gatePosition = gatePosition;
     }
 
 
@@ -31,11 +31,11 @@ public class MapConfiguration {
         mapWidth = width;
     }
 
-    public static Point getBoxPosition() {
-        return boxPosition;
+    public static Point getGatePosition() {
+        return gatePosition;
     }
 
-    public static void setBoxPosition(Point boxPos){
-        boxPosition = boxPos;
+    public static void setGatePosition(Point gatePos){
+        gatePosition = gatePos;
     }
 }
