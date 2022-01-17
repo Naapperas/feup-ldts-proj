@@ -35,15 +35,16 @@ public class Game extends AppState {
 
 
     @Override
-    public void start() throws IOException {
+    public void start() throws Exception {
 
         boolean running = true;
+        Jorge.singleton.restart();
 
         int FPS = 6;
         int frameTime = 1000 / FPS;
 
         long startTime = System.currentTimeMillis();
-        while (running) {
+        while (running && Jorge.singleton.isAlive()) {
 
             long lastTime = System.currentTimeMillis();
 
@@ -75,6 +76,9 @@ public class Game extends AppState {
         }
 
         gui.close();
+        if (!Jorge.singleton.isAlive()){
+            this.app.changeState(new InitialMenu(this.app));
+        }
     }
 
     @Override
