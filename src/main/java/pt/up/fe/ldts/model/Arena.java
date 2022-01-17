@@ -180,7 +180,7 @@ public class Arena implements Drawable {
                     Jorge.singleton.addPoints(Employee.SCORE_WHEN_EATEN);
                 }
                 else if (e.getCurrentState() == Employee.EmployeeState.CHASING || e.getCurrentState() == Employee.EmployeeState.SCATTER){
-                    //return tp menu
+                    //return to menu
                 }
             }
         }

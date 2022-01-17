@@ -346,4 +346,35 @@ public class ArenaTest {
         Assertions.assertFalse(a.isInsideBox(new Point(16, 16)));
         Assertions.assertTrue(a.isInsideBox(new Point(15, 15)));
     }
+
+    @Test
+    public void testEmployeeColision(){
+        Arena a = new Arena(27,27);
+        List<Employee> employees = new ArrayList<>();
+
+        employees.add(new Employee(10,10, new ToniAI()));
+        employees.add(new Employee(13,14, new ToniAI()));
+
+        employees.get(0).setCurrentState(Employee.EmployeeState.FRIGHTENED);
+        employees.get(1).setCurrentState(Employee.EmployeeState.FRIGHTENED);
+
+        a.setEmployees(employees);
+
+        Jorge.singleton.addPoints(-Jorge.singleton.getScore());
+
+        Jorge.singleton.changePos(10,10);
+
+        a.checkEmployeeCollision();
+
+        Assertions.assertEquals(Employee.EmployeeState.DEAD, employees.get(0).getCurrentState());
+        Assertions.assertEquals(200, Jorge.singleton.getScore());
+
+        Jorge.singleton.changePos(13,14);
+
+        a.checkEmployeeCollision();
+
+        Assertions.assertEquals(Employee.EmployeeState.DEAD, employees.get(1).getCurrentState());
+        Assertions.assertEquals(400, Jorge.singleton.getScore());
+
+    }
 }
