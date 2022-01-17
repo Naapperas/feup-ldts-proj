@@ -27,8 +27,8 @@ public class InitialMenu extends AppState {
 
         List<Button> buttons = new ArrayList<>();
 
-        buttons.add(new Button(10, 7, "ENTER TO PLAY"));
-        buttons.add(new Button(10, 25, "L TO LEADERBOARD"));
+        buttons.add(new Button(10, 7, "HERE TO PLAY"));
+        buttons.add(new Button(10, 25, "LEADERBOARD"));
         display = new MenuDisplay(buttons);
 
         Renderer.clearRenderer();

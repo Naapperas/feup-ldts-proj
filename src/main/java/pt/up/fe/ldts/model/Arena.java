@@ -5,6 +5,7 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.model.map.Map;
+import pt.up.fe.ldts.model.map.MapConfiguration;
 import pt.up.fe.ldts.view.Drawable;
 
 import java.util.ArrayList;
@@ -180,9 +181,19 @@ public class Arena implements Drawable {
                     Jorge.singleton.addPoints(Employee.SCORE_WHEN_EATEN);
                 }
                 else if (e.getCurrentState() == Employee.EmployeeState.CHASING || e.getCurrentState() == Employee.EmployeeState.SCATTER){
-                    //return to menu
+                    Jorge.singleton.kill();
+                    resetEntities();
                 }
             }
         }
+    }
+
+    private void resetEntities(){
+        for (Employee e : this.employees){
+            e.changePos(MapConfiguration.getGatePosition().getX(), MapConfiguration.getGatePosition().getY()+1);
+            e.setCurrentState(Employee.EmployeeState.SCATTER);
+            e.setDirection(Vector.UP);
+        }
+        Jorge.singleton.changePos(MapConfiguration.getJorgePosition().getX(), MapConfiguration.getJorgePosition().getY());
     }
 }

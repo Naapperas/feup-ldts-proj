@@ -10,7 +10,7 @@ public class Jorge extends Entity{
 
     public static Jorge singleton = new Jorge(13, 24); // to be changed later
 
-    AtomicInteger score = new AtomicInteger(0);
+    AtomicInteger score = new AtomicInteger(0), lives = new AtomicInteger(3);
 
     /**
      * Constructs a new Jorge on the given position
@@ -44,13 +44,26 @@ public class Jorge extends Entity{
             this.setDirection(Vector.NULL);
     }
 
+    public void restart(){
+        resetPoints();
+        fullHealth();
+    }
+
     public void addPoints(int points) {
         score.addAndGet(points);
     }
 
+    public void kill() {lives.decrementAndGet();}
+
+    private void resetPoints(){score.set(0);}
+
+    private void fullHealth(){lives.set(3);}
+
     public int getScore() {
         return score.get();
     }
+
+    public boolean isAlive() {return lives.get()>0;}
 
     private char previousRenderChar = 'h';
 

@@ -11,6 +11,7 @@ import pt.up.fe.ldts.controller.employeeAI.MariAI;
 import pt.up.fe.ldts.controller.employeeAI.ToniAI;
 import pt.up.fe.ldts.controller.employeeAI.ZeCastroAI;
 import pt.up.fe.ldts.model.map.DefaultMap;
+import pt.up.fe.ldts.model.map.MapConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -348,7 +349,7 @@ public class ArenaTest {
     }
 
     @Test
-    public void testEmployeeColision(){
+    public void testEmployeeCollision(){
         Arena a = new Arena(27,27);
         List<Employee> employees = new ArrayList<>();
 
@@ -375,6 +376,39 @@ public class ArenaTest {
 
         Assertions.assertEquals(Employee.EmployeeState.DEAD, employees.get(1).getCurrentState());
         Assertions.assertEquals(400, Jorge.singleton.getScore());
+
+    }
+
+    @Test
+    public void testResetEntities(){
+        Arena a = new Arena(27,27);
+        List<Employee> employees = new ArrayList<>();
+
+
+        employees.add(new Employee(10,10, new ToniAI()));
+        employees.add(new Employee(13,14, new ToniAI()));
+
+        employees.get(0).setCurrentState(Employee.EmployeeState.CHASING);
+        employees.get(1).setCurrentState(Employee.EmployeeState.SCATTER);
+
+        a.setEmployees(employees);
+
+        Jorge.singleton.addPoints(-Jorge.singleton.getScore());
+
+        Jorge.singleton.changePos(10,10);
+
+        MapConfiguration.setJorgePosition(new Point(5, 5));
+        MapConfiguration.setGatePosition(new Point(0, 0));
+
+        a.checkEmployeeCollision(); // resetEntities() called here
+
+        Assertions.assertEquals(MapConfiguration.getGatePosition(), employees.get(0).getPosition());
+        Assertions.assertEquals(MapConfiguration.getGatePosition(), employees.get(1).getPosition());
+
+        Assertions.assertEquals(Employee.EmployeeState.SCATTER, employees.get(0).getCurrentState());
+        Assertions.assertEquals(Employee.EmployeeState.SCATTER, employees.get(1).getCurrentState());
+
+        Assertions.assertEquals(MapConfiguration.getJorgePosition(), Jorge.singleton.getPosition());
 
     }
 }
