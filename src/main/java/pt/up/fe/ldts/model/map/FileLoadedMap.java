@@ -22,8 +22,8 @@ public class FileLoadedMap implements Map {
     private final List<Collectible> collectibles;
 
     private Point gatePosition; // can't be final since it is initialized in a switch statement ,so it might not happen
-    private Point baltaPos, zePos, toniPos, mariPos;
-    private final Point boxPosition/*top left corner of ghost box*/;
+    private Point baltaPos, zePos, toniPos, mariPos, jorgePos;
+    private final Point boxPosition /*top left corner of ghost box*/;
 
     public FileLoadedMap(String mapName) throws Exception {
         URL resource = getClass().getClassLoader().getResource("maps/" + mapName + ".map");
@@ -74,7 +74,7 @@ public class FileLoadedMap implements Map {
                     case 'W' -> walls.add(new Wall(x,y));
                     case 't' -> collectibles.add(new Tremoco(x,y));
                     case 'C' -> collectibles.add(new Cerveja(x,y));
-                    case 'J' -> Jorge.singleton.changePos(x,y);
+                    case 'J' -> jorgePos = new Point(x, y);
                     case 'G' -> gatePosition = new Point(x,y);
                     case 'B' -> baltaPos = new Point(x,y);
                     case 'Z' -> zePos = new Point(x,y);
@@ -154,8 +154,10 @@ public class FileLoadedMap implements Map {
             employees.add(new Employee(mariPos.getX(), mariPos.getY(), new MariAI()));
         if (toniPos != null)
             employees.add(new Employee(toniPos.getX(), toniPos.getY(), new ToniAI()));
-
-
+        if (jorgePos != null) {
+            Jorge.singleton.changePos(jorgePos.getX(), jorgePos.getY());
+            MapConfiguration.setJorgePosition(jorgePos);
+        }
     }
 
     private boolean isNotInsideBox(Point position) {

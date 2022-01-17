@@ -6,7 +6,7 @@ public class MapConfiguration {
 
     private static int mapHeight;
     private static int mapWidth;
-    private static Point gatePosition;
+    private static Point gatePosition, jorgePosition;
 
     public MapConfiguration(int height, int width, Point gatePosition){
         mapHeight = height;
@@ -37,5 +37,13 @@ public class MapConfiguration {
 
     public static void setGatePosition(Point gatePos){
         gatePosition = gatePos;
+    }
+
+    public static Point getJorgePosition() {
+        return jorgePosition;
+    }
+
+    public static void setJorgePosition(Point jorgePos){
+        jorgePosition = jorgePos;
     }
 }
