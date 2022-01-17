@@ -5,6 +5,7 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.model.map.Map;
+import pt.up.fe.ldts.model.map.MapConfiguration;
 import pt.up.fe.ldts.view.Drawable;
 
 import java.util.ArrayList;
@@ -188,6 +189,10 @@ public class Arena implements Drawable {
     }
 
     private void resetEntities(){
-
+        for (Employee e : this.employees){
+            e.changePos(MapConfiguration.getGatePosition().getX(), MapConfiguration.getGatePosition().getY());
+            e.setCurrentState(Employee.EmployeeState.SCATTER);
+        }
+        Jorge.singleton.changePos(MapConfiguration.getJorgePosition().getX(), MapConfiguration.getJorgePosition().getY());
     }
 }
