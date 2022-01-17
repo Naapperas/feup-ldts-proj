@@ -190,8 +190,9 @@ public class Arena implements Drawable {
 
     private void resetEntities(){
         for (Employee e : this.employees){
-            e.changePos(MapConfiguration.getGatePosition().getX(), MapConfiguration.getGatePosition().getY());
+            e.changePos(MapConfiguration.getGatePosition().getX(), MapConfiguration.getGatePosition().getY()+1);
             e.setCurrentState(Employee.EmployeeState.SCATTER);
+            e.setDirection(Vector.UP);
         }
         Jorge.singleton.changePos(MapConfiguration.getJorgePosition().getX(), MapConfiguration.getJorgePosition().getY());
     }
