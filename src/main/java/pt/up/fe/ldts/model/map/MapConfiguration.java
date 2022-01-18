@@ -1,7 +1,7 @@
 package pt.up.fe.ldts.model.map;
 
-import pt.up.fe.ldts.model.Collectible;
 import pt.up.fe.ldts.model.Point;
+import pt.up.fe.ldts.model.game.Collectible;
 
 import java.util.List;
 
