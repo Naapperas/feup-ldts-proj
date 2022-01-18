@@ -64,6 +64,9 @@ public class EmployeeTest {
 
     @Test
     public void testCervejaPicked() throws InterruptedException {
+        var previousTIME_FRIGHTNED = Employee.TIME_FRIGHTENED;
+        Employee.TIME_FRIGHTENED = 1;
+
         Employee employee = new Employee(13, 13, new ToniAI()); // ai doesn't matter here
         var previousState = employee.getCurrentState();
         var previousDirection = employee.getDirection();
@@ -77,6 +80,8 @@ public class EmployeeTest {
 
         Assertions.assertEquals(previousState, employee.getCurrentState());
         Assertions.assertEquals(previousDirection, employee.getDirection());
+
+        Employee.TIME_FRIGHTENED = previousTIME_FRIGHTNED;
     }
 
     @Test

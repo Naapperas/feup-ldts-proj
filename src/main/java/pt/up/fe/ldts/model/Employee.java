@@ -14,7 +14,7 @@ import java.util.TimerTask;
 public class Employee extends Entity implements CervejaListener {
 
     public static final int SCORE_WHEN_EATEN = 200;
-    public static final int TIME_FRIGHTENED = 5; // in seconds
+    public static int TIME_FRIGHTENED = 5; // in seconds
 
     @Override
     public void render(TextGraphics tg) {
