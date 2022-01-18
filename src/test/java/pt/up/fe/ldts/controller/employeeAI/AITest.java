@@ -28,6 +28,10 @@ public class AITest {
 
         Assertions.assertEquals(toni.getScatterTarget(), toni.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
 
+        pos = pos.addVector(new Vector(-1,7));
+
+        Assertions.assertEquals(toni.getScatterTarget(), toni.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
+
         pos = pos.addVector(new Vector(10,10));
 
         Assertions.assertEquals(Jorge.singleton.getPosition(), toni.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
