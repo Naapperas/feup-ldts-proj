@@ -1,12 +1,16 @@
 package pt.up.fe.ldts.model.map;
 
+import pt.up.fe.ldts.model.Collectible;
 import pt.up.fe.ldts.model.Point;
+
+import java.util.List;
 
 public class MapConfiguration {
 
     private static int mapHeight;
     private static int mapWidth;
     private static Point gatePosition, jorgePosition;
+    private static List<Collectible> collectibles;
 
     public static int getMapHeight() {
         return mapHeight;
@@ -38,5 +42,11 @@ public class MapConfiguration {
 
     public static void setJorgePosition(Point jorgePos){
         jorgePosition = jorgePos;
+    }
+
+    public static List<Collectible> getCollectibles(){return collectibles;}
+
+    public static void setCollectibles(List<Collectible> c){
+        collectibles = c;
     }
 }

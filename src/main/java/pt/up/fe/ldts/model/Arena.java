@@ -27,7 +27,7 @@ public class Arena implements Drawable {
 
     private final List<Employee> employees = new ArrayList<>();
     private final List<Wall> walls = new ArrayList<>();
-    private final List<Collectible> collectibles = new ArrayList<>();
+    private List<Collectible> collectibles = new ArrayList<>();
 
     public List<Employee> getEmployees() {
         return this.employees;
@@ -171,6 +171,18 @@ public class Arena implements Drawable {
                 this.collectibles.remove(c);
                 return;
             }
+    }
+
+    public void restartLevel(){
+        this.collectibles = MapConfiguration.getCollectibles();
+        resetEntities();
+    }
+
+    public boolean emptyCollectibles(){
+        if(collectibles.isEmpty())
+            return true;
+        else
+            return false;
     }
 
     public void checkEmployeeCollision(){
