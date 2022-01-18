@@ -113,6 +113,8 @@ public class Game extends AppState {
         this.arena.checkCollectibleColision();
         this.arena.checkEmployeeCollision();
 
+        if(this.arena.emptyCollectibles())
+            this.arena.restartLevel();
     }
 
     private static class PauseButton extends Button {

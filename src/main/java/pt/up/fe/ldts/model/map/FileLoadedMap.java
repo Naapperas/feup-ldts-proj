@@ -145,6 +145,7 @@ public class FileLoadedMap implements Map {
         MapConfiguration.setMapHeight(height);
         MapConfiguration.setMapWidth(width);
         MapConfiguration.setGatePosition(gatePosition);
+        MapConfiguration.setCollectibles(collectibles);
 
         if (baltaPos != null)
             employees.add(new Employee(baltaPos.getX(), baltaPos.getY(), new BaltaAI()));
