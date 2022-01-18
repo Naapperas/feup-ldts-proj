@@ -135,6 +135,17 @@ public class FileLoadedMapTest {
     }
 
     @Test
+    public void testNullDimensions() {
+
+        try {
+            new FileLoadedMap("defaultNullDimensions");
+        } catch (Exception e){
+            Assertions.fail(); // should never reach this line
+        }
+
+    }
+
+    @Test
     public void testMapCreation() throws Exception {
 
         Map m = new FileLoadedMap("default");
@@ -166,6 +177,10 @@ public class FileLoadedMapTest {
 
         Assertions.assertEquals(5, m.getBoxWidth());
         Assertions.assertEquals(3, m.getBoxHeight());
+
+        Assertions.assertEquals(MapConfiguration.getMapHeight(), m.getHeight());
+        Assertions.assertEquals(MapConfiguration.getMapWidth(), m.getWidth());
+        Assertions.assertEquals(MapConfiguration.getGatePosition(), m.getGatePosition());
     }
 
 }
