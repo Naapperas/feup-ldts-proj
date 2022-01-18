@@ -117,7 +117,7 @@ public class Employee extends Entity implements CervejaListener {
 
             double mag1 = pair1.b, mag2 = pair2.b;
 
-            return mag1 == mag2 ? pair1.a.compareTo(pair2.a) : Double.compare(mag1, mag2);
+            return mag1 == mag2 ? pair2.a.compareTo(pair1.a) : Double.compare(mag1, mag2);
         });
 
         return directionPairs.get(0).a;

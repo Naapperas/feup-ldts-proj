@@ -46,26 +46,26 @@ public record Vector(int x, int y) implements Comparable<Vector> {
     @Override
     public int compareTo(Vector o) {  // UP > LEFT > DOWN > RIGHT
         if (this.equals(Vector.UP)) {
-            return o.equals(Vector.UP) ? 0 : -1;
+            return o.equals(Vector.UP) ? 0 : 1;
         }
         else if (this.equals(Vector.RIGHT)) {
-            return o.equals(Vector.RIGHT) ? 0 : 1;
+            return o.equals(Vector.RIGHT) ? 0 : -1;
         }
         else {
             if (this.equals(Vector.LEFT)) {
                 if (o.equals(Vector.UP))
-                    return 1;
+                    return -1;
                 else if (o.equals(Vector.LEFT))
                     return 0;
                 else
-                    return -1;
+                    return 1;
             } else {
                 if (o.equals(Vector.RIGHT))
-                    return -1;
+                    return 1;
                 else if (o.equals(Vector.DOWN))
                     return 0;
                 else
-                    return 1;
+                    return -1;
             }
         }
     }
