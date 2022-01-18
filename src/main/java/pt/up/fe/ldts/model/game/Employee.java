@@ -83,10 +83,13 @@ public class Employee extends Entity implements CervejaListener {
 
             @Override
             public void run() {
+
+                if (e.getCurrentState() == EmployeeState.DEAD) return;
+
                 e.setDirection(e.getDirection().multiply(-1));
                 e.setCurrentState(currState);
             }
-        }, 1000 * TIME_FRIGHTENED);
+        }, 1000L * TIME_FRIGHTENED);
     }
 
     @Override
@@ -130,8 +133,13 @@ public class Employee extends Entity implements CervejaListener {
         if (!(this.direction.equals(Vector.UP) || this.direction.equals(Vector.DOWN) || this.direction.equals(Vector.LEFT)|| this.direction.equals(Vector.RIGHT) || this.direction.equals(Vector.NULL)))
             return; // unknown direction
 
-        if(this.getCurrentState() == EmployeeState.DEAD && this.getPosition().equals(MapConfiguration.getGatePosition().addVector(Vector.UP)))
-            this.setDirection(Vector.DOWN);
+        if(this.getCurrentState() == EmployeeState.DEAD)
+            if (this.getPosition().equals(MapConfiguration.getGatePosition().addVector(Vector.UP)))
+                this.setDirection(Vector.DOWN);
+            else if (this.getPosition().equals(MapConfiguration.getGatePosition().addVector(Vector.DOWN))) {
+                this.setDirection(this.getDirection().multiply(-1));
+                this.setCurrentState(EmployeeState.SCATTER);
+            }
 
         var newPos = this.getPosition().addVector(this.direction);
 
