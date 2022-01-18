@@ -148,6 +148,10 @@ public class FileLoadedMapTest {
     @Test
     public void testMapCreation() throws Exception {
 
+        MapConfiguration.setMapWidth(0);
+        MapConfiguration.setMapHeight(0);
+        MapConfiguration.setGatePosition(null);
+
         Map m = new FileLoadedMap("default");
 
         Assertions.assertEquals(27, m.getWidth());

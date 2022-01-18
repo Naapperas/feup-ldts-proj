@@ -8,13 +8,6 @@ public class MapConfiguration {
     private static int mapWidth;
     private static Point gatePosition, jorgePosition;
 
-    public MapConfiguration(int height, int width, Point gatePosition){
-        mapHeight = height;
-        mapWidth = width;
-        MapConfiguration.gatePosition = gatePosition;
-    }
-
-
     public static int getMapHeight() {
         return mapHeight;
     }
