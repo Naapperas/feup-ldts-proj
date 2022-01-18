@@ -1,9 +1,13 @@
-package pt.up.fe.ldts.model;
+package pt.up.fe.ldts.model.game;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import pt.up.fe.ldts.model.Vector;
+import pt.up.fe.ldts.model.game.Arena;
+import pt.up.fe.ldts.model.game.Jorge;
+import pt.up.fe.ldts.model.game.Tremoco;
 import pt.up.fe.ldts.view.gui.GUI;
 
 import java.util.Set;

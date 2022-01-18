@@ -1,9 +1,11 @@
-package pt.up.fe.ldts.model;
+package pt.up.fe.ldts.model.game;
 
 import com.github.javaparser.utils.Pair;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
+import pt.up.fe.ldts.model.Point;
+import pt.up.fe.ldts.model.Vector;
 import pt.up.fe.ldts.model.map.MapConfiguration;
 
 import java.util.ArrayList;

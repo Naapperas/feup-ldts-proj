@@ -4,7 +4,7 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import pt.up.fe.ldts.model.Element;
+import pt.up.fe.ldts.model.game.Element;
 import pt.up.fe.ldts.model.map.MapConfiguration;
 
 import java.util.ArrayList;

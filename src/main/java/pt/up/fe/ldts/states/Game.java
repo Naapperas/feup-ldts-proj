@@ -1,8 +1,8 @@
 package pt.up.fe.ldts.states;
 
 import pt.up.fe.ldts.Application;
-import pt.up.fe.ldts.model.Arena;
-import pt.up.fe.ldts.model.Jorge;
+import pt.up.fe.ldts.model.game.Arena;
+import pt.up.fe.ldts.model.game.Jorge;
 import pt.up.fe.ldts.model.map.FileLoadedMap;
 import pt.up.fe.ldts.model.map.Map;
 import pt.up.fe.ldts.model.map.MapConfiguration;

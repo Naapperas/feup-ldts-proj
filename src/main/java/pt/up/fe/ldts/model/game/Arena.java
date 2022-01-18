@@ -1,9 +1,12 @@
-package pt.up.fe.ldts.model;
+package pt.up.fe.ldts.model.game;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import pt.up.fe.ldts.model.Point;
+import pt.up.fe.ldts.model.Vector;
+import pt.up.fe.ldts.model.game.*;
 import pt.up.fe.ldts.model.map.Map;
 import pt.up.fe.ldts.model.map.MapConfiguration;
 import pt.up.fe.ldts.view.Drawable;

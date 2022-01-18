@@ -1,5 +1,6 @@
-package pt.up.fe.ldts.model;
+package pt.up.fe.ldts.model.game;
 
+import pt.up.fe.ldts.model.Vector;
 import pt.up.fe.ldts.model.map.MapConfiguration;
 
 /**

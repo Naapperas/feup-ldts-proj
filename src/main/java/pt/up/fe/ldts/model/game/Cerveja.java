@@ -1,4 +1,4 @@
-package pt.up.fe.ldts.model;
+package pt.up.fe.ldts.model.game;
 
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
