@@ -1,13 +1,8 @@
 package pt.up.fe.ldts.states;
 
 import pt.up.fe.ldts.Application;
-import pt.up.fe.ldts.model.map.DefaultMap;
-import pt.up.fe.ldts.model.map.FileLoadedMap;
 import pt.up.fe.ldts.model.menus.Button;
 import pt.up.fe.ldts.model.menus.MenuDisplay;
-import pt.up.fe.ldts.states.AppState;
-import pt.up.fe.ldts.states.Game;
-import pt.up.fe.ldts.states.InitialMenu;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
@@ -107,8 +102,6 @@ public class MapMenu extends AppState {
                 this.app.changeState(new InitialMenu(this.app));
                 break;
         }
-
-
     }
 
     @Override

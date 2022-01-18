@@ -19,7 +19,7 @@ public class InitialMenu extends AppState {
 
     private static final int WIDTH = 40, HEIGHT = 40;
 
-    private MenuDisplay display;
+    private final MenuDisplay display;
 
     public InitialMenu(Application app) throws Exception {
         super(app);
@@ -28,7 +28,8 @@ public class InitialMenu extends AppState {
         List<Button> buttons = new ArrayList<>();
 
         buttons.add(new Button(10, 7, "PLAY"));
-        buttons.add(new Button(10, 25, "LEADERBOARD"));
+        buttons.add(new Button(10, 16, "LEADERBOARD"));
+        buttons.add(new Button(10, 25, "QUIT"));
         display = new MenuDisplay(buttons);
 
         Renderer.clearRenderer();
@@ -51,21 +52,14 @@ public class InitialMenu extends AppState {
             GUI.ACTION currentAction = gui.getNextAction();
 
             switch (currentAction) {
-                case QUIT:
+                case QUIT -> running = false;
+                case SELECT -> {
                     running = false;
-                    break;
-                case SELECT:
-                    running=false;
                     next = true;
-                    break;
-                case UP:
-                    display.selectUP();
-                    break;
-                case DOWN:
-                    display.selectDown();
-                    break;
-                default:
-                    break;
+                }
+                case UP -> display.selectUP();
+                case DOWN -> display.selectDown();
+                default -> {}
             }
 
             if (lastTime - startTime > TICK_TIME) {
@@ -85,9 +79,9 @@ public class InitialMenu extends AppState {
         }
         gui.close();
         if (next) {
-            if (display.getSelected()==0)
+            if (display.getSelected() == 0)
                 this.app.changeState(new MapMenu(this.app));
-            if (display.getSelected()==1)
+            else if (display.getSelected() == 1)
                 this.app.changeState(new LeaderboardMenu(this.app));
         }
     }

@@ -5,6 +5,8 @@ import pt.up.fe.ldts.model.Arena;
 import pt.up.fe.ldts.model.Jorge;
 import pt.up.fe.ldts.model.map.FileLoadedMap;
 import pt.up.fe.ldts.model.map.Map;
+import pt.up.fe.ldts.model.map.MapConfiguration;
+import pt.up.fe.ldts.model.menus.Button;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
@@ -22,17 +24,21 @@ public class Game extends AppState {
     private Arena arena;
     private Map map;
 
+    private boolean paused = false;
+
+    private final PauseButton pauseButton = new PauseButton(-1, 10);
+
     public Game(Application app, String map) throws Exception {
         super(app);
-        this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
         this.map = new FileLoadedMap(map);
         this.arena = new Arena(this.map);
 
+        this.gui = new LanternaGUI(MapConfiguration.getMapWidth(), MapConfiguration.getMapHeight() +1);
+
         Renderer.clearRenderer();
         Renderer.addDrawable(arena);
     }
-
 
     @Override
     public void start() throws Exception {
@@ -51,15 +57,17 @@ public class Game extends AppState {
             GUI.ACTION currentAction = gui.getNextAction();
 
             switch (currentAction) {
-                case QUIT:
-                    running = false;
-                    break;
-                default:
-                    break;
+                case QUIT -> running = false;
+                case PAUSE -> {
+                    paused = !paused;
+                    Jorge.singleton.cycleAnimation(!paused);
+                }
+                default -> {}
             }
 
             if (lastTime - startTime > TICK_TIME) {
-                tick(currentAction);
+                if (!paused)
+                    tick(currentAction);
                 startTime = lastTime;
             }
 
@@ -82,7 +90,10 @@ public class Game extends AppState {
 
     @Override
     public void render() throws IOException {
+        if (paused)
+            Renderer.addDrawable(this.pauseButton);
         Renderer.render(gui);
+        Renderer.removeDrawable(this.pauseButton);
     }
 
     private void tick(GUI.ACTION action) {
@@ -102,5 +113,12 @@ public class Game extends AppState {
         this.arena.checkCollectibleColision();
         this.arena.checkEmployeeCollision();
 
+    }
+
+    private static class PauseButton extends Button {
+
+        public PauseButton(int x, int y) {
+            super(x, y, "PAUSED\nPRESS 'P' TO RESUME\nPRESS 'Q' TO QUIT");
+        }
     }
 }

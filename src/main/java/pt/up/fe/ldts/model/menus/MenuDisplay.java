@@ -5,9 +5,8 @@ import pt.up.fe.ldts.view.Drawable;
 
 import java.util.List;
 
-
 public class MenuDisplay implements Drawable {
-    private List<Button> buttons;
+    private final List<Button> buttons;
 
     public MenuDisplay(List<Button> buttons){
         this.buttons=buttons;
