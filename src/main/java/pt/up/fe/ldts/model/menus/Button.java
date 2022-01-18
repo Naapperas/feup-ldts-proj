@@ -54,9 +54,15 @@ public class Button extends Element {
         else
             buttonX = this.getX();
 
-        tg.fillRectangle(new TerminalPosition(buttonX, this.getY()), new TerminalSize(buttonWidth + 3, buttonHeight), ' ');
+        int buttonY;
+        if (this.getY() < 0)
+            buttonY = MapConfiguration.getMapHeight()/2 - this.buttonHeight/2 + 1;
+        else
+            buttonY = this.getY();
+
+        tg.fillRectangle(new TerminalPosition(buttonX, buttonY), new TerminalSize(buttonWidth + 3, buttonHeight), ' ');
         for (int i = 0; i < this.text.size(); ++i)
-            tg.putString(buttonX + 3, this.getY() + 3 + i, this.text.get(i));
+            tg.putString(buttonX + 3, buttonY + 3 + i, this.text.get(i));
 
         tg.setForegroundColor(previousForegroundColor);
         tg.setBackgroundColor(previousBackgroundColor);

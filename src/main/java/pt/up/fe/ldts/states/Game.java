@@ -26,7 +26,7 @@ public class Game extends AppState {
 
     private boolean paused = false;
 
-    private final PauseButton pauseButton = new PauseButton(-1, 10);
+    private final PauseButton pauseButton = new PauseButton(-1, -1);
 
     public Game(Application app, String map) throws Exception {
         super(app);
