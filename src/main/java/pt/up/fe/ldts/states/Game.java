@@ -118,7 +118,7 @@ public class Game extends AppState {
     private static class PauseButton extends Button {
 
         public PauseButton(int x, int y) {
-            super(x, y, "PAUSED, PRESS 'P'\n TO RESUME");
+            super(x, y, "PAUSED\nPRESS 'P' TO RESUME\nPRESS 'Q' TO QUIT");
         }
     }
 }
