@@ -47,6 +47,7 @@ public class Jorge extends Entity{
     }
 
     public void restart(){
+        this.setDirection(Vector.UP);
         resetPoints();
         fullHealth();
     }
@@ -67,6 +68,11 @@ public class Jorge extends Entity{
 
     public boolean isAlive() {return lives.get()>0;}
 
+    private boolean cycle = true;
+    public void cycleAnimation(boolean cycle) {
+        this.cycle = cycle;
+    }
+
     private char previousRenderChar = 'h';
 
     @Override
@@ -75,19 +81,21 @@ public class Jorge extends Entity{
         var previousForegroundColor = tg.getForegroundColor();
 
         tg.setForegroundColor(TextColor.Factory.fromString("#FFFF00"));
-        if(previousRenderChar == 'h') {
-            if (Vector.RIGHT.equals(Jorge.singleton.getDirection())) {
-                previousRenderChar = 'c';
-            } else if (Vector.LEFT.equals(Jorge.singleton.getDirection())) {
-                previousRenderChar = 'g';
-            } else if (Vector.UP.equals(Jorge.singleton.getDirection())) {
-                previousRenderChar = 'e';
-            } else if (Vector.DOWN.equals(Jorge.singleton.getDirection())) {
-                previousRenderChar = 'f';
-            }
+
+        if (this.cycle) {
+            if (previousRenderChar == 'h') {
+                if (Vector.RIGHT.equals(Jorge.singleton.getDirection())) {
+                    previousRenderChar = 'c';
+                } else if (Vector.LEFT.equals(Jorge.singleton.getDirection())) {
+                    previousRenderChar = 'g';
+                } else if (Vector.UP.equals(Jorge.singleton.getDirection())) {
+                    previousRenderChar = 'e';
+                } else if (Vector.DOWN.equals(Jorge.singleton.getDirection())) {
+                    previousRenderChar = 'f';
+                }
+            } else
+                previousRenderChar = 'h';
         }
-        else
-            previousRenderChar = 'h';
         tg.putString(this.getX(), this.getY()+1, "" + previousRenderChar);//bola cheia
 
 

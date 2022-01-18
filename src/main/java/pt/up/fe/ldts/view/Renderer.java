@@ -14,6 +14,7 @@ public class Renderer {
     public static void addDrawable(Drawable drawable) {
         viewers.add(drawable);
     }
+    public static void removeDrawable(Drawable drawable) {viewers.remove(drawable);}
 
     public static void clearRenderer() { Renderer.viewers.clear(); }
 

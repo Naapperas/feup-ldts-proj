@@ -5,16 +5,36 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.model.Element;
+import pt.up.fe.ldts.model.map.MapConfiguration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Button extends Element {
 
-    private String text;
+    private final List<String> text;
+    private int buttonWidth = 20, buttonHeight = 7;
     private boolean selected;
 
     public Button(int x, int y, String text){
         super(x, y);
-        this.text = text;
+        this.text = new ArrayList<>();
         this.selected = false;
+
+        int tmpWidth = 0;
+        StringBuilder tmpStr = new StringBuilder();
+        for (char c : text.toCharArray()) {
+            tmpWidth++;
+            if (c == '\n') {
+                buttonWidth = Math.max(buttonWidth, tmpWidth);
+                this.text.add(tmpStr.toString());
+                buttonHeight++;
+                tmpWidth = 0;
+                tmpStr = new StringBuilder();
+            } else
+                tmpStr.append(c);
+        }
+        this.text.add(tmpStr.toString());
     }
     @Override
     public void render(TextGraphics tg){
@@ -28,8 +48,15 @@ public class Button extends Element {
             tg.setForegroundColor(TextColor.Factory.fromString(TextColor.ANSI.BLUE.name()));
         }
 
-        tg.fillRectangle(new TerminalPosition(this.getX(), this.getY()), new TerminalSize(20, 7), ' ');
-        tg.putString(this.getX() + 3,this.getY() + 3, this.text);
+        int buttonX;
+        if (this.getX() < 0)
+            buttonX = MapConfiguration.getMapWidth()/2 - this.buttonWidth/2 - 1;
+        else
+            buttonX = this.getX();
+
+        tg.fillRectangle(new TerminalPosition(buttonX, this.getY()), new TerminalSize(buttonWidth + 3, buttonHeight), ' ');
+        for (int i = 0; i < this.text.size(); ++i)
+            tg.putString(buttonX + 3, this.getY() + 3 + i, this.text.get(i));
 
         tg.setForegroundColor(previousForegroundColor);
         tg.setBackgroundColor(previousBackgroundColor);
