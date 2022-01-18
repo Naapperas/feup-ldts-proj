@@ -85,6 +85,5 @@ public class JorgeTest {
         Assertions.assertEquals(Vector.NULL, Jorge.singleton.getDirection());
         Assertions.assertEquals(0, Jorge.singleton.getScore());
         Assertions.assertTrue(Jorge.singleton.isAlive());
-
     }
 }

@@ -47,7 +47,7 @@ public class Jorge extends Entity{
     }
 
     public void restart(){
-        this.setDirection(Vector.UP);
+        this.setDirection(Vector.NULL);
         resetPoints();
         fullHealth();
     }
