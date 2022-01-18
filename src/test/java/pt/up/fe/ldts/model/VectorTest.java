@@ -58,11 +58,23 @@ public class VectorTest {
     public void testCompare() {
 
         Assertions.assertEquals(0, Vector.UP.compareTo(Vector.UP));
-        Assertions.assertEquals(0, Vector.LEFT.compareTo(Vector.LEFT));
-        Assertions.assertEquals(0, Vector.DOWN.compareTo(Vector.DOWN));
-        Assertions.assertEquals(0, Vector.RIGHT.compareTo(Vector.RIGHT));
+        Assertions.assertEquals(1, Vector.UP.compareTo(Vector.LEFT));
+        Assertions.assertEquals(1, Vector.UP.compareTo(Vector.DOWN));
+        Assertions.assertEquals(1, Vector.UP.compareTo(Vector.RIGHT));
 
-        Assertions.assertEquals(1, Vector.DOWN.compareTo(Vector.LEFT));
-        Assertions.assertEquals(-1, Vector.DOWN.compareTo(Vector.RIGHT));
+        Assertions.assertEquals(-1, Vector.LEFT.compareTo(Vector.UP));
+        Assertions.assertEquals(0, Vector.LEFT.compareTo(Vector.LEFT));
+        Assertions.assertEquals(1, Vector.LEFT.compareTo(Vector.DOWN));
+        Assertions.assertEquals(1, Vector.LEFT.compareTo(Vector.RIGHT));
+
+        Assertions.assertEquals(-1, Vector.DOWN.compareTo(Vector.UP));
+        Assertions.assertEquals(-1, Vector.DOWN.compareTo(Vector.LEFT));
+        Assertions.assertEquals(0, Vector.DOWN.compareTo(Vector.DOWN));
+        Assertions.assertEquals(1, Vector.DOWN.compareTo(Vector.RIGHT));
+
+        Assertions.assertEquals(-1, Vector.RIGHT.compareTo(Vector.UP));
+        Assertions.assertEquals(-1, Vector.RIGHT.compareTo(Vector.LEFT));
+        Assertions.assertEquals(-1, Vector.RIGHT.compareTo(Vector.DOWN));
+        Assertions.assertEquals(0, Vector.RIGHT.compareTo(Vector.RIGHT));
     }
 }

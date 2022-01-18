@@ -8,6 +8,7 @@ import pt.up.fe.ldts.model.Employee;
 import pt.up.fe.ldts.model.Jorge;
 import pt.up.fe.ldts.model.Point;
 import pt.up.fe.ldts.model.Vector;
+import pt.up.fe.ldts.model.map.MapConfiguration;
 
 public class AITest {
 
@@ -21,10 +22,28 @@ public class AITest {
     }
 
     @Test
+    public void testScatterTargeets() {
+
+        MapConfiguration.setMapWidth(2);
+        MapConfiguration.setMapHeight(2);
+
+        EmployeeAI toni = new ToniAI(), balta = new BaltaAI(), mari = new MariAI(), zecastro = new ZeCastroAI(null);
+
+        Assertions.assertEquals(new Point(0, 0), mari.getScatterTarget());
+        Assertions.assertEquals(new Point(0, 1), toni.getScatterTarget());
+        Assertions.assertEquals(new Point(1, 0), balta.getScatterTarget());
+        Assertions.assertEquals(new Point(1, 1), zecastro.getScatterTarget());
+    }
+
+    @Test
     public void toniTest(){
         EmployeeAI toni = new ToniAI();
 
         Assertions.assertEquals(toni.getScatterTarget(), toni.chooseTargetPosition(Employee.EmployeeState.SCATTER, pos));
+
+        Assertions.assertEquals(toni.getScatterTarget(), toni.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
+
+        pos = pos.addVector(new Vector(-1,7));
 
         Assertions.assertEquals(toni.getScatterTarget(), toni.chooseTargetPosition(Employee.EmployeeState.CHASING, pos));
 

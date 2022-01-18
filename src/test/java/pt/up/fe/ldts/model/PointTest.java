@@ -15,4 +15,13 @@ public class PointTest {
         Assertions.assertEquals(expected, p.addVector(v));
     }
 
+    @Test
+    public void testEquality() {
+        Point p = new Point(1, 2), p2 = new Point(2, 3);
+
+        Assertions.assertTrue(p.equals(p));
+        Assertions.assertFalse(p.equals(null));
+        Assertions.assertFalse(p.equals(p2));
+    }
+
 }

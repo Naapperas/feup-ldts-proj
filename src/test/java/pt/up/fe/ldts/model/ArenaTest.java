@@ -11,6 +11,7 @@ import pt.up.fe.ldts.controller.employeeAI.MariAI;
 import pt.up.fe.ldts.controller.employeeAI.ToniAI;
 import pt.up.fe.ldts.controller.employeeAI.ZeCastroAI;
 import pt.up.fe.ldts.model.map.DefaultMap;
+import pt.up.fe.ldts.model.map.Map;
 import pt.up.fe.ldts.model.map.MapConfiguration;
 
 import java.util.ArrayList;
@@ -281,6 +282,25 @@ public class ArenaTest {
     }
 
     @Test
+    private void testArenaEmployeesAndWalls() throws Exception {
+
+
+        Arena a = new Arena(20, 20);
+
+        Assertions.assertNotNull(a.getEmployees());
+
+        Map m = Mockito.mock(Map.class);
+
+        Mockito.doReturn(this.getMapEmployees()).when(m).getMapEmployees();
+        Mockito.doReturn(new Point(-1, -1)).when(m).getGatePosition();
+
+        a = new Arena(m);
+
+        Assertions.assertEquals(4, a.getEmployees().size());
+        Assertions.assertEquals(new Point(-1, -1), a.getGatePosition());
+    }
+
+    @Test
     public void testValidDirections() {
 
         Arena arena = new Arena(27, 27);
@@ -384,7 +404,6 @@ public class ArenaTest {
         Arena a = new Arena(27,27);
         List<Employee> employees = new ArrayList<>();
 
-
         employees.add(new Employee(10,10, new ToniAI()));
         employees.add(new Employee(13,14, new ToniAI()));
 
@@ -407,6 +426,9 @@ public class ArenaTest {
 
         Assertions.assertEquals(Employee.EmployeeState.SCATTER, employees.get(0).getCurrentState());
         Assertions.assertEquals(Employee.EmployeeState.SCATTER, employees.get(1).getCurrentState());
+
+        Assertions.assertEquals(Vector.UP, employees.get(0).getDirection());
+        Assertions.assertEquals(Vector.UP, employees.get(1).getDirection());
 
         Assertions.assertEquals(MapConfiguration.getJorgePosition(), Jorge.singleton.getPosition());
 

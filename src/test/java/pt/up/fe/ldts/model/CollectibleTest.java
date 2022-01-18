@@ -25,4 +25,14 @@ public class CollectibleTest {
         Assertions.assertEquals(30, Jorge.singleton.getScore());
     }
 
+    @Test
+    public void testEquality() {
+
+        Collectible c1 = new Tremoco(0, 0);
+
+        Assertions.assertTrue(c1.equals(c1));
+        Assertions.assertFalse(c1.equals(null));
+        Assertions.assertTrue(c1.equals(new Tremoco(0, 0)));
+
+    }
 }

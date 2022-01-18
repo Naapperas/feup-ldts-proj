@@ -14,7 +14,7 @@ import java.util.TimerTask;
 public class Employee extends Entity implements CervejaListener {
 
     public static final int SCORE_WHEN_EATEN = 200;
-    private static final int TIME_FRIGHTENED = 5; // in seconds
+    public static int TIME_FRIGHTENED = 5; // in seconds
 
     @Override
     public void render(TextGraphics tg) {
@@ -117,7 +117,7 @@ public class Employee extends Entity implements CervejaListener {
 
             double mag1 = pair1.b, mag2 = pair2.b;
 
-            return mag1 == mag2 ? pair1.a.compareTo(pair2.a) : Double.compare(mag1, mag2);
+            return mag1 == mag2 ? pair2.a.compareTo(pair1.a) : Double.compare(mag1, mag2);
         });
 
         return directionPairs.get(0).a;

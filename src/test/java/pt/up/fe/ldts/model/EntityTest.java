@@ -4,6 +4,7 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pt.up.fe.ldts.model.map.MapConfiguration;
 
 public class EntityTest {
 
@@ -82,5 +83,36 @@ public class EntityTest {
 
         Assertions.assertEquals(4, entity.getX());
         Assertions.assertEquals(4, entity.getY());
+
+        entity.setDirection(new Vector(5, 5));
+
+        entity.move();
+
+        Assertions.assertEquals(4, entity.getX());
+        Assertions.assertEquals(4, entity.getY());
+
+        MapConfiguration.setMapHeight(10);
+        MapConfiguration.setMapWidth(10);
+        entity.setDirection(Vector.NULL);
+
+        entity.changePos(0, 5);
+        entity.move();
+
+        Assertions.assertEquals(MapConfiguration.getMapWidth()-1, entity.getX());
+
+        entity.changePos(MapConfiguration.getMapWidth()-1, 5);
+        entity.move();
+
+        Assertions.assertEquals(0, entity.getX());
+
+        entity.changePos(5, 0);
+        entity.move();
+
+        Assertions.assertEquals(MapConfiguration.getMapHeight()-1, entity.getY());
+
+        entity.changePos(5, MapConfiguration.getMapHeight()-1);
+        entity.move();
+
+        Assertions.assertEquals(0, entity.getY());
     }
 }
