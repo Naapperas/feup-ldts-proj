@@ -6,11 +6,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
 import pt.up.fe.ldts.controller.employeeAI.ToniAI;
+import pt.up.fe.ldts.model.map.MapConfiguration;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class EmployeeTest {
 
@@ -65,12 +63,20 @@ public class EmployeeTest {
     }
 
     @Test
-    public void testCervejaPicked() {
+    public void testCervejaPicked() throws InterruptedException {
         Employee employee = new Employee(13, 13, new ToniAI()); // ai doesn't matter here
+        var previousState = employee.getCurrentState();
+        var previousDirection = employee.getDirection();
 
         employee.cervejaPicked();
 
-        Assertions.assertEquals(Vector.DOWN, employee.getDirection());
+        Assertions.assertEquals(previousDirection.multiply(-1), employee.getDirection());
+        Assertions.assertEquals(Employee.EmployeeState.FRIGHTENED, employee.getCurrentState());
+
+        Thread.sleep((Employee.TIME_FRIGHTENED+2) * 1000);
+
+        Assertions.assertEquals(previousState, employee.getCurrentState());
+        Assertions.assertEquals(previousDirection, employee.getDirection());
     }
 
     @Test
@@ -134,5 +140,59 @@ public class EmployeeTest {
             Mockito.verify(testAI, Mockito.times(3)).chooseTargetPosition(Mockito.any(), Mockito.any());
             Assertions.assertEquals(Vector.LEFT, employee.getDirection());
         }
+    }
+
+    @Test
+    public void testMove() {
+
+        Employee employee = new Employee(4, 5, null);
+
+        Assertions.assertEquals(Vector.UP, employee.getDirection());
+
+        employee.move();
+
+        Assertions.assertEquals(4, employee.getX());
+        Assertions.assertEquals(4, employee.getY());
+
+        employee.setDirection(new Vector(5, 5));
+
+        employee.move();
+
+        Assertions.assertEquals(4, employee.getX());
+        Assertions.assertEquals(4, employee.getY());
+
+        MapConfiguration.setMapHeight(10);
+        MapConfiguration.setMapWidth(10);
+        employee.setDirection(Vector.NULL);
+
+        employee.changePos(0, 5);
+        employee.move();
+
+        Assertions.assertEquals(MapConfiguration.getMapWidth()-1, employee.getX());
+
+        employee.changePos(MapConfiguration.getMapWidth()-1, 5);
+        employee.move();
+
+        Assertions.assertEquals(0, employee.getX());
+
+        employee.changePos(5, 0);
+        employee.move();
+
+        Assertions.assertEquals(MapConfiguration.getMapHeight()-1, employee.getY());
+
+        employee.changePos(5, MapConfiguration.getMapHeight()-1);
+        employee.move();
+
+        Assertions.assertEquals(0, employee.getY());
+
+        MapConfiguration.setGatePosition(new Point(5, 5));
+        employee.setCurrentState(Employee.EmployeeState.DEAD);
+        employee.changePos(5, 4);
+
+        employee.move();
+
+        Assertions.assertEquals(Vector.DOWN, employee.getDirection());
+        Assertions.assertEquals(5, employee.getX());
+        Assertions.assertEquals(5, employee.getY());
     }
 }
