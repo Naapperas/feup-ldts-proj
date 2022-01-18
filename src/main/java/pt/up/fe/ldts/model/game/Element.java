@@ -1,5 +1,6 @@
-package pt.up.fe.ldts.model;
+package pt.up.fe.ldts.model.game;
 
+import pt.up.fe.ldts.model.Point;
 import pt.up.fe.ldts.view.Drawable;
 
 public abstract class Element implements Drawable {

@@ -1,8 +1,9 @@
-package pt.up.fe.ldts.model;
+package pt.up.fe.ldts.model.game;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pt.up.fe.ldts.model.game.Element;
 
 public class ElementTest {
     @Test

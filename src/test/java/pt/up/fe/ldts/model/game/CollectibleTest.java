@@ -1,8 +1,11 @@
-package pt.up.fe.ldts.model;
+package pt.up.fe.ldts.model.game;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pt.up.fe.ldts.model.game.Cerveja;
+import pt.up.fe.ldts.model.game.Collectible;
+import pt.up.fe.ldts.model.game.Jorge;
+import pt.up.fe.ldts.model.game.Tremoco;
 
 public class CollectibleTest {
 

@@ -1,11 +1,14 @@
-package pt.up.fe.ldts.model;
+package pt.up.fe.ldts.model.game;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
 import pt.up.fe.ldts.controller.employeeAI.ToniAI;
+import pt.up.fe.ldts.model.Point;
+import pt.up.fe.ldts.model.Vector;
+import pt.up.fe.ldts.model.game.Arena;
+import pt.up.fe.ldts.model.game.Employee;
 import pt.up.fe.ldts.model.map.MapConfiguration;
 
 import java.util.*;
@@ -20,25 +23,25 @@ public class EmployeeTest {
         Assertions.assertEquals(Employee.EmployeeState.SCATTER, employee.getCurrentState());
     }
 
-    private List<Vector> possibleDirections(Vector direction){
-        List<Vector> directions = new ArrayList<>();
+    private List<pt.up.fe.ldts.model.Vector> possibleDirections(pt.up.fe.ldts.model.Vector direction){
+        List<pt.up.fe.ldts.model.Vector> directions = new ArrayList<>();
 
-        if (Vector.UP.equals(direction)) {
-            directions.add(Vector.UP);
-            directions.add(Vector.LEFT);
-            directions.add(Vector.RIGHT);
-        } else if (Vector.LEFT.equals(direction)) {
-            directions.add(Vector.LEFT);
-            directions.add(Vector.DOWN);
-            directions.add(Vector.UP);
-        } else if (Vector.DOWN.equals(direction)) {
-            directions.add(Vector.DOWN);
-            directions.add(Vector.RIGHT);
-            directions.add(Vector.LEFT);
-        } else if (Vector.RIGHT.equals(direction)) {
-            directions.add(Vector.RIGHT);
-            directions.add(Vector.UP);
-            directions.add(Vector.DOWN);
+        if (pt.up.fe.ldts.model.Vector.UP.equals(direction)) {
+            directions.add(pt.up.fe.ldts.model.Vector.UP);
+            directions.add(pt.up.fe.ldts.model.Vector.LEFT);
+            directions.add(pt.up.fe.ldts.model.Vector.RIGHT);
+        } else if (pt.up.fe.ldts.model.Vector.LEFT.equals(direction)) {
+            directions.add(pt.up.fe.ldts.model.Vector.LEFT);
+            directions.add(pt.up.fe.ldts.model.Vector.DOWN);
+            directions.add(pt.up.fe.ldts.model.Vector.UP);
+        } else if (pt.up.fe.ldts.model.Vector.DOWN.equals(direction)) {
+            directions.add(pt.up.fe.ldts.model.Vector.DOWN);
+            directions.add(pt.up.fe.ldts.model.Vector.RIGHT);
+            directions.add(pt.up.fe.ldts.model.Vector.LEFT);
+        } else if (pt.up.fe.ldts.model.Vector.RIGHT.equals(direction)) {
+            directions.add(pt.up.fe.ldts.model.Vector.RIGHT);
+            directions.add(pt.up.fe.ldts.model.Vector.UP);
+            directions.add(pt.up.fe.ldts.model.Vector.DOWN);
         }
         return directions;
     }
@@ -46,20 +49,20 @@ public class EmployeeTest {
     @Test
     public void testInsideBox(){
         Employee employee = new Employee(13, 13, new ToniAI()); // ai doesn't matter here
-        employee.setDirection(Vector.DOWN);
+        employee.setDirection(pt.up.fe.ldts.model.Vector.DOWN);
 
-        Set<Vector> everyDir = new HashSet<>();
-        everyDir.add(Vector.UP);
-        everyDir.add(Vector.DOWN);
-        everyDir.add(Vector.LEFT);
-        everyDir.add(Vector.RIGHT);
+        Set<pt.up.fe.ldts.model.Vector> everyDir = new HashSet<>();
+        everyDir.add(pt.up.fe.ldts.model.Vector.UP);
+        everyDir.add(pt.up.fe.ldts.model.Vector.DOWN);
+        everyDir.add(pt.up.fe.ldts.model.Vector.LEFT);
+        everyDir.add(pt.up.fe.ldts.model.Vector.RIGHT);
         Arena arena = Mockito.mock(Arena.class);
         Mockito.when(arena.getValidDirections(Mockito.any(), Mockito.any(), Mockito.anyBoolean())).thenReturn(everyDir);
         Mockito.when(arena.isInsideBox(Mockito.any())).thenReturn(true);
         Mockito.when(arena.getGatePosition()).thenReturn(new Point(13, 12));
         employee.changeDirection(arena);
 
-        Assertions.assertEquals(Vector.UP, employee.getDirection());
+        Assertions.assertEquals(pt.up.fe.ldts.model.Vector.UP, employee.getDirection());
     }
 
     @Test
@@ -103,7 +106,7 @@ public class EmployeeTest {
         EmployeeAI testAI = Mockito.mock(EmployeeAI.class);
 
         {
-            Mockito.when(testAI.chooseTargetPosition(Mockito.any(), Mockito.any())).thenAnswer(invocation -> basePoint.addVector(Vector.LEFT));
+            Mockito.when(testAI.chooseTargetPosition(Mockito.any(), Mockito.any())).thenAnswer(invocation -> basePoint.addVector(pt.up.fe.ldts.model.Vector.LEFT));
 
             employee = new Employee(basePoint.getX(), basePoint.getY(), testAI);
 
@@ -113,11 +116,11 @@ public class EmployeeTest {
             employee.changeDirection(arena);
 
             Mockito.verify(testAI, Mockito.times(1)).chooseTargetPosition(Mockito.any(), Mockito.any());
-            Assertions.assertEquals(Vector.LEFT, employee.getDirection());
+            Assertions.assertEquals(pt.up.fe.ldts.model.Vector.LEFT, employee.getDirection());
         }
 
         {
-            Mockito.when(testAI.chooseTargetPosition(Mockito.any(), Mockito.any())).thenAnswer(invocation -> basePoint.addVector(new Vector(-1, -1)));
+            Mockito.when(testAI.chooseTargetPosition(Mockito.any(), Mockito.any())).thenAnswer(invocation -> basePoint.addVector(new pt.up.fe.ldts.model.Vector(-1, -1)));
 
             employee = new Employee(basePoint.getX(), basePoint.getY(), testAI);
 
@@ -127,15 +130,15 @@ public class EmployeeTest {
             employee.changeDirection(arena);
 
             Mockito.verify(testAI, Mockito.times(2)).chooseTargetPosition(Mockito.any(), Mockito.any());
-            Assertions.assertEquals(Vector.UP, employee.getDirection());
+            Assertions.assertEquals(pt.up.fe.ldts.model.Vector.UP, employee.getDirection());
         }
 
         {
-            Mockito.when(testAI.chooseTargetPosition(Mockito.any(), Mockito.any())).thenAnswer(invocation -> basePoint.addVector(Vector.UP));
+            Mockito.when(testAI.chooseTargetPosition(Mockito.any(), Mockito.any())).thenAnswer(invocation -> basePoint.addVector(pt.up.fe.ldts.model.Vector.UP));
 
             employee = new Employee(basePoint.getX(), basePoint.getY(), testAI);
 
-            employee.setDirection(Vector.DOWN);
+            employee.setDirection(pt.up.fe.ldts.model.Vector.DOWN);
 
             Arena arena = Mockito.mock(Arena.class);
             Mockito.when(arena.getValidDirections(Mockito.any(), Mockito.any(), Mockito.anyBoolean())).thenReturn(Set.copyOf(this.possibleDirections(employee.getDirection())));
@@ -143,7 +146,7 @@ public class EmployeeTest {
             employee.changeDirection(arena);
 
             Mockito.verify(testAI, Mockito.times(3)).chooseTargetPosition(Mockito.any(), Mockito.any());
-            Assertions.assertEquals(Vector.LEFT, employee.getDirection());
+            Assertions.assertEquals(pt.up.fe.ldts.model.Vector.LEFT, employee.getDirection());
         }
     }
 
@@ -152,14 +155,14 @@ public class EmployeeTest {
 
         Employee employee = new Employee(4, 5, null);
 
-        Assertions.assertEquals(Vector.UP, employee.getDirection());
+        Assertions.assertEquals(pt.up.fe.ldts.model.Vector.UP, employee.getDirection());
 
         employee.move();
 
         Assertions.assertEquals(4, employee.getX());
         Assertions.assertEquals(4, employee.getY());
 
-        employee.setDirection(new Vector(5, 5));
+        employee.setDirection(new pt.up.fe.ldts.model.Vector(5, 5));
 
         employee.move();
 
@@ -168,7 +171,7 @@ public class EmployeeTest {
 
         MapConfiguration.setMapHeight(10);
         MapConfiguration.setMapWidth(10);
-        employee.setDirection(Vector.NULL);
+        employee.setDirection(pt.up.fe.ldts.model.Vector.NULL);
 
         employee.changePos(0, 5);
         employee.move();

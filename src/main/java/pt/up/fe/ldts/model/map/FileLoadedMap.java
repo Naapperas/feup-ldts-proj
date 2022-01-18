@@ -5,6 +5,7 @@ import pt.up.fe.ldts.controller.employeeAI.MariAI;
 import pt.up.fe.ldts.controller.employeeAI.ToniAI;
 import pt.up.fe.ldts.controller.employeeAI.ZeCastroAI;
 import pt.up.fe.ldts.model.*;
+import pt.up.fe.ldts.model.game.*;
 
 import java.io.BufferedReader;
 import java.io.File;

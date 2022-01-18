@@ -1,4 +1,4 @@
-package pt.up.fe.ldts.model;
+package pt.up.fe.ldts.model.game;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
@@ -10,6 +10,9 @@ import pt.up.fe.ldts.controller.employeeAI.BaltaAI;
 import pt.up.fe.ldts.controller.employeeAI.MariAI;
 import pt.up.fe.ldts.controller.employeeAI.ToniAI;
 import pt.up.fe.ldts.controller.employeeAI.ZeCastroAI;
+import pt.up.fe.ldts.model.Point;
+import pt.up.fe.ldts.model.Vector;
+import pt.up.fe.ldts.model.game.*;
 import pt.up.fe.ldts.model.map.DefaultMap;
 import pt.up.fe.ldts.model.map.Map;
 import pt.up.fe.ldts.model.map.MapConfiguration;

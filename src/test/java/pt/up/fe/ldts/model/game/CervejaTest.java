@@ -1,8 +1,10 @@
-package pt.up.fe.ldts.model;
+package pt.up.fe.ldts.model.game;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import pt.up.fe.ldts.model.game.Cerveja;
+import pt.up.fe.ldts.model.game.CervejaListener;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

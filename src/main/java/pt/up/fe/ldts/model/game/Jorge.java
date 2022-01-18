@@ -1,7 +1,8 @@
-package pt.up.fe.ldts.model;
+package pt.up.fe.ldts.model.game;
 
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import pt.up.fe.ldts.model.Vector;
 import pt.up.fe.ldts.model.map.MapConfiguration;
 
 import static pt.up.fe.ldts.view.gui.GUI.ACTION;

@@ -3,6 +3,10 @@ package pt.up.fe.ldts.model.map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pt.up.fe.ldts.model.*;
+import pt.up.fe.ldts.model.game.Cerveja;
+import pt.up.fe.ldts.model.game.Jorge;
+import pt.up.fe.ldts.model.game.Tremoco;
+import pt.up.fe.ldts.model.game.Wall;
 
 public class FileLoadedMapTest {
 

@@ -1,7 +1,8 @@
-package pt.up.fe.ldts.model;
+package pt.up.fe.ldts.model.game;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pt.up.fe.ldts.model.game.Wall;
 
 public class WallTest {
 

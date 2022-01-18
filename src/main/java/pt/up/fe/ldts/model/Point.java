@@ -38,7 +38,7 @@ public class Point {
      * Set x coordinate for this Point
      * @param newX new x coordinate
      */
-    protected void setX(int newX) {
+    public void setX(int newX) {
         this.x = newX;
     }
 
@@ -46,7 +46,7 @@ public class Point {
      * Set y coordinate for this Point
      * @param newY new y coordinate
      */
-    protected void setY(int newY) {
+    public void setY(int newY) {
         this.y = newY;
     }
 

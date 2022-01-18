@@ -1,7 +1,7 @@
 package pt.up.fe.ldts.controller.employeeAI;
 
 import com.googlecode.lanterna.TextColor;
-import pt.up.fe.ldts.model.Employee;
+import pt.up.fe.ldts.model.game.Employee;
 import pt.up.fe.ldts.model.Point;
 import pt.up.fe.ldts.model.map.MapConfiguration;
 
