@@ -12,12 +12,12 @@ public class LeaderboardDisplay implements Drawable {
 
         BufferedReader br = new BufferedReader(new FileReader (leaderboard));
 
-        int line = 0;
+        int line = 1;
         String score;
 
         tg.putString(14, 0, "LEADERBOARD");
 
-        while ((score = br.readLine()) != null){
+        while ((score = br.readLine()) != null && line < 15){
             tg.putString(17, line+3, score);
             line++;
         }

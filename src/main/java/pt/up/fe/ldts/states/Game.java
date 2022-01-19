@@ -15,6 +15,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game extends AppState {
 
@@ -145,6 +146,10 @@ public class Game extends AppState {
             scores.add(Jorge.singleton.getScore());
             scores.sort(Collections.reverseOrder());
         }
+
+        scores = scores.stream()
+                .distinct()
+                .collect(Collectors.toList());
 
         FileWriter fw = new FileWriter(leaderboard, false);
 
