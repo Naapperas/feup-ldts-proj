@@ -68,7 +68,6 @@ public class Button extends Element {
         tg.setBackgroundColor(previousBackgroundColor);
     }
 
-
     public boolean isSelected() {
         return selected;
     }
