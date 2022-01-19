@@ -10,8 +10,7 @@ import pt.up.fe.ldts.model.map.MapConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Employee extends Entity implements CervejaListener {
 
@@ -69,31 +68,31 @@ public class Employee extends Entity implements CervejaListener {
         this.state = newState;
     }
 
+    private final FrightenedEmployeeTimer timer = new FrightenedEmployeeTimer(TIME_FRIGHTENED, (previousState) -> {
+        if (this.getCurrentState() == EmployeeState.DEAD) return;
+
+        this.setDirection(this.getDirection().multiply(-1));
+        this.setCurrentState(previousState);
+    });
+
     @Override
     public void cervejaPicked() {
 
-        var currState = this.getCurrentState();
-        this.setCurrentState(EmployeeState.FRIGHTENED);
-        this.setDirection(this.getDirection().multiply(-1));
+        switch (this.getCurrentState()) {
+            case FRIGHTENED -> timer.addDelay(TIME_FRIGHTENED);
+            case DEAD -> {}
+            default -> {
+                var currState = this.getCurrentState();
+                this.setCurrentState(EmployeeState.FRIGHTENED);
+                this.setDirection(this.getDirection().multiply(-1));
 
-        Timer t = new Timer();
-        t.schedule(new TimerTask() {
-
-            final Employee e = Employee.this;
-
-            @Override
-            public void run() {
-
-                if (e.getCurrentState() == EmployeeState.DEAD) return;
-
-                e.setDirection(e.getDirection().multiply(-1));
-                e.setCurrentState(currState);
+                timer.start(currState);
             }
-        }, 1000L * TIME_FRIGHTENED);
+        }
     }
 
     @Override
-    public void changeDirection(Arena arena) {
+    public void changeDirection(Arena arena)  {
 
         Point targetPoint;
 
@@ -139,6 +138,7 @@ public class Employee extends Entity implements CervejaListener {
             else if (this.getPosition().equals(MapConfiguration.getGatePosition().addVector(Vector.DOWN))) {
                 this.setDirection(this.getDirection().multiply(-1));
                 this.setCurrentState(EmployeeState.SCATTER);
+                this.timer.cancel();
             }
 
         var newPos = this.getPosition().addVector(this.direction);
@@ -153,5 +153,63 @@ public class Employee extends Entity implements CervejaListener {
             newPos.setX(0);
 
         this.changePos(newPos.getX(), newPos.getY());
+    }
+}
+
+class FrightenedEmployeeTimer {
+
+    private Thread runner;
+
+    private final AtomicInteger timeDelay;
+    private final int initialDelay;
+
+    @FunctionalInterface
+    interface TimerRunnable {
+        void run(Employee.EmployeeState previousState);
+    }
+
+    TimerRunnable action;
+
+    public FrightenedEmployeeTimer(int initialDelay, TimerRunnable r) {
+        this.initialDelay = initialDelay;
+        this.timeDelay = new AtomicInteger(this.initialDelay);
+        this.action = r;
+    }
+
+    public void addDelay(int delay) {
+        timeDelay.addAndGet(delay);
+    }
+
+    public void cancel() {
+        this.timeDelay.set(0);
+    }
+
+    public void start(Employee.EmployeeState previousState) {
+
+        runner = new Thread(() -> {
+
+            int i = 0;
+
+            while (i++ < timeDelay.get())
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+
+            this.timeDelay.set(this.initialDelay);
+            this.action.run(previousState);
+
+            try {
+                this.runner.join();
+                Thread.currentThread().join(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        runner.setDaemon(true);
+
+        this.runner.start();
     }
 }
