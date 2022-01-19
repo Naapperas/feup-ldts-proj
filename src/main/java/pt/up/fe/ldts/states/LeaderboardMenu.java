@@ -30,7 +30,7 @@ public class LeaderboardMenu extends AppState{
 
         List<Button> buttons = new ArrayList<>();
 
-        buttons.add(new Button(10, 30, "GO BACK"));
+        buttons.add(new Button(8, 30, "GO BACK"));
         display = new MenuDisplay(buttons);
         leaderboard = new LeaderboardDisplay();
 
