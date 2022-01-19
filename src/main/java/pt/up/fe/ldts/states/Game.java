@@ -12,12 +12,9 @@ import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
 
 import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class Game extends AppState {
 
@@ -52,7 +49,7 @@ public class Game extends AppState {
         boolean running = true;
         Jorge.singleton.restart();
 
-        int FPS = 6;
+        int FPS = 8;
         int frameTime = 1000 / FPS;
 
         long startTime = System.currentTimeMillis();
@@ -130,7 +127,7 @@ public class Game extends AppState {
         }
     }
 
-    private void saveScore() throws URISyntaxException, IOException {
+    private void saveScore() throws IOException {
         List<Integer> scores = new ArrayList<>();
 
         File leaderboard = new File("leaderboard.txt");
@@ -146,7 +143,7 @@ public class Game extends AppState {
             }
 
             scores.add(Jorge.singleton.getScore());
-            Collections.sort(scores);
+            scores.sort(Collections.reverseOrder());
         }
 
         FileWriter fw = new FileWriter(leaderboard, false);

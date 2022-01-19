@@ -6,11 +6,11 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.model.Point;
 import pt.up.fe.ldts.model.Vector;
-import pt.up.fe.ldts.model.game.*;
 import pt.up.fe.ldts.model.map.Map;
 import pt.up.fe.ldts.model.map.MapConfiguration;
 import pt.up.fe.ldts.view.Drawable;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -147,7 +147,7 @@ public class Arena implements Drawable {
     }
 
     @Override
-    public void render(TextGraphics tg) {
+    public void render(TextGraphics tg) throws IOException {
 
         tg.setBackgroundColor(TextColor.Factory.fromString(TextColor.ANSI.BLACK.name()));
         tg.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
@@ -211,4 +211,5 @@ public class Arena implements Drawable {
         }
         Jorge.singleton.changePos(MapConfiguration.getJorgePosition().getX(), MapConfiguration.getJorgePosition().getY());
     }
+
 }

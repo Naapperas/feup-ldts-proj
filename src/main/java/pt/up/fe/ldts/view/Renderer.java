@@ -24,7 +24,11 @@ public class Renderer {
 
         gui.clear();
         viewers.forEach(viewer -> {
-            viewer.render(tg);
+            try {
+                viewer.render(tg);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
         gui.refresh();
     }
