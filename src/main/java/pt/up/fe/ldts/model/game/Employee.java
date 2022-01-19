@@ -4,6 +4,7 @@ import com.github.javaparser.utils.Pair;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
+import pt.up.fe.ldts.controller.employeeAI.ToniAI;
 import pt.up.fe.ldts.model.Point;
 import pt.up.fe.ldts.model.Vector;
 import pt.up.fe.ldts.model.map.MapConfiguration;
@@ -16,6 +17,13 @@ public class Employee extends Entity implements CervejaListener {
 
     public static final int SCORE_WHEN_EATEN = 200;
     public static int TIME_FRIGHTENED = 5; // in seconds
+
+    private final FrightenedEmployeeTimer timer = new FrightenedEmployeeTimer(TIME_FRIGHTENED, (previousState) -> {
+        if (this.getCurrentState() == EmployeeState.DEAD) return;
+
+        this.setDirection(this.getDirection().multiply(-1));
+        this.setCurrentState(previousState);
+    });
 
     @Override
     public void render(TextGraphics tg) {
@@ -50,6 +58,37 @@ public class Employee extends Entity implements CervejaListener {
     public Employee(int x, int y, EmployeeAI ai) {
         super(x, y);
         this.ai = ai;
+
+        Thread t = new Thread(() -> {
+
+            boolean firstRun = true;
+
+            while (Thread.currentThread().isAlive()) {
+                if (timer.isRunning()) continue;
+
+                int sleepAmmount;
+
+                if (firstRun) {
+                    sleepAmmount = 5;
+                    firstRun = false;
+                } else
+                    sleepAmmount = 10;
+
+                try {
+                    Thread.sleep(sleepAmmount * 1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                this.state = switch (this.getCurrentState()) {
+                    case CHASING -> EmployeeState.SCATTER;
+                    case SCATTER -> EmployeeState.CHASING;
+                    default -> this.getCurrentState();
+                };
+            }
+        });
+        t.setDaemon(true);
+        t.start();
     }
 
     /**
@@ -67,13 +106,6 @@ public class Employee extends Entity implements CervejaListener {
     public void setCurrentState(EmployeeState newState) {
         this.state = newState;
     }
-
-    private final FrightenedEmployeeTimer timer = new FrightenedEmployeeTimer(TIME_FRIGHTENED, (previousState) -> {
-        if (this.getCurrentState() == EmployeeState.DEAD) return;
-
-        this.setDirection(this.getDirection().multiply(-1));
-        this.setCurrentState(previousState);
-    });
 
     @Override
     public void cervejaPicked() {
@@ -100,6 +132,9 @@ public class Employee extends Entity implements CervejaListener {
             targetPoint = arena.getGatePosition().addVector(Vector.UP); // make them leave the box initially
         else
             targetPoint = this.ai.chooseTargetPosition(this.getCurrentState(), this.getPosition());
+
+        if (this.getCurrentState() == EmployeeState.DEAD)
+            System.out.println(targetPoint);
 
         this.setDirection(this.chooseNextDirection(arena, targetPoint));
     }
@@ -132,14 +167,15 @@ public class Employee extends Entity implements CervejaListener {
         if (!(this.direction.equals(Vector.UP) || this.direction.equals(Vector.DOWN) || this.direction.equals(Vector.LEFT)|| this.direction.equals(Vector.RIGHT) || this.direction.equals(Vector.NULL)))
             return; // unknown direction
 
-        if(this.getCurrentState() == EmployeeState.DEAD)
+        if(this.getCurrentState() == EmployeeState.DEAD) {
             if (this.getPosition().equals(MapConfiguration.getGatePosition().addVector(Vector.UP)))
                 this.setDirection(Vector.DOWN);
             else if (this.getPosition().equals(MapConfiguration.getGatePosition().addVector(Vector.DOWN))) {
-                this.setDirection(this.getDirection().multiply(-1));
+                this.setDirection(Vector.UP);
                 this.setCurrentState(EmployeeState.SCATTER);
                 this.timer.cancel();
             }
+        }
 
         var newPos = this.getPosition().addVector(this.direction);
 
@@ -159,6 +195,11 @@ public class Employee extends Entity implements CervejaListener {
 class FrightenedEmployeeTimer {
 
     private Thread runner;
+    private volatile boolean running = false;
+
+    public synchronized boolean isRunning() {
+        return this.running;
+    }
 
     private final AtomicInteger timeDelay;
     private final int initialDelay;
@@ -182,9 +223,12 @@ class FrightenedEmployeeTimer {
 
     public void cancel() {
         this.timeDelay.set(0);
+        this.running = false;
     }
 
     public void start(Employee.EmployeeState previousState) {
+
+        this.running = true;
 
         runner = new Thread(() -> {
 
@@ -197,16 +241,10 @@ class FrightenedEmployeeTimer {
                     e.printStackTrace();
                 }
 
-
             this.timeDelay.set(this.initialDelay);
             this.action.run(previousState);
 
-            try {
-                this.runner.join();
-                Thread.currentThread().join(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            this.running = false;
         });
         runner.setDaemon(true);
 
