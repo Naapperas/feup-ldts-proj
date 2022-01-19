@@ -133,9 +133,6 @@ public class Employee extends Entity implements CervejaListener {
         else
             targetPoint = this.ai.chooseTargetPosition(this.getCurrentState(), this.getPosition());
 
-        if (this.getCurrentState() == EmployeeState.DEAD)
-            System.out.println(targetPoint);
-
         this.setDirection(this.chooseNextDirection(arena, targetPoint));
     }
 
