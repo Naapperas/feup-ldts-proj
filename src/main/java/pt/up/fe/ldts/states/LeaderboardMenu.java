@@ -2,6 +2,7 @@ package pt.up.fe.ldts.states;
 
 import pt.up.fe.ldts.Application;
 import pt.up.fe.ldts.model.menus.Button;
+import pt.up.fe.ldts.model.menus.LeaderboardDisplay;
 import pt.up.fe.ldts.model.menus.MenuDisplay;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
@@ -21,17 +22,21 @@ public class LeaderboardMenu extends AppState{
 
     private MenuDisplay display;
 
+    private LeaderboardDisplay leaderboard;
+
     public LeaderboardMenu(Application app) throws Exception {
         super(app);
         this.gui = new LanternaGUI(WIDTH, HEIGHT +1);
 
         List<Button> buttons = new ArrayList<>();
 
-        buttons.add(new Button(10, 30, "GO BACK"));
+        buttons.add(new Button(8, 30, "GO BACK"));
         display = new MenuDisplay(buttons);
+        leaderboard = new LeaderboardDisplay();
 
         Renderer.clearRenderer();
         Renderer.addDrawable(display);
+        Renderer.addDrawable(leaderboard);
     }
 
     @Override

@@ -11,7 +11,11 @@ import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game extends AppState {
 
@@ -46,7 +50,7 @@ public class Game extends AppState {
         boolean running = true;
         Jorge.singleton.restart();
 
-        int FPS = 6;
+        int FPS = 8;
         int frameTime = 1000 / FPS;
 
         long startTime = System.currentTimeMillis();
@@ -82,9 +86,9 @@ public class Game extends AppState {
             } catch (InterruptedException ignored) {
             }
         }
-
+        saveScore();
         gui.close();
-        // something for leaderboard if player won
+
         this.app.changeState(new InitialMenu(this.app));
     }
 
@@ -122,5 +126,37 @@ public class Game extends AppState {
         public PauseButton(int x, int y) {
             super(x, y, "PAUSED\nPRESS 'P' TO RESUME\nPRESS 'Q' TO QUIT");
         }
+    }
+
+    private void saveScore() throws IOException {
+        List<Integer> scores = new ArrayList<>();
+
+        File leaderboard = new File("leaderboard.txt");
+        if(leaderboard.createNewFile()){
+            scores.add(Jorge.singleton.getScore());
+        }
+        else{
+            BufferedReader br = new BufferedReader(new FileReader(leaderboard));
+            String score;
+
+            while((score = br.readLine()) != null){
+                scores.add(Integer.parseInt(score));
+            }
+
+            scores.add(Jorge.singleton.getScore());
+            scores.sort(Collections.reverseOrder());
+        }
+
+        scores = scores.stream()
+                .distinct()
+                .collect(Collectors.toList());
+
+        FileWriter fw = new FileWriter(leaderboard, false);
+
+        for (Integer i : scores){
+            fw.write(i + "\n");
+        }
+
+        fw.close();
     }
 }
