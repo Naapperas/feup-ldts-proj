@@ -10,6 +10,8 @@ public class LeaderboardDisplay implements Drawable {
     public void render(TextGraphics tg) throws IOException {
         File leaderboard = new File("leaderboard.txt");
 
+        leaderboard.createNewFile();
+
         BufferedReader br = new BufferedReader(new FileReader (leaderboard));
 
         int line = 1;
