@@ -23,10 +23,7 @@ public class Game extends AppState {
 
     private final GUI gui;
 
-    private static final int WIDTH = 33, HEIGHT = 33;
-
-    private Arena arena;
-    private Map map;
+    private final Arena arena;
 
     private boolean paused = false;
 
@@ -35,8 +32,8 @@ public class Game extends AppState {
     public Game(Application app, String map) throws Exception {
         super(app);
 
-        this.map = new FileLoadedMap(map);
-        this.arena = new Arena(this.map);
+        Map map1 = new FileLoadedMap(map);
+        this.arena = new Arena(map1);
 
         this.gui = new LanternaGUI(MapConfiguration.getMapWidth(), MapConfiguration.getMapHeight() +1);
 

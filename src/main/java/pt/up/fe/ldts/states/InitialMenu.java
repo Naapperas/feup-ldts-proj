@@ -1,6 +1,8 @@
 package pt.up.fe.ldts.states;
 
+import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.Application;
+import pt.up.fe.ldts.model.game.Element;
 import pt.up.fe.ldts.model.menus.Button;
 import pt.up.fe.ldts.model.menus.MenuDisplay;
 import pt.up.fe.ldts.view.Renderer;
@@ -12,8 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InitialMenu extends AppState {
-
-    private static final int TICK_TIME = 75;
 
     private final GUI gui;
 
@@ -27,12 +27,22 @@ public class InitialMenu extends AppState {
 
         List<Button> buttons = new ArrayList<>();
 
-        buttons.add(new Button(10, 7, "PLAY"));
-        buttons.add(new Button(10, 16, "LEADERBOARD"));
-        buttons.add(new Button(10, 25, "QUIT"));
+        Element title = new Element(13, 5) {
+            @Override
+            public void render(TextGraphics tg) {
+
+                tg.putString(this.getX(), this.getY(), "WAGGA.WAGcA");
+
+            }
+        };
+
+        buttons.add(new Button(8, 10, "PLAY"));
+        buttons.add(new Button(8, 19, "LEADERBOARD"));
+        buttons.add(new Button(8, 28, "QUIT"));
         display = new MenuDisplay(buttons);
 
         Renderer.clearRenderer();
+        Renderer.addDrawable(title);
         Renderer.addDrawable(display);
     }
 
@@ -41,8 +51,6 @@ public class InitialMenu extends AppState {
         boolean running = true, next = false;
         int FPS = 60;
         int frameTime = 1000 / FPS;
-
-        long startTime = System.currentTimeMillis();
 
         this.display.selectTop();
 
@@ -60,10 +68,6 @@ public class InitialMenu extends AppState {
                 case UP -> display.selectUP();
                 case DOWN -> display.selectDown();
                 default -> {}
-            }
-
-            if (lastTime - startTime > TICK_TIME) {
-                startTime = lastTime;
             }
 
             this.render();

@@ -23,9 +23,7 @@ public class Renderer {
         TextGraphics tg = gui.getTextGraphics();
 
         gui.clear();
-        viewers.forEach(viewer -> {
-            viewer.render(tg);
-        });
+        viewers.forEach(viewer -> viewer.render(tg));
         gui.refresh();
     }
 }

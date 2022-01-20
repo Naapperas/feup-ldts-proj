@@ -4,10 +4,6 @@ package pt.up.fe.ldts;
 import pt.up.fe.ldts.states.AppState;
 import pt.up.fe.ldts.states.InitialMenu;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class Application {
 
     private AppState state;
@@ -21,9 +17,9 @@ public class Application {
     }
 
     public static void main(String[] args) {
+
         try {
             new Application().start();
-        } catch (IOException | FontFormatException | URISyntaxException ignored) {
         } catch (Exception e) {
             e.printStackTrace();
         }

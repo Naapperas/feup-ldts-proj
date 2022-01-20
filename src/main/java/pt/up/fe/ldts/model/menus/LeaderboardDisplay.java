@@ -12,7 +12,6 @@ public class LeaderboardDisplay implements Drawable {
     private final List<Integer> scores = new ArrayList<>();
 
     public LeaderboardDisplay() {
-
         try {
             File leaderboard = new File("leaderboard.txt");
 
@@ -26,7 +25,6 @@ public class LeaderboardDisplay implements Drawable {
 
         } catch (IOException e) {
             this.scores.clear();
-            e.printStackTrace();
         }
     }
 
@@ -36,7 +34,7 @@ public class LeaderboardDisplay implements Drawable {
         tg.putString(14, 0, "LEADERBOARD");
 
         if (this.scores.size() == 0)
-            tg.putString(5, 3, "NO SCORES COULD BE LOADED!");
+            tg.putString(6, 15, "NO SCORES COULD BE LOADED!");
         else
             for (int i = 0; i < this.scores.size(); i++)
                 tg.putString(15, i+3, (i+1) + ") " + scores.get(i));

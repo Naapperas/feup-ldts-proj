@@ -19,7 +19,7 @@ public class MapMenu extends AppState {
 
     private static final int WIDTH = 40, HEIGHT = 40;
 
-    private MenuDisplay display;
+    private final MenuDisplay display;
 
     public MapMenu(Application app) throws Exception {
         super(app);
@@ -56,17 +56,11 @@ public class MapMenu extends AppState {
             GUI.ACTION currentAction = gui.getNextAction();
 
             switch (currentAction) {
-                case SELECT:
-                    running=false;
-                    break;
-                case UP:
-                    display.selectUP();
-                    break;
-                case DOWN:
-                    display.selectDown();
-                    break;
-                default:
-                    break;
+                case SELECT -> running = false;
+                case UP -> display.selectUP();
+                case DOWN -> display.selectDown();
+                default -> {
+                }
             }
 
             if (lastTime - startTime > TICK_TIME) {
@@ -86,21 +80,19 @@ public class MapMenu extends AppState {
         }
         gui.close();
         switch (display.getSelected()) {
-            case 0:
+            case 0 -> {
                 mapName = "baby";
                 this.app.changeState(new Game(this.app, mapName));
-                break;
-            case 1:
+            }
+            case 1 -> {
                 mapName = "default";
                 this.app.changeState(new Game(this.app, mapName));
-                break;
-            case 2:
+            }
+            case 2 -> {
                 mapName = "hard";
                 this.app.changeState(new Game(this.app, mapName));
-                break;
-            case 3:
-                this.app.changeState(new InitialMenu(this.app));
-                break;
+            }
+            case 3 -> this.app.changeState(new InitialMenu(this.app));
         }
     }
 

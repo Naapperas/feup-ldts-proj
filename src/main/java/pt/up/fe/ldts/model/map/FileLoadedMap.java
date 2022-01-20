@@ -30,10 +30,8 @@ public class FileLoadedMap implements Map {
         URL resource = getClass().getClassLoader().getResource("maps/" + mapName + ".map");
 
         if (resource == null) {
-            StringBuilder sb = new StringBuilder();
-            sb.append("Map file not found: ").append(mapName).append(".map");
 
-            throw new Exception(sb.toString());
+            throw new Exception("Map file not found: " + mapName + ".map");
         }
 
         File mapFile = new File(resource.toURI());
@@ -49,25 +47,19 @@ public class FileLoadedMap implements Map {
 
         width = Integer.parseInt(sr[0]);
         if (width < 0) {
-            StringBuilder sb = new StringBuilder();
-            sb.append("Negative width: ").append(width).append(" - ").append(mapName).append(".map");
-            throw new Exception(sb.toString());
+            throw new Exception("Negative width: " + width + " - " + mapName + ".map");
         }
 
         height = Integer.parseInt(sr[1]);
         if (height < 0) {
-            StringBuilder sb = new StringBuilder();
-            sb.append("Negative height: ").append(height).append(" - ").append(mapName).append(".map");
-            throw new Exception(sb.toString());
+            throw new Exception("Negative height: " + height + " - " + mapName + ".map");
         }
 
         for(int y = 0; y < this.height; y++){
             str = br.readLine();
 
             if(str.length() != width){
-                StringBuilder sb = new StringBuilder();
-                sb.append(mapName).append(".map: ").append("Expected line with width: ").append(width).append(", instead got: ").append(str.length()).append(" - ").append(str);
-                throw new Exception(sb.toString());
+                throw new Exception(mapName + ".map: " + "Expected line with width: " + width + ", instead got: " + str.length() + " - " + str);
             }
 
             for(int x = 0; x < this.width; x++){
@@ -91,9 +83,7 @@ public class FileLoadedMap implements Map {
         boxPosition = new Point(Integer.parseInt(sr[0]), Integer.parseInt(sr[1]));
 
         if (boxPosition.getX() < 0 || boxPosition.getY() < 0){
-            StringBuilder sb = new StringBuilder();
-            sb.append("Invalid box position: (").append(boxPosition.getX()).append(",").append(boxPosition.getY()).append(") - ").append(mapName).append(".map");
-            throw new Exception(sb.toString());
+            throw new Exception("Invalid box position: (" + boxPosition.getX() + "," + boxPosition.getY() + ") - " + mapName + ".map");
         }
 
         str = br.readLine();
@@ -102,46 +92,32 @@ public class FileLoadedMap implements Map {
         boxWidth = Integer.parseInt(sr[0]);
 
         if (boxWidth < 0){
-            StringBuilder sb = new StringBuilder();
-            sb.append("Negative box width: ").append(boxWidth).append(" - ").append(mapName).append(".map");
-            throw new Exception(sb.toString());
+            throw new Exception("Negative box width: " + boxWidth + " - " + mapName + ".map");
         }
         boxHeight = Integer.parseInt(sr[1]);
 
         if (boxHeight < 0){
-            StringBuilder sb = new StringBuilder();
-            sb.append("Negative box height: ").append(boxHeight).append(" - ").append(mapName).append(".map");
-            throw new Exception(sb.toString());
+            throw new Exception("Negative box height: " + boxHeight + " - " + mapName + ".map");
         }
 
         if (baltaPos != null && isNotInsideBox(baltaPos)){
-            StringBuilder sb = new StringBuilder();
-            sb.append("Employee outside box: Balta").append(" - ").append(mapName).append(".map");
-            throw new Exception(sb.toString());
+            throw new Exception("Employee outside box: Balta" + " - " + mapName + ".map");
         }
 
         if (toniPos != null && isNotInsideBox(toniPos)){
-            StringBuilder sb = new StringBuilder();
-            sb.append("Employee outside box: Toni").append(" - ").append(mapName).append(".map");
-            throw new Exception(sb.toString());
+            throw new Exception("Employee outside box: Toni" + " - " + mapName + ".map");
         }
 
         if (mariPos != null && isNotInsideBox(mariPos)){
-            StringBuilder sb = new StringBuilder();
-            sb.append("Employee outside box: Mari").append(" - ").append(mapName).append(".map");
-            throw new Exception(sb.toString());
+            throw new Exception("Employee outside box: Mari" + " - " + mapName + ".map");
         }
 
         if (zePos != null && isNotInsideBox(zePos)){
-            StringBuilder sb = new StringBuilder();
-            sb.append("Employee outside box: ZeCastro").append(" - ").append(mapName).append(".map");
-            throw new Exception(sb.toString());
+            throw new Exception("Employee outside box: ZeCastro" + " - " + mapName + ".map");
         }
 
         if(zePos != null && baltaPos == null){
-            StringBuilder sb = new StringBuilder();
-            sb.append("ZeCastro can't exist without Balta - ").append(mapName).append(".map");
-            throw new Exception(sb.toString());
+            throw new Exception("ZeCastro can't exist without Balta - " + mapName + ".map");
         }
         MapConfiguration.setMapHeight(height);
         MapConfiguration.setMapWidth(width);
