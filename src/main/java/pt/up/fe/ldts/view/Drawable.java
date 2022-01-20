@@ -5,5 +5,5 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import java.io.IOException;
 
 public interface Drawable {
-    void render(TextGraphics tg) throws IOException;
+    void render(TextGraphics tg);
 }

@@ -147,7 +147,7 @@ public class Arena implements Drawable {
     }
 
     @Override
-    public void render(TextGraphics tg) throws IOException {
+    public void render(TextGraphics tg) {
 
         tg.setBackgroundColor(TextColor.Factory.fromString(TextColor.ANSI.BLACK.name()));
         tg.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
