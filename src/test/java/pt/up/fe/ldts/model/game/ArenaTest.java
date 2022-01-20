@@ -12,8 +12,7 @@ import pt.up.fe.ldts.controller.employeeAI.ToniAI;
 import pt.up.fe.ldts.controller.employeeAI.ZeCastroAI;
 import pt.up.fe.ldts.model.Point;
 import pt.up.fe.ldts.model.Vector;
-import pt.up.fe.ldts.model.game.*;
-import pt.up.fe.ldts.model.map.DefaultMap;
+import pt.up.fe.ldts.model.map.FileLoadedMap;
 import pt.up.fe.ldts.model.map.Map;
 import pt.up.fe.ldts.model.map.MapConfiguration;
 
@@ -362,7 +361,7 @@ public class ArenaTest {
     @Test
     public void testInsideBox() throws Exception {
 
-        Arena a = new Arena(new DefaultMap());
+        Arena a = new Arena(new FileLoadedMap("default"));
 
         Assertions.assertTrue(a.isInsideBox(new Point(14, 14)));
         Assertions.assertFalse(a.isInsideBox(new Point(1, 1)));
