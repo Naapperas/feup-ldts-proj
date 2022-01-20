@@ -35,6 +35,8 @@ public class Arena implements Drawable {
         return this.employees;
     }
 
+    public List<Collectible> getCollectibles(){return this.collectibles;}
+
     public void setEmployees(List<Employee> employees) {
         this.employees.clear();
         this.employees.addAll(employees);
