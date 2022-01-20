@@ -10,7 +10,6 @@ import pt.up.fe.ldts.model.map.Map;
 import pt.up.fe.ldts.model.map.MapConfiguration;
 import pt.up.fe.ldts.view.Drawable;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -182,10 +181,7 @@ public class Arena implements Drawable {
     }
 
     public boolean emptyCollectibles(){
-        if(collectibles.isEmpty())
-            return true;
-        else
-            return false;
+        return collectibles.isEmpty();
     }
 
     public void checkEmployeeCollision(){

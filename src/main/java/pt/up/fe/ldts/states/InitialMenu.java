@@ -5,7 +5,6 @@ import pt.up.fe.ldts.Application;
 import pt.up.fe.ldts.model.game.Element;
 import pt.up.fe.ldts.model.menus.Button;
 import pt.up.fe.ldts.model.menus.MenuDisplay;
-import pt.up.fe.ldts.view.Drawable;
 import pt.up.fe.ldts.view.Renderer;
 import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
@@ -15,8 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InitialMenu extends AppState {
-
-    private static final int TICK_TIME = 75;
 
     private final GUI gui;
 

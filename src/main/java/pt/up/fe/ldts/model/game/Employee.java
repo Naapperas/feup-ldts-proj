@@ -4,7 +4,6 @@ import com.github.javaparser.utils.Pair;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import pt.up.fe.ldts.controller.employeeAI.EmployeeAI;
-import pt.up.fe.ldts.controller.employeeAI.ToniAI;
 import pt.up.fe.ldts.model.Point;
 import pt.up.fe.ldts.model.Vector;
 import pt.up.fe.ldts.model.map.MapConfiguration;
@@ -66,16 +65,16 @@ public class Employee extends Entity implements CervejaListener {
             while (Thread.currentThread().isAlive()) {
                 if (timer.isRunning()) continue;
 
-                int sleepAmmount;
+                int sleepAmount;
 
                 if (firstRun) {
-                    sleepAmmount = 5;
+                    sleepAmount = 5;
                     firstRun = false;
                 } else
-                    sleepAmmount = 10;
+                    sleepAmount = 10;
 
                 try {
-                    Thread.sleep(sleepAmmount * 1000);
+                    Thread.sleep(sleepAmount * 1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -191,7 +190,6 @@ public class Employee extends Entity implements CervejaListener {
 
 class FrightenedEmployeeTimer {
 
-    private Thread runner;
     private volatile boolean running = false;
 
     public synchronized boolean isRunning() {
@@ -227,7 +225,7 @@ class FrightenedEmployeeTimer {
 
         this.running = true;
 
-        runner = new Thread(() -> {
+        Thread runner = new Thread(() -> {
 
             int i = 0;
 
@@ -245,6 +243,6 @@ class FrightenedEmployeeTimer {
         });
         runner.setDaemon(true);
 
-        this.runner.start();
+        runner.start();
     }
 }

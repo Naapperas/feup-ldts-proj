@@ -20,9 +20,7 @@ public class LeaderboardMenu extends AppState{
 
     private static final int WIDTH = 40, HEIGHT = 40;
 
-    private MenuDisplay display;
-
-    private LeaderboardDisplay leaderboard;
+    private final MenuDisplay display;
 
     public LeaderboardMenu(Application app) throws Exception {
         super(app);
@@ -32,7 +30,7 @@ public class LeaderboardMenu extends AppState{
 
         buttons.add(new Button(8, 30, "GO BACK"));
         display = new MenuDisplay(buttons);
-        leaderboard = new LeaderboardDisplay();
+        LeaderboardDisplay leaderboard = new LeaderboardDisplay();
 
         Renderer.clearRenderer();
         Renderer.addDrawable(display);
@@ -56,20 +54,13 @@ public class LeaderboardMenu extends AppState{
             GUI.ACTION currentAction = gui.getNextAction();
 
             switch (currentAction) {
-                case QUIT:           // not necessary here, staying as an extra
-                    running = false;
-                    break;
-                case SELECT:
-                    running=false;
-                    break;
-                case UP:
-                    display.selectUP();
-                    break;
-                case DOWN:
-                    display.selectDown();
-                    break;
-                default:
-                    break;
+                case QUIT ->           // not necessary here, staying as an extra
+                        running = false;
+                case SELECT -> running = false;
+                case UP -> display.selectUP();
+                case DOWN -> display.selectDown();
+                default -> {
+                }
             }
 
             if (lastTime - startTime > TICK_TIME) {
