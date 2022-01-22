@@ -101,7 +101,7 @@ The design pattern applied is the [State](https://refactoring.guru/design-patter
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
 
-![State Pattern for Menus and Game](images/state-menus.png)
+![State Pattern for Menus and Game](images/state-menu.png)
 
 **Consequences**
 
