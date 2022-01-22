@@ -20,7 +20,7 @@ public class LeaderboardDisplay implements Drawable {
             int line = 1;
             String scoreString;
 
-            while ((scoreString = br.readLine()) != null && line++ < 15)
+            while ((scoreString = br.readLine()) != null && line++ <= 15)
                 this.scores.add(Integer.parseInt(scoreString));
 
         } catch (IOException e) {
