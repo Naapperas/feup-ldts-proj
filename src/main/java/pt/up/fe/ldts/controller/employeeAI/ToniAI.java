@@ -1,30 +1,21 @@
 package pt.up.fe.ldts.controller.employeeAI;
 
 import com.googlecode.lanterna.TextColor;
-import pt.up.fe.ldts.model.game.Employee;
-import pt.up.fe.ldts.model.game.Jorge;
 import pt.up.fe.ldts.model.Point;
 import pt.up.fe.ldts.model.Vector;
+import pt.up.fe.ldts.model.game.Jorge;
 import pt.up.fe.ldts.model.map.MapConfiguration;
-
-import java.util.Random;
 
 public class ToniAI extends EmployeeAI { //clyde
 
     public ToniAI() {
-        SCATTER_TARGET = new Point(0, MapConfiguration.getMapHeight()-1); // why 50?
+        SCATTER_TARGET = new Point(0, MapConfiguration.getMapHeight()-1);
     }
 
-    Random random = new Random();
 
     @Override
-    public Point chooseTargetPosition(Employee.EmployeeState state, Point position){
-        return switch (state){
-            case SCATTER -> this.getScatterTarget();
-            case CHASING -> Vector.from(Jorge.singleton.getPosition(), position).magnitude() > 8 ? Jorge.singleton.getPosition() : SCATTER_TARGET;
-            case DEAD -> DEAD_TARGET;
-            case FRIGHTENED -> new Point(random.nextInt(20), random.nextInt(20));
-        };
+    public Point chasingTarget(Point position) {
+        return Vector.from(Jorge.singleton.getPosition(), position).magnitude() > 8 ? Jorge.singleton.getPosition() : SCATTER_TARGET;
     }
 
     @Override
