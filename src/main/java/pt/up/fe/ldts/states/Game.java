@@ -12,6 +12,8 @@ import pt.up.fe.ldts.view.gui.GUI;
 import pt.up.fe.ldts.view.gui.LanternaGUI;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -41,6 +43,7 @@ public class Game extends AppState {
         Renderer.addDrawable(arena);
     }
 
+    @SuppressWarnings("CatchAndPrintStackTrace")
     @Override
     public void start() throws Exception {
 
@@ -80,7 +83,8 @@ public class Game extends AppState {
             try {
                 if (sleepTime > 0)
                     Thread.sleep(sleepTime);
-            } catch (InterruptedException ignored) {
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         saveScore();
@@ -133,7 +137,7 @@ public class Game extends AppState {
             scores.add(Jorge.singleton.getScore());
         }
         else{
-            BufferedReader br = new BufferedReader(new FileReader(leaderboard));
+            BufferedReader br = new BufferedReader(new FileReader(String.valueOf(leaderboard.toPath()), Charset.defaultCharset()));
             String score;
 
             while((score = br.readLine()) != null){
@@ -148,7 +152,7 @@ public class Game extends AppState {
                 .distinct()
                 .collect(Collectors.toList());
 
-        FileWriter fw = new FileWriter(leaderboard, false);
+        Writer fw = Files.newBufferedWriter(leaderboard.toPath(), Charset.defaultCharset());
 
         for (Integer i : scores){
             fw.write(i + "\n");

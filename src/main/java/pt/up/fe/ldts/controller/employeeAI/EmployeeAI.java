@@ -5,6 +5,8 @@ import pt.up.fe.ldts.model.game.Employee;
 import pt.up.fe.ldts.model.Point;
 import pt.up.fe.ldts.model.map.MapConfiguration;
 
+import java.util.Random;
+
 /**
  * The AI to rule the movement of the employees throughout the game.
  */
@@ -12,6 +14,7 @@ public abstract class EmployeeAI {
 
     protected static final Point DEAD_TARGET = MapConfiguration.getGatePosition(); // respawn
     protected Point SCATTER_TARGET;
+    Random random = new Random();
 
     public Point getScatterTarget() {
         return this.SCATTER_TARGET;
@@ -20,7 +23,17 @@ public abstract class EmployeeAI {
     /**
      * Chooses the next direction for this Employee
      */
-    public abstract Point chooseTargetPosition(Employee.EmployeeState state, Point position);
+    public Point chooseTargetPosition(Employee.EmployeeState state, Point position){
+        return switch (state){
+            case SCATTER -> this.getScatterTarget();
+            case CHASING -> chasingTarget(position);
+            case DEAD -> DEAD_TARGET;
+            case FRIGHTENED -> new Point(random.nextInt(20), random.nextInt(20));
+
+        };
+    }
+
+    public abstract Point chasingTarget(Point position);
 
     public abstract TextColor getEmployeeColor();
 }

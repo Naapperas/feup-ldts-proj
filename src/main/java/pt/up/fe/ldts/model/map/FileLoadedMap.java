@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class FileLoadedMap implements Map {
         }
 
         File mapFile = new File(resource.toURI());
-        BufferedReader br = new BufferedReader(new FileReader(mapFile));
+        BufferedReader br = new BufferedReader(new FileReader(String.valueOf(mapFile.toPath()), Charset.defaultCharset()));
 
 
         walls = new ArrayList<>();
@@ -160,6 +161,7 @@ public class FileLoadedMap implements Map {
     public List<Employee> getMapEmployees() {
         return this.employees;
     }
+
 
     @Override
     public Point getGatePosition() {

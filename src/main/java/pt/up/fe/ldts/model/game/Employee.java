@@ -76,6 +76,7 @@ public class Employee extends Entity implements CervejaListener {
                 try {
                     Thread.sleep(sleepAmount * 1000);
                 } catch (InterruptedException e) {
+
                     e.printStackTrace();
                 }
 

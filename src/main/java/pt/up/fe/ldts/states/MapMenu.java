@@ -38,6 +38,7 @@ public class MapMenu extends AppState {
         Renderer.addDrawable(display);
     }
 
+    @SuppressWarnings("CatchAndPrintStackTrace")
     @Override
     public void start() throws Exception {
         boolean running = true;
@@ -75,7 +76,8 @@ public class MapMenu extends AppState {
             try {
                 if (sleepTime > 0)
                     Thread.sleep(sleepTime);
-            } catch (InterruptedException ignored) {
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         gui.close();

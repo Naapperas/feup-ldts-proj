@@ -16,6 +16,7 @@ public class Application {
         state.start();
     }
 
+    @SuppressWarnings("CatchAndPrintStackTrace")
     public static void main(String[] args) {
 
         try {
