@@ -88,6 +88,27 @@ The following figure shows how the pattern’s roles were mapped to the applicat
 
 Using this pattern, we can create many color+movement pattern combinations without the need to re-write how an employee should choose its target.
 
+### Menus
+### Problem in context
+
+Depending on the user being on a menu or playing a game we need our application to behave differently. 
+
+**The Pattern**
+
+The design pattern applied is the [State](https://refactoring.guru/design-patterns/state) pattern. 
+
+**Implementation**
+
+The following figure shows how the pattern’s roles were mapped to the application classes.
+
+![State Pattern for Menus and Game](images/state-menus.png)
+
+**Consequences**
+
+Using this pattern, we are able to change the behaviour of our application according to it's current state, allowing us to easily cycle through menus and the game. 
+
+
+
 ## Testing
 
 Test Coverage
