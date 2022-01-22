@@ -38,4 +38,9 @@ public class Wall extends Element {
         Wall w = (Wall) obj;
         return w.getPosition().equals(this.getPosition());
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

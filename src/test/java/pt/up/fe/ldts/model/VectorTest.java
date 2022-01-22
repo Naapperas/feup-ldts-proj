@@ -55,6 +55,7 @@ public class VectorTest {
     }
 
     @Test
+    @SuppressWarnings("SelfComparison")
     public void testCompare() {
 
         Assertions.assertEquals(0, Vector.UP.compareTo(Vector.UP));

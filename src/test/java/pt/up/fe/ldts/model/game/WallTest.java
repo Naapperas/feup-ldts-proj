@@ -2,7 +2,6 @@ package pt.up.fe.ldts.model.game;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import pt.up.fe.ldts.model.game.Wall;
 
 public class WallTest {
 
@@ -10,7 +9,8 @@ public class WallTest {
     public void testEquality() {
         Wall w1 = new Wall(0, 0), w2 = new Wall(0, 1);
 
-        Assertions.assertFalse(w1.equals(null));
-        Assertions.assertTrue(w1.equals(w1));
+        Assertions.assertNotEquals(null, w1);
+        Assertions.assertNotEquals(w1, w2);
+        Assertions.assertEquals(w1, w1);
     }
 }

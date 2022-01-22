@@ -25,4 +25,8 @@ public abstract class Collectible extends Element {
         return w.getPosition().equals(this.getPosition());
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }
