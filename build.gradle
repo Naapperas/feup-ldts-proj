@@ -3,6 +3,7 @@ plugins {
     id 'java'
     id 'info.solidsoft.pitest' version '1.6.0'
     id 'application'
+    id "net.ltgt.errorprone" version "2.0.2"
 }
 
 group 'pt.up.fe.ldts'
@@ -16,7 +17,7 @@ dependencies {
     implementation 'org.codehaus.groovy:groovy-all:3.0.8'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
-
+    errorprone("com.google.errorprone:error_prone_core:2.10.0")
     testImplementation 'org.mockito:mockito-core:4.2.0'
     implementation group: 'com.googlecode.lanterna', name: 'lanterna', version: '3.1.1'
 }
@@ -26,8 +27,8 @@ test {
 }
 
 pitest {
-    junit5PluginVersion = '0.15'
     pitestVersion = '1.6.7'
+    junit5PluginVersion = '0.15'
 }
 
 mainClassName = 'pt.up.fe.ldts.Application'
