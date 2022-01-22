@@ -25,6 +25,25 @@ This project was developed for LDTS 2021/2022 by
 
 <br />
 
+## Images
+<br />
+
+<p align="center">
+<img src="images/initial-menu.png"/>
+</p>  
+<p align = "center">
+Initial Menu
+</p>
+
+<br />
+
+<p align="center">
+<img src="images/empty-leaderboard.png"/>
+</p>  
+<p align = "center">
+Empty Leaderboard
+</p>
+
 ## Implemented Features
 
 - Player-controlled Character (__Jorge__);
