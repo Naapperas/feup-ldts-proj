@@ -28,16 +28,24 @@ This project was developed for LDTS 2021/2022 by
 ## Implemented Features
 
 - Player-controlled Character (__Jorge__);
+- __Jorge__ starts every game with 3 lives, the game ends when his lives reach 0;
 - 4 employees (Pac-Man's ghosts) with different characteristics (movement patterns, color, etc...);
+- The employees (when not vulnerable) can catch __Jorge__, reseting every employee and the player back to their starting position and states and decrementing __Jorge__'s lives by 1;
 - Labyrinth (the ___bar___) made up by walls that the player can't go through;
-- Gateways on both lateral sides of the map that allow the player to move from one side to the other instantly;
-- Rendering of every element of the game to the screen;
+- Gateways on both lateral sides and/or on the upper and lower borders of the map that allow the player to move from one gateway to the other instantly;
+- Rendering of every element of the game (including points and lives) to the screen;
+- ___Cervejas___ that act as a powerup to __Jorge__ and make employees vulnerable;
+- Ability to "knock out" vulnerable employees, sending them to their starting position and receiving extra points for it;
+- The user gets points proportional to the amount of ___tremoços___ he eats plus extra points for every ___cerveja___;
+- Timers that cycle the Employees states periodically;
+- When all ___tremoços___ are eaten the whole map is loaded again, so the player can keep playing and adding up to the score;
+- An initial menu with Play (opens a new menu), Leaderboard (opens the leaderboard) and Quit options;
+- A menu to choose the difficulty of the game (Easy, Normal or Hard), each of them corresponding to a different map, with different shapes and sizes, and a variable number of employees;
+- A personal leaderboard containing the player's 15 best scores in any map ordered from best to worst;
 
 ## Planned features
 
-- ___Cervejas___ that act as a powerup to __Jorge__ and make employees vulnerable;
-- The user gets points proportional to the amount of ___tremoços___ he eats plus extra points for every ___cerveja___
-- Timers that cycle the Employees states periodically
+> All planned features were implemented in the final version of the game.
 
 ## Design
 
@@ -80,6 +88,27 @@ The following figure shows how the pattern’s roles were mapped to the applicat
 
 Using this pattern, we can create many color+movement pattern combinations without the need to re-write how an employee should choose its target.
 
+### Menus
+### Problem in context
+
+Depending on the user being on a menu or playing a game we need our application to behave differently. 
+
+**The Pattern**
+
+The design pattern applied is the [State](https://refactoring.guru/design-patterns/state) pattern. 
+
+**Implementation**
+
+The following figure shows how the pattern’s roles were mapped to the application classes.
+
+![State Pattern for Menus and Game](images/state-menus.png)
+
+**Consequences**
+
+Using this pattern, we are able to change the behaviour of our application according to it's current state, allowing us to easily cycle through menus and the game. 
+
+
+
 ## Testing
 
 Test Coverage
@@ -95,6 +124,14 @@ Test Coverage
 ## Self-Evaluation
 
 >Work distribuition between the group members (percentages are enough according to template)
+
+
+
+
+
+
+
+
 
 
 
