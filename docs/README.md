@@ -36,6 +36,7 @@ Initial Menu
 </p>
 
 <br />
+<br />
 
 <p align="center">
 <img src="images/empty-leaderboard.png"/>
@@ -43,6 +44,68 @@ Initial Menu
 <p align = "center">
 Empty Leaderboard
 </p>
+
+<br />
+<br />
+
+<p align="center">
+<img src="images/leaderboard.png"/>
+</p>  
+<p align = "center">
+Leaderboard
+</p>
+
+<br />
+<br />
+
+<p align="center">
+<img src="images/play-menu.png"/>
+</p>  
+<p align = "center">
+Difficulty Menu
+</p>
+
+<br />
+<br />
+
+<p align="center">
+<img src="images/easy-map.png"/>
+</p>  
+<p align = "center">
+Easy Map
+</p>
+
+<br />
+<br />
+
+<p align="center">
+<img src="images/normal-map.png"/>
+</p>  
+<p align = "center">
+Normal Map
+</p>
+
+<br />
+<br />
+
+<p align="center">
+<img src="images/hard-map.png"/>
+</p>  
+<p align = "center">
+Hard Map
+</p>
+
+<br />
+<br />
+
+<p align="center">
+<img src="images/scared.png"/>
+</p>  
+<p align = "center">
+Frightened Employees
+</p>
+
+<br />
 
 ## Implemented Features
 
