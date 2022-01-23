@@ -106,6 +106,16 @@ Frightened Employees
 </p>
 
 <br />
+<br />
+
+<p align="center">
+<img src="images/dead-employee.png"/>
+</p>  
+<p align = "center">
+Knocked Out Employees
+</p>
+
+<br />
 
 ## Implemented Features
 
