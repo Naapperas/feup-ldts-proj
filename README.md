@@ -15,7 +15,7 @@ Check the full report [here](docs/README.md)
 
 
 <p align="center">
-<img src="docs/images/mock.png"/>
+<img src="docs/images/normal-map.png"/>
 </p>  
 
 <br/>
