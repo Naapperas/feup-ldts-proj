@@ -143,8 +143,9 @@ public class FileLoadedMapTest {
 
         try {
             new FileLoadedMap("defaultNullDimensions");
-        } catch (Exception e){
             Assertions.fail(); // should never reach this line
+        } catch (Exception e){
+            Assertions.assertEquals("Negative width: 0 - defaultNullDimensions.map", e.getMessage());
         }
 
     }

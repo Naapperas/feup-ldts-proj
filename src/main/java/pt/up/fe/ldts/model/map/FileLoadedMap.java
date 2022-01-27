@@ -116,12 +116,12 @@ public class FileLoadedMap implements Map {
         String[] sr = str.split("X");
 
         width = Integer.parseInt(sr[0]);
-        if (width < 0) {
+        if (width <= 0) {
             throw new Exception("Negative width: " + width + " - " + mapName + ".map");
         }
 
         height = Integer.parseInt(sr[1]);
-        if (height < 0) {
+        if (height <= 0) {
             throw new Exception("Negative height: " + height + " - " + mapName + ".map");
         }
 
