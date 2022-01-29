@@ -229,7 +229,14 @@ Mutation Testing
 
 - Class Point - Consists only on fields and methods to access or alter those fields;  
 
-**Refactoring Suggestion** - In the first case, we can use [Encapsulate Collection](https://refactoring.guru/encapsulate-collection) to return a read-only value instead of returning a List
+**Refactoring Suggestion** - In the first case, we can use [Encapsulate Collection](https://refactoring.guru/encapsulate-collection) to return a read-only value instead of returning a List  
+
+
+### [Large Class](https://refactoring.guru/smells/large-class)  
+
+- Class Arena - Simply said, this class has a lot of methods, fields and lines of code;
+
+**Refactoring Suggestion** - To resolve this we could split the functionalities that this class offers and delegate them somewhere else. Here we could possibly have the methods used to check certain conditions in another class for example, using [Extract Class](https://refactoring.guru/extract-class)
 
 ## Self-Evaluation
 
