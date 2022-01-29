@@ -15,11 +15,7 @@ public class MapMenu extends AppState {
 
     private static final int TICK_TIME = 75;
 
-    private final GUI gui;
-
     private static final int WIDTH = 40, HEIGHT = 40;
-
-    private final MenuDisplay display;
 
     public MapMenu(Application app) throws Exception {
         super(app);

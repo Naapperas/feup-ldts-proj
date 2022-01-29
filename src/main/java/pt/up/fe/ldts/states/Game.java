@@ -23,8 +23,6 @@ public class Game extends AppState {
 
     private static final int TICK_TIME = 75;
 
-    private final GUI gui;
-
     private final Arena arena;
 
     private boolean paused = false;
