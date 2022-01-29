@@ -207,7 +207,10 @@ Test Coverage
 
 ![Test Code coverage](images/coverage.png)
 
->Coverage and mutation reports
+Mutation Testing
+
+![Pit mutation tests](images/pitest.png)
+
 
 ## Known Code Smells And Refactoring Suggestions
 
