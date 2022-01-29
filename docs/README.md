@@ -220,7 +220,7 @@ Mutation Testing
 
 - Class Arena - In this class there are multiple calls to methods from class MapConfiguration efectively accessing it's data;
 
-**Refactoring Suggestion** - Generally data and functions that use this data are kept together. This problem can be solved by moving methods to the class where the data is placed (perhaps in our case moving some methods from Arena to MapConfiguration)
+**Refactoring Suggestion** - Generally data and functions that use this data are kept together. This can be solved by moving methods to the class where the data is placed (perhaps in our case moving some methods from Arena to MapConfiguration)
 
 
 ## Self-Evaluation
