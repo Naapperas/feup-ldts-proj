@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Jorge extends Entity{
 
-    public static Jorge singleton = new Jorge(13, 24); // to be changed later
+    public static Jorge singleton = new Jorge(13, 24);
 
     AtomicInteger score = new AtomicInteger(0), lives = new AtomicInteger(3);
 
@@ -97,7 +97,7 @@ public class Jorge extends Entity{
             } else
                 previousRenderChar = 'h';
         }
-        tg.putString(this.getX(), this.getY()+1, "" + previousRenderChar);//bola cheia
+        tg.putString(this.getX(), this.getY()+1, "" + previousRenderChar);
 
 
         tg.putString(0, 0, "SCORE:" + this.getScore());

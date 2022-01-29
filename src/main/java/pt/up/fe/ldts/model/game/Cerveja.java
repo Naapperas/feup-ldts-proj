@@ -26,7 +26,7 @@ public class Cerveja extends Collectible {
      */
     public Cerveja(int x, int y){
         super(x,y);
-        this.listeners = new ArrayList<>(); // better for traversal
+        this.listeners = new ArrayList<>();
     }
 
     @Override

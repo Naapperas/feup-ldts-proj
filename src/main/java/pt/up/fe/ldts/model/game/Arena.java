@@ -49,7 +49,7 @@ public class Arena implements Drawable {
 
     public void setCollectibles(List<Collectible> collectibles) {
         this.collectibles.clear();
-        for (Collectible c : collectibles){  // using for loop to find cervejas and add employees as listeners (addCollectibles should be used after addEmployees)
+        for (Collectible c : collectibles){
             if (c.getClass() == Cerveja.class){
                 for (Employee e : this.employees)
                     ((Cerveja) c).addListener(e);
@@ -164,10 +164,10 @@ public class Arena implements Drawable {
         for (var employee : this.employees)
             employee.render(tg);
 
-        Jorge.singleton.render(tg); // make Jorge the last element to be rendered on screen so the score always appears on top
+        Jorge.singleton.render(tg);
     }
 
-    public void checkCollectibleColision() {
+    public void checkCollectibleCollision() {
 
         for (Collectible c : this.collectibles)
             if (Jorge.singleton.getPosition().equals(c.getPosition())) {

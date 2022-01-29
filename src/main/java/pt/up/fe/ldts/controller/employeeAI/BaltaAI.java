@@ -7,6 +7,7 @@ import pt.up.fe.ldts.model.map.MapConfiguration;
 
 public class BaltaAI extends EmployeeAI{ //blinky
 
+    @Override
     public Point getScatterTarget() {
         return new Point(MapConfiguration.getMapWidth()-1,0);
     }

@@ -3,9 +3,6 @@ package pt.up.fe.ldts.model.game;
 import pt.up.fe.ldts.model.Vector;
 import pt.up.fe.ldts.model.map.MapConfiguration;
 
-/**
- *
- */
 public abstract class Entity extends Element {
 
     protected Vector direction;
@@ -17,7 +14,7 @@ public abstract class Entity extends Element {
      */
     public Entity(int x, int y) {
         super(x, y);
-        direction = Vector.UP;  // default direction to start with
+        direction = Vector.UP;
     }
 
     /**

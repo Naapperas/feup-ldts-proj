@@ -205,14 +205,14 @@ public class ArenaTest {
 
         Assertions.assertEquals(2, a.getCollectibles().size());
 
-        a.checkCollectibleColision();
+        a.checkCollectibleCollision();
 
         Assertions.assertEquals(1, a.getCollectibles().size());
         Assertions.assertEquals(10, Jorge.singleton.getScore());
 
         Jorge.singleton.changePos(8,9);
 
-        a.checkCollectibleColision();
+        a.checkCollectibleCollision();
 
         Assertions.assertEquals(0, a.getCollectibles().size());
         Assertions.assertEquals(30, Jorge.singleton.getScore());

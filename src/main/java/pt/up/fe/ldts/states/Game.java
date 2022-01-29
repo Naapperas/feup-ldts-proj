@@ -113,7 +113,7 @@ public class Game extends AppState {
             employee.move();
         });
 
-        this.arena.checkCollectibleColision();
+        this.arena.checkCollectibleCollision();
         this.arena.checkEmployeeCollision();
 
         if(this.arena.emptyCollectibles())
