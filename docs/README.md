@@ -220,8 +220,16 @@ Mutation Testing
 
 - Class Arena - In this class there are multiple calls to methods from class MapConfiguration efectively accessing it's data;
 
-**Refactoring Suggestion** - Generally data and functions that use this data are kept together. This can be solved by moving methods to the class where the data is placed (perhaps in our case moving some methods from Arena to MapConfiguration)
+**Refactoring Suggestion** - Generally data and functions that use this data are kept together. This can be solved by moving methods to the class where the data is placed (perhaps in our case moving some methods from Arena to MapConfiguration)  
 
+
+### [Data Class](https://refactoring.guru/smells/data-class)  
+
+- Class MapConfiguration - Consists only on fields and methods to access or alter those fields;  
+
+- Class Point - Consists only on fields and methods to access or alter those fields;  
+
+**Refactoring Suggestion** - In the first case, we can use [Encapsulate Collection](https://refactoring.guru/encapsulate-collection) to return a read-only value instead of returning a List
 
 ## Self-Evaluation
 
