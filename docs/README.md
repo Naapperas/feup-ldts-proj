@@ -139,6 +139,9 @@ Knocked Out Employees
 
 > All planned features were implemented in the final version of the game.
 
+## Class Diagrams
+<img src="images/class-diagram.png">
+
 ## Design
 
 ### Scared Employees
