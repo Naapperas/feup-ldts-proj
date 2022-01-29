@@ -243,19 +243,8 @@ Mutation Testing
 
 ## Self-Evaluation
 
->Work distribuition between the group members (percentages are enough according to template)
+>Work distribuition between the group members:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Nuno Pereira: 33%
+- Gonçalo Marques: 33%
+- Pedro Nunes: 33%
