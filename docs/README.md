@@ -214,7 +214,14 @@ Mutation Testing
 
 ## Known Code Smells And Refactoring Suggestions
 
-> This section should describe 3 to 5 different code smells that you have identified in your current implementation, and suggest ways in which the code could be refactored to eliminate them. Each smell and refactoring suggestions should be described in its own subsection.
+### [Feature Envy](https://refactoring.guru/smells/feature-envy)  
+
+- Class MenuDisplay - In this class there are multiple calls to methods isSelected(), select() and unselect() from class Button efectively accessing and/or altering it's data;  
+
+- Class Arena - In this class there are multiple calls to methods from class MapConfiguration efectively accessing it's data;
+
+**Refactoring Suggestion** - Generally data and functions that use this data are kept together. This problem can be solved by moving methods to the class where the data is placed (perhaps in our case moving some methods from Arena to MapConfiguration)
+
 
 ## Self-Evaluation
 
