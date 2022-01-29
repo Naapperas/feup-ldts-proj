@@ -1,12 +1,14 @@
 package pt.up.fe.ldts.states;
 
 import pt.up.fe.ldts.Application;
+import pt.up.fe.ldts.view.gui.GUI;
 
 import java.io.IOException;
 
 public abstract class AppState {
 
     protected Application app;
+    protected GUI gui;
 
     public AppState(Application app){
         this.app = app;

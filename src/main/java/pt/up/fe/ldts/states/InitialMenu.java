@@ -15,8 +15,6 @@ import java.util.List;
 
 public class InitialMenu extends AppState {
 
-    private final GUI gui;
-
     private static final int WIDTH = 40, HEIGHT = 40;
 
     private final MenuDisplay display;
