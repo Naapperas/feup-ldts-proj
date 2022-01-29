@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public abstract class EmployeeAI {
 
-    protected static final Point DEAD_TARGET = MapConfiguration.getGatePosition(); // respawn
+    protected static final Point DEAD_TARGET = MapConfiguration.getGatePosition();
     Random random = new Random();
 
     public abstract Point getScatterTarget();

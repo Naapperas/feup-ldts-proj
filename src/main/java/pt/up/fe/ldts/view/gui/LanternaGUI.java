@@ -60,6 +60,7 @@ public class LanternaGUI implements GUI {
         return AWTTerminalFontConfiguration.newInstance(loadedFont1, loadedFont2, loadedFont3);
     }
 
+    @Override
     public ACTION getNextAction() throws IOException {
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return ACTION.NONE;
