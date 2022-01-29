@@ -7,10 +7,10 @@ import pt.up.fe.ldts.model.game.Jorge;
 
 public class MariAI extends EmployeeAI { //pinky
 
-    public MariAI() {
-        SCATTER_TARGET = new Point(0,0);
-    }
-
+    @Override
+    public Point getScatterTarget() {
+        return new Point(0,0);
+    };
 
     @Override
     public TextColor getEmployeeColor() {

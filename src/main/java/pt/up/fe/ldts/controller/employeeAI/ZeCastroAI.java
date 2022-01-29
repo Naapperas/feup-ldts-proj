@@ -12,14 +12,17 @@ public class ZeCastroAI extends EmployeeAI{ //inky
     private final Employee balta;
 
     public ZeCastroAI(Employee balta){
-        this.SCATTER_TARGET = new Point(MapConfiguration.getMapWidth()-1, MapConfiguration.getMapHeight()-1);
         this.balta = balta;
     }
-
 
     @Override
     public TextColor getEmployeeColor() {
         return TextColor.Factory.fromString("#43eee4");
+    }
+
+    @Override
+    public Point getScatterTarget() {
+        return new Point(MapConfiguration.getMapWidth()-1, MapConfiguration.getMapHeight()-1);
     }
 
     /**
