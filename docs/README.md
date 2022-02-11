@@ -241,6 +241,8 @@ Mutation Testing
 
 **Refactoring Suggestion** - To resolve this we could split the functionalities that this class offers and delegate them somewhere else. Here we could possibly have the methods used to check certain conditions in another class for example, using [Extract Class](https://refactoring.guru/extract-class)
 
+## Grade: 18.1/20
+
 ## Self-Evaluation
 
 >Work distribuition between the group members:
